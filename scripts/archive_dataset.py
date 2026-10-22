@@ -12,6 +12,7 @@ import tarfile
 import hashlib
 import json
 import time
+import argparse
 from typing import Dict, Any, List
 
 
@@ -71,6 +72,19 @@ def create_dataset_archive(
     archive_sha256 = compute_sha256(archive_out)
     print(f"  SHA-256: {archive_sha256}")
 
+    # Load verified per-file hashes from acquisition inventory
+    inventory_path = "outputs/full_acquisition/acquisition_inventory.json"
+    files_detail = {}
+    if os.path.exists(inventory_path):
+        with open(inventory_path, "r") as f:
+            inv = json.load(f)
+        for item in inv.get("files", []):
+            rel_p = os.path.relpath(item["local_path"], ".").replace("\\", "/")
+            files_detail[rel_p] = {
+                "size_bytes": item["size_bytes"],
+                "sha256": item["sha256"]
+            }
+
     manifest_data = {
         "manifest_version": "1.0",
         "created_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
@@ -86,7 +100,8 @@ def create_dataset_archive(
             "event_2026-05-20": 288,
             "event_2026-07-19": 288,
             "event_2026-09-07": 288
-        }
+        },
+        "files": files_detail
     }
 
     os.makedirs(os.path.dirname(manifest_out), exist_ok=True)

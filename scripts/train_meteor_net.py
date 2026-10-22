@@ -119,6 +119,25 @@ def save_checkpoint_atomic(payload: Dict[str, Any], filepath: str):
     os.replace(tmp_path, filepath)
 
 
+def sync_file_to_drive(src_path: str, drive_dir: Optional[str]) -> bool:
+    """Safely mirrors a local checkpoint or history file to Google Drive using a temporary write and atomic rename."""
+    if not drive_dir:
+        return False
+    try:
+        os.makedirs(drive_dir, exist_ok=True)
+        fname = os.path.basename(src_path)
+        dst_path = os.path.join(drive_dir, fname)
+        tmp_dst = dst_path + ".tmp"
+        import shutil
+        shutil.copy2(src_path, tmp_dst)
+        os.replace(tmp_dst, dst_path)
+        print(f"  [Drive Sync] Live-synced {fname} to Drive ({os.path.getsize(dst_path)/(1024*1024):.2f} MB)")
+        return True
+    except Exception as e:
+        print(f"  [Drive Sync WARNING] Could not live-sync {src_path} to Drive: {e}")
+        return False
+
+
 class CosineWarmupScheduler:
     """
     Cosine learning rate scheduler with linear warmup keyed to optimizer updates.
@@ -321,7 +340,8 @@ def run_training(
     early_stopping_patience: int = 2,
     resume_path: Optional[str] = None,
     dry_run: bool = False,
-    device_str: Optional[str] = None
+    device_str: Optional[str] = None,
+    drive_sync_dir: Optional[str] = None
 ) -> Dict[str, Any]:
     print("=" * 80)
     print("PHASE 7B: METEOR-NET CONTROLLED TRAINING RUNNER")
@@ -466,6 +486,7 @@ def run_training(
     baseline_path = os.path.join(output_dir, "baseline_metrics.json")
     with open(baseline_path, "w") as f:
         json.dump(baseline_metrics, f, indent=2)
+    sync_file_to_drive(baseline_path, drive_sync_dir)
     print(f"  Untrained Validation Baseline:   {initial_val_eval['mean_loss_kelvin']:.4f} K (physical MAE)")
     print(f"  Untrained Train Diagnostic Loss: {initial_train_eval['mean_loss_kelvin']:.4f} K (physical MAE)")
     print(f"  Saved baseline metrics to:       {baseline_path}")
@@ -583,6 +604,7 @@ def run_training(
                 "random_state": random.getstate(),
                 "normalization_provenance": standardizer.provenance
             }, emergency_ckpt)
+            sync_file_to_drive(emergency_ckpt, drive_sync_dir)
             raise MemoryError(f"Emergency stop: system memory critically low ({mem_info['avail_gb']:.2f} GB). Saved state to {emergency_ckpt}")
 
         t_epoch_start = time.perf_counter()
@@ -690,6 +712,7 @@ def run_training(
             "random_state": random.getstate(),
             "normalization_provenance": standardizer.provenance
         }, latest_ckpt_path)
+        sync_file_to_drive(latest_ckpt_path, drive_sync_dir)
 
         # Check for validation improvement
         if epoch_val_loss < best_val_loss:
@@ -712,6 +735,7 @@ def run_training(
                 "random_state": random.getstate(),
                 "normalization_provenance": standardizer.provenance
             }, best_ckpt_path)
+            sync_file_to_drive(best_ckpt_path, drive_sync_dir)
             print(f"  [*] Validation improved by {improvement:.4f} K -> Saved best model to {best_ckpt_path}")
         else:
             patience_counter += 1
@@ -724,6 +748,7 @@ def run_training(
     history_path = os.path.join(output_dir, "training_history.json")
     with open(history_path, "w") as f:
         json.dump(history, f, indent=2)
+    sync_file_to_drive(history_path, drive_sync_dir)
 
     return history
 
@@ -745,6 +770,7 @@ if __name__ == "__main__":
     parser.add_argument("--resume", type=str, default=None, help="Path to checkpoint to resume training from")
     parser.add_argument("--dry_run", action="store_true", help="Perform preflight checks and baseline without optimizer updates")
     parser.add_argument("--device", type=str, default=None, help="Compute device ('cuda', 'cpu', or None for auto-detection)")
+    parser.add_argument("--drive_sync_dir", type=str, default=None, help="Persistent Google Drive directory for live checkpoint mirroring")
     args = parser.parse_args()
 
     run_training(
@@ -762,6 +788,7 @@ if __name__ == "__main__":
         early_stopping_patience=args.early_stopping_patience,
         resume_path=args.resume,
         dry_run=args.dry_run,
-        device_str=args.device
+        device_str=args.device,
+        drive_sync_dir=args.drive_sync_dir
     )
 
