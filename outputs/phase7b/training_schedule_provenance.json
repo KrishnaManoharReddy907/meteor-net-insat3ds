@@ -1,0 +1,7519 @@
+{
+  "seed": 42,
+  "convective_pool_size": 2267,
+  "ambient_pool_size": 4213,
+  "convective_sampled_total": 250,
+  "ambient_sampled_total": 250,
+  "provenance_by_epoch": {
+    "1": [
+      {
+        "patch_index": 5911,
+        "sequence_index": 98,
+        "sequence_id": "seq_event_2026-05-20_224117_w98",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 73,
+        "sequence_index": 1,
+        "sequence_id": "seq_event_2026-01-01_030619_w01",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6428,
+        "sequence_index": 107,
+        "sequence_id": "seq_event_2026-05-20_232617_w107",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3976,
+        "sequence_index": 66,
+        "sequence_id": "seq_event_2026-05-20_200117_w66",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5112,
+        "sequence_index": 85,
+        "sequence_id": "seq_event_2026-05-20_213617_w85",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3276,
+        "sequence_index": 54,
+        "sequence_id": "seq_event_2026-05-20_190117_w54",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5870,
+        "sequence_index": 97,
+        "sequence_id": "seq_event_2026-05-20_223617_w97",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2876,
+        "sequence_index": 47,
+        "sequence_id": "seq_event_2026-01-01_065619_w47",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1898,
+        "sequence_index": 31,
+        "sequence_id": "seq_event_2026-01-01_053619_w31",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1911,
+        "sequence_index": 31,
+        "sequence_id": "seq_event_2026-01-01_053619_w31",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2587,
+        "sequence_index": 43,
+        "sequence_id": "seq_event_2026-01-01_063619_w43",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4989,
+        "sequence_index": 83,
+        "sequence_id": "seq_event_2026-05-20_212617_w83",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4210,
+        "sequence_index": 70,
+        "sequence_id": "seq_event_2026-05-20_202117_w70",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3096,
+        "sequence_index": 51,
+        "sequence_id": "seq_event_2026-01-01_071619_w51",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5587,
+        "sequence_index": 93,
+        "sequence_id": "seq_event_2026-05-20_221617_w93",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2754,
+        "sequence_index": 45,
+        "sequence_id": "seq_event_2026-01-01_064619_w45",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4288,
+        "sequence_index": 71,
+        "sequence_id": "seq_event_2026-05-20_202617_w71",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4783,
+        "sequence_index": 79,
+        "sequence_id": "seq_event_2026-05-20_210617_w79",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5184,
+        "sequence_index": 86,
+        "sequence_id": "seq_event_2026-05-20_214117_w86",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5141,
+        "sequence_index": 85,
+        "sequence_id": "seq_event_2026-05-20_213617_w85",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1348,
+        "sequence_index": 22,
+        "sequence_id": "seq_event_2026-01-01_045119_w22",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 98,
+        "sequence_index": 1,
+        "sequence_id": "seq_event_2026-01-01_030619_w01",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5217,
+        "sequence_index": 86,
+        "sequence_id": "seq_event_2026-05-20_214117_w86",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1302,
+        "sequence_index": 21,
+        "sequence_id": "seq_event_2026-01-01_044619_w21",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3638,
+        "sequence_index": 60,
+        "sequence_id": "seq_event_2026-05-20_193117_w60",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4094,
+        "sequence_index": 68,
+        "sequence_id": "seq_event_2026-05-20_201117_w68",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1709,
+        "sequence_index": 28,
+        "sequence_id": "seq_event_2026-01-01_052119_w28",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1750,
+        "sequence_index": 29,
+        "sequence_id": "seq_event_2026-01-01_052619_w29",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6459,
+        "sequence_index": 107,
+        "sequence_id": "seq_event_2026-05-20_232617_w107",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3696,
+        "sequence_index": 61,
+        "sequence_id": "seq_event_2026-05-20_193617_w61",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5102,
+        "sequence_index": 85,
+        "sequence_id": "seq_event_2026-05-20_213617_w85",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5197,
+        "sequence_index": 86,
+        "sequence_id": "seq_event_2026-05-20_214117_w86",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4395,
+        "sequence_index": 73,
+        "sequence_id": "seq_event_2026-05-20_203617_w73",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4732,
+        "sequence_index": 78,
+        "sequence_id": "seq_event_2026-05-20_210117_w78",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 829,
+        "sequence_index": 13,
+        "sequence_id": "seq_event_2026-01-01_040619_w13",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1662,
+        "sequence_index": 27,
+        "sequence_id": "seq_event_2026-01-01_051619_w27",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4761,
+        "sequence_index": 79,
+        "sequence_id": "seq_event_2026-05-20_210617_w79",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2233,
+        "sequence_index": 37,
+        "sequence_id": "seq_event_2026-01-01_060619_w37",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2264,
+        "sequence_index": 37,
+        "sequence_id": "seq_event_2026-01-01_060619_w37",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5537,
+        "sequence_index": 92,
+        "sequence_id": "seq_event_2026-05-20_221117_w92",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4209,
+        "sequence_index": 70,
+        "sequence_id": "seq_event_2026-05-20_202117_w70",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2128,
+        "sequence_index": 35,
+        "sequence_id": "seq_event_2026-01-01_055619_w35",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4506,
+        "sequence_index": 75,
+        "sequence_id": "seq_event_2026-05-20_204617_w75",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 916,
+        "sequence_index": 15,
+        "sequence_id": "seq_event_2026-01-01_041619_w15",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3740,
+        "sequence_index": 62,
+        "sequence_id": "seq_event_2026-05-20_194117_w62",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2150,
+        "sequence_index": 35,
+        "sequence_id": "seq_event_2026-01-01_055619_w35",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5268,
+        "sequence_index": 87,
+        "sequence_id": "seq_event_2026-05-20_214617_w87",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4912,
+        "sequence_index": 81,
+        "sequence_id": "seq_event_2026-05-20_211617_w81",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5879,
+        "sequence_index": 97,
+        "sequence_id": "seq_event_2026-05-20_223617_w97",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1053,
+        "sequence_index": 17,
+        "sequence_id": "seq_event_2026-01-01_042619_w17",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5466,
+        "sequence_index": 91,
+        "sequence_id": "seq_event_2026-05-20_220617_w91",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4318,
+        "sequence_index": 71,
+        "sequence_id": "seq_event_2026-05-20_202617_w71",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1774,
+        "sequence_index": 29,
+        "sequence_id": "seq_event_2026-01-01_052619_w29",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4355,
+        "sequence_index": 72,
+        "sequence_id": "seq_event_2026-05-20_203117_w72",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 894,
+        "sequence_index": 14,
+        "sequence_id": "seq_event_2026-01-01_041119_w14",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5136,
+        "sequence_index": 85,
+        "sequence_id": "seq_event_2026-05-20_213617_w85",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6012,
+        "sequence_index": 100,
+        "sequence_id": "seq_event_2026-05-20_225117_w100",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3316,
+        "sequence_index": 55,
+        "sequence_id": "seq_event_2026-05-20_190617_w55",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6043,
+        "sequence_index": 100,
+        "sequence_id": "seq_event_2026-05-20_225117_w100",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 419,
+        "sequence_index": 6,
+        "sequence_id": "seq_event_2026-01-01_033119_w06",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4532,
+        "sequence_index": 75,
+        "sequence_id": "seq_event_2026-05-20_204617_w75",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4935,
+        "sequence_index": 82,
+        "sequence_id": "seq_event_2026-05-20_212117_w82",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1363,
+        "sequence_index": 22,
+        "sequence_id": "seq_event_2026-01-01_045119_w22",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2517,
+        "sequence_index": 41,
+        "sequence_id": "seq_event_2026-01-01_062619_w41",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1198,
+        "sequence_index": 19,
+        "sequence_id": "seq_event_2026-01-01_043619_w19",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3098,
+        "sequence_index": 51,
+        "sequence_id": "seq_event_2026-01-01_071619_w51",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5387,
+        "sequence_index": 89,
+        "sequence_id": "seq_event_2026-05-20_215617_w89",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3904,
+        "sequence_index": 65,
+        "sequence_id": "seq_event_2026-05-20_195617_w65",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3952,
+        "sequence_index": 65,
+        "sequence_id": "seq_event_2026-05-20_195617_w65",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1071,
+        "sequence_index": 17,
+        "sequence_id": "seq_event_2026-01-01_042619_w17",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1341,
+        "sequence_index": 22,
+        "sequence_id": "seq_event_2026-01-01_045119_w22",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 730,
+        "sequence_index": 12,
+        "sequence_id": "seq_event_2026-01-01_040119_w12",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3146,
+        "sequence_index": 52,
+        "sequence_id": "seq_event_2026-01-01_072119_w52",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6087,
+        "sequence_index": 101,
+        "sequence_id": "seq_event_2026-05-20_225617_w101",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4083,
+        "sequence_index": 68,
+        "sequence_id": "seq_event_2026-05-20_201117_w68",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2366,
+        "sequence_index": 39,
+        "sequence_id": "seq_event_2026-01-01_061619_w39",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1077,
+        "sequence_index": 17,
+        "sequence_id": "seq_event_2026-01-01_042619_w17",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6150,
+        "sequence_index": 102,
+        "sequence_id": "seq_event_2026-05-20_230117_w102",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3461,
+        "sequence_index": 57,
+        "sequence_id": "seq_event_2026-05-20_191617_w57",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4666,
+        "sequence_index": 77,
+        "sequence_id": "seq_event_2026-05-20_205617_w77",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4685,
+        "sequence_index": 78,
+        "sequence_id": "seq_event_2026-05-20_210117_w78",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3266,
+        "sequence_index": 54,
+        "sequence_id": "seq_event_2026-05-20_190117_w54",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3621,
+        "sequence_index": 60,
+        "sequence_id": "seq_event_2026-05-20_193117_w60",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 789,
+        "sequence_index": 13,
+        "sequence_id": "seq_event_2026-01-01_040619_w13",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3986,
+        "sequence_index": 66,
+        "sequence_id": "seq_event_2026-05-20_200117_w66",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2510,
+        "sequence_index": 41,
+        "sequence_id": "seq_event_2026-01-01_062619_w41",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 917,
+        "sequence_index": 15,
+        "sequence_id": "seq_event_2026-01-01_041619_w15",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5383,
+        "sequence_index": 89,
+        "sequence_id": "seq_event_2026-05-20_215617_w89",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6095,
+        "sequence_index": 101,
+        "sequence_id": "seq_event_2026-05-20_225617_w101",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3718,
+        "sequence_index": 61,
+        "sequence_id": "seq_event_2026-05-20_193617_w61",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3804,
+        "sequence_index": 63,
+        "sequence_id": "seq_event_2026-05-20_194617_w63",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3999,
+        "sequence_index": 66,
+        "sequence_id": "seq_event_2026-05-20_200117_w66",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4571,
+        "sequence_index": 76,
+        "sequence_id": "seq_event_2026-05-20_205117_w76",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2621,
+        "sequence_index": 43,
+        "sequence_id": "seq_event_2026-01-01_063619_w43",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5198,
+        "sequence_index": 86,
+        "sequence_id": "seq_event_2026-05-20_214117_w86",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5854,
+        "sequence_index": 97,
+        "sequence_id": "seq_event_2026-05-20_223617_w97",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5956,
+        "sequence_index": 99,
+        "sequence_id": "seq_event_2026-05-20_224617_w99",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 174,
+        "sequence_index": 2,
+        "sequence_id": "seq_event_2026-01-01_031119_w02",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4793,
+        "sequence_index": 79,
+        "sequence_id": "seq_event_2026-05-20_210617_w79",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4656,
+        "sequence_index": 77,
+        "sequence_id": "seq_event_2026-05-20_205617_w77",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      }
+    ],
+    "2": [
+      {
+        "patch_index": 3701,
+        "sequence_index": 61,
+        "sequence_id": "seq_event_2026-05-20_193617_w61",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6175,
+        "sequence_index": 102,
+        "sequence_id": "seq_event_2026-05-20_230117_w102",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3877,
+        "sequence_index": 64,
+        "sequence_id": "seq_event_2026-05-20_195117_w64",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2672,
+        "sequence_index": 44,
+        "sequence_id": "seq_event_2026-01-01_064119_w44",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1107,
+        "sequence_index": 18,
+        "sequence_id": "seq_event_2026-01-01_043119_w18",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4448,
+        "sequence_index": 74,
+        "sequence_id": "seq_event_2026-05-20_204117_w74",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5127,
+        "sequence_index": 85,
+        "sequence_id": "seq_event_2026-05-20_213617_w85",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4432,
+        "sequence_index": 73,
+        "sequence_id": "seq_event_2026-05-20_203617_w73",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3258,
+        "sequence_index": 54,
+        "sequence_id": "seq_event_2026-05-20_190117_w54",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2622,
+        "sequence_index": 43,
+        "sequence_id": "seq_event_2026-01-01_063619_w43",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1782,
+        "sequence_index": 29,
+        "sequence_id": "seq_event_2026-01-01_052619_w29",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1578,
+        "sequence_index": 26,
+        "sequence_id": "seq_event_2026-01-01_051119_w26",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 441,
+        "sequence_index": 7,
+        "sequence_id": "seq_event_2026-01-01_033619_w07",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6006,
+        "sequence_index": 100,
+        "sequence_id": "seq_event_2026-05-20_225117_w100",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6042,
+        "sequence_index": 100,
+        "sequence_id": "seq_event_2026-05-20_225117_w100",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6340,
+        "sequence_index": 105,
+        "sequence_id": "seq_event_2026-05-20_231617_w105",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3923,
+        "sequence_index": 65,
+        "sequence_id": "seq_event_2026-05-20_195617_w65",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6151,
+        "sequence_index": 102,
+        "sequence_id": "seq_event_2026-05-20_230117_w102",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4515,
+        "sequence_index": 75,
+        "sequence_id": "seq_event_2026-05-20_204617_w75",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6060,
+        "sequence_index": 101,
+        "sequence_id": "seq_event_2026-05-20_225617_w101",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 478,
+        "sequence_index": 7,
+        "sequence_id": "seq_event_2026-01-01_033619_w07",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1650,
+        "sequence_index": 27,
+        "sequence_id": "seq_event_2026-01-01_051619_w27",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4011,
+        "sequence_index": 66,
+        "sequence_id": "seq_event_2026-05-20_200117_w66",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 557,
+        "sequence_index": 9,
+        "sequence_id": "seq_event_2026-01-01_034619_w09",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2384,
+        "sequence_index": 39,
+        "sequence_id": "seq_event_2026-01-01_061619_w39",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4035,
+        "sequence_index": 67,
+        "sequence_id": "seq_event_2026-05-20_200617_w67",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2052,
+        "sequence_index": 34,
+        "sequence_id": "seq_event_2026-01-01_055119_w34",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4109,
+        "sequence_index": 68,
+        "sequence_id": "seq_event_2026-05-20_201117_w68",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3495,
+        "sequence_index": 58,
+        "sequence_id": "seq_event_2026-05-20_192117_w58",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4821,
+        "sequence_index": 80,
+        "sequence_id": "seq_event_2026-05-20_211117_w80",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6287,
+        "sequence_index": 104,
+        "sequence_id": "seq_event_2026-05-20_231117_w104",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 879,
+        "sequence_index": 14,
+        "sequence_id": "seq_event_2026-01-01_041119_w14",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4775,
+        "sequence_index": 79,
+        "sequence_id": "seq_event_2026-05-20_210617_w79",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1539,
+        "sequence_index": 25,
+        "sequence_id": "seq_event_2026-01-01_050619_w25",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4030,
+        "sequence_index": 67,
+        "sequence_id": "seq_event_2026-05-20_200617_w67",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 950,
+        "sequence_index": 15,
+        "sequence_id": "seq_event_2026-01-01_041619_w15",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2488,
+        "sequence_index": 41,
+        "sequence_id": "seq_event_2026-01-01_062619_w41",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3967,
+        "sequence_index": 66,
+        "sequence_id": "seq_event_2026-05-20_200117_w66",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4825,
+        "sequence_index": 80,
+        "sequence_id": "seq_event_2026-05-20_211117_w80",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4696,
+        "sequence_index": 78,
+        "sequence_id": "seq_event_2026-05-20_210117_w78",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 849,
+        "sequence_index": 14,
+        "sequence_id": "seq_event_2026-01-01_041119_w14",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5821,
+        "sequence_index": 97,
+        "sequence_id": "seq_event_2026-05-20_223617_w97",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3847,
+        "sequence_index": 64,
+        "sequence_id": "seq_event_2026-05-20_195117_w64",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 821,
+        "sequence_index": 13,
+        "sequence_id": "seq_event_2026-01-01_040619_w13",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3931,
+        "sequence_index": 65,
+        "sequence_id": "seq_event_2026-05-20_195617_w65",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6090,
+        "sequence_index": 101,
+        "sequence_id": "seq_event_2026-05-20_225617_w101",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 524,
+        "sequence_index": 8,
+        "sequence_id": "seq_event_2026-01-01_034119_w08",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3917,
+        "sequence_index": 65,
+        "sequence_id": "seq_event_2026-05-20_195617_w65",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3540,
+        "sequence_index": 59,
+        "sequence_id": "seq_event_2026-05-20_192617_w59",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 194,
+        "sequence_index": 3,
+        "sequence_id": "seq_event_2026-01-01_031619_w03",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6436,
+        "sequence_index": 107,
+        "sequence_id": "seq_event_2026-05-20_232617_w107",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1949,
+        "sequence_index": 32,
+        "sequence_id": "seq_event_2026-01-01_054119_w32",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4179,
+        "sequence_index": 69,
+        "sequence_id": "seq_event_2026-05-20_201617_w69",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4146,
+        "sequence_index": 69,
+        "sequence_id": "seq_event_2026-05-20_201617_w69",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4447,
+        "sequence_index": 74,
+        "sequence_id": "seq_event_2026-05-20_204117_w74",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4169,
+        "sequence_index": 69,
+        "sequence_id": "seq_event_2026-05-20_201617_w69",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3426,
+        "sequence_index": 57,
+        "sequence_id": "seq_event_2026-05-20_191617_w57",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2217,
+        "sequence_index": 36,
+        "sequence_id": "seq_event_2026-01-01_060119_w36",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5670,
+        "sequence_index": 94,
+        "sequence_id": "seq_event_2026-05-20_222117_w94",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4009,
+        "sequence_index": 66,
+        "sequence_id": "seq_event_2026-05-20_200117_w66",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 379,
+        "sequence_index": 6,
+        "sequence_id": "seq_event_2026-01-01_033119_w06",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2972,
+        "sequence_index": 49,
+        "sequence_id": "seq_event_2026-01-01_070619_w49",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5748,
+        "sequence_index": 95,
+        "sequence_id": "seq_event_2026-05-20_222617_w95",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3554,
+        "sequence_index": 59,
+        "sequence_id": "seq_event_2026-05-20_192617_w59",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1977,
+        "sequence_index": 32,
+        "sequence_id": "seq_event_2026-01-01_054119_w32",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1879,
+        "sequence_index": 31,
+        "sequence_id": "seq_event_2026-01-01_053619_w31",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4626,
+        "sequence_index": 77,
+        "sequence_id": "seq_event_2026-05-20_205617_w77",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5382,
+        "sequence_index": 89,
+        "sequence_id": "seq_event_2026-05-20_215617_w89",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 193,
+        "sequence_index": 3,
+        "sequence_id": "seq_event_2026-01-01_031619_w03",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5499,
+        "sequence_index": 91,
+        "sequence_id": "seq_event_2026-05-20_220617_w91",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6401,
+        "sequence_index": 106,
+        "sequence_id": "seq_event_2026-05-20_232117_w106",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5048,
+        "sequence_index": 84,
+        "sequence_id": "seq_event_2026-05-20_213117_w84",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 567,
+        "sequence_index": 9,
+        "sequence_id": "seq_event_2026-01-01_034619_w09",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1893,
+        "sequence_index": 31,
+        "sequence_id": "seq_event_2026-01-01_053619_w31",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5308,
+        "sequence_index": 88,
+        "sequence_id": "seq_event_2026-05-20_215117_w88",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5310,
+        "sequence_index": 88,
+        "sequence_id": "seq_event_2026-05-20_215117_w88",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4563,
+        "sequence_index": 76,
+        "sequence_id": "seq_event_2026-05-20_205117_w76",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2226,
+        "sequence_index": 37,
+        "sequence_id": "seq_event_2026-01-01_060619_w37",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5350,
+        "sequence_index": 89,
+        "sequence_id": "seq_event_2026-05-20_215617_w89",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5841,
+        "sequence_index": 97,
+        "sequence_id": "seq_event_2026-05-20_223617_w97",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3651,
+        "sequence_index": 60,
+        "sequence_id": "seq_event_2026-05-20_193117_w60",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 757,
+        "sequence_index": 12,
+        "sequence_id": "seq_event_2026-01-01_040119_w12",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5711,
+        "sequence_index": 95,
+        "sequence_id": "seq_event_2026-05-20_222617_w95",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5091,
+        "sequence_index": 84,
+        "sequence_id": "seq_event_2026-05-20_213117_w84",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 17,
+        "sequence_index": 0,
+        "sequence_id": "seq_event_2026-01-01_030119_w00",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4894,
+        "sequence_index": 81,
+        "sequence_id": "seq_event_2026-05-20_211617_w81",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1137,
+        "sequence_index": 18,
+        "sequence_id": "seq_event_2026-01-01_043119_w18",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2710,
+        "sequence_index": 45,
+        "sequence_id": "seq_event_2026-01-01_064619_w45",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4325,
+        "sequence_index": 72,
+        "sequence_id": "seq_event_2026-05-20_203117_w72",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4992,
+        "sequence_index": 83,
+        "sequence_id": "seq_event_2026-05-20_212617_w83",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2412,
+        "sequence_index": 40,
+        "sequence_id": "seq_event_2026-01-01_062119_w40",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5552,
+        "sequence_index": 92,
+        "sequence_id": "seq_event_2026-05-20_221117_w92",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6220,
+        "sequence_index": 103,
+        "sequence_id": "seq_event_2026-05-20_230617_w103",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3326,
+        "sequence_index": 55,
+        "sequence_id": "seq_event_2026-05-20_190617_w55",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4442,
+        "sequence_index": 74,
+        "sequence_id": "seq_event_2026-05-20_204117_w74",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4990,
+        "sequence_index": 83,
+        "sequence_id": "seq_event_2026-05-20_212617_w83",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2215,
+        "sequence_index": 36,
+        "sequence_id": "seq_event_2026-01-01_060119_w36",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 828,
+        "sequence_index": 13,
+        "sequence_id": "seq_event_2026-01-01_040619_w13",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3024,
+        "sequence_index": 50,
+        "sequence_id": "seq_event_2026-01-01_071119_w50",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3410,
+        "sequence_index": 56,
+        "sequence_id": "seq_event_2026-05-20_191117_w56",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      }
+    ],
+    "3": [
+      {
+        "patch_index": 5408,
+        "sequence_index": 90,
+        "sequence_id": "seq_event_2026-05-20_220117_w90",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1329,
+        "sequence_index": 22,
+        "sequence_id": "seq_event_2026-01-01_045119_w22",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2030,
+        "sequence_index": 33,
+        "sequence_id": "seq_event_2026-01-01_054619_w33",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4526,
+        "sequence_index": 75,
+        "sequence_id": "seq_event_2026-05-20_204617_w75",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3131,
+        "sequence_index": 52,
+        "sequence_id": "seq_event_2026-01-01_072119_w52",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3876,
+        "sequence_index": 64,
+        "sequence_id": "seq_event_2026-05-20_195117_w64",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4025,
+        "sequence_index": 67,
+        "sequence_id": "seq_event_2026-05-20_200617_w67",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5028,
+        "sequence_index": 83,
+        "sequence_id": "seq_event_2026-05-20_212617_w83",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1358,
+        "sequence_index": 22,
+        "sequence_id": "seq_event_2026-01-01_045119_w22",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5430,
+        "sequence_index": 90,
+        "sequence_id": "seq_event_2026-05-20_220117_w90",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5817,
+        "sequence_index": 96,
+        "sequence_id": "seq_event_2026-05-20_223117_w96",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3797,
+        "sequence_index": 63,
+        "sequence_id": "seq_event_2026-05-20_194617_w63",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4880,
+        "sequence_index": 81,
+        "sequence_id": "seq_event_2026-05-20_211617_w81",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3125,
+        "sequence_index": 52,
+        "sequence_id": "seq_event_2026-01-01_072119_w52",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 667,
+        "sequence_index": 11,
+        "sequence_id": "seq_event_2026-01-01_035619_w11",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5807,
+        "sequence_index": 96,
+        "sequence_id": "seq_event_2026-05-20_223117_w96",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5923,
+        "sequence_index": 98,
+        "sequence_id": "seq_event_2026-05-20_224117_w98",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 700,
+        "sequence_index": 11,
+        "sequence_id": "seq_event_2026-01-01_035619_w11",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4862,
+        "sequence_index": 81,
+        "sequence_id": "seq_event_2026-05-20_211617_w81",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4542,
+        "sequence_index": 75,
+        "sequence_id": "seq_event_2026-05-20_204617_w75",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 396,
+        "sequence_index": 6,
+        "sequence_id": "seq_event_2026-01-01_033119_w06",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5426,
+        "sequence_index": 90,
+        "sequence_id": "seq_event_2026-05-20_220117_w90",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3366,
+        "sequence_index": 56,
+        "sequence_id": "seq_event_2026-05-20_191117_w56",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 362,
+        "sequence_index": 6,
+        "sequence_id": "seq_event_2026-01-01_033119_w06",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 826,
+        "sequence_index": 13,
+        "sequence_id": "seq_event_2026-01-01_040619_w13",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3425,
+        "sequence_index": 57,
+        "sequence_id": "seq_event_2026-05-20_191617_w57",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2631,
+        "sequence_index": 43,
+        "sequence_id": "seq_event_2026-01-01_063619_w43",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2822,
+        "sequence_index": 47,
+        "sequence_id": "seq_event_2026-01-01_065619_w47",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1325,
+        "sequence_index": 22,
+        "sequence_id": "seq_event_2026-01-01_045119_w22",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4212,
+        "sequence_index": 70,
+        "sequence_id": "seq_event_2026-05-20_202117_w70",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5107,
+        "sequence_index": 85,
+        "sequence_id": "seq_event_2026-05-20_213617_w85",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4150,
+        "sequence_index": 69,
+        "sequence_id": "seq_event_2026-05-20_201617_w69",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 887,
+        "sequence_index": 14,
+        "sequence_id": "seq_event_2026-01-01_041119_w14",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2313,
+        "sequence_index": 38,
+        "sequence_id": "seq_event_2026-01-01_061119_w38",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3338,
+        "sequence_index": 55,
+        "sequence_id": "seq_event_2026-05-20_190617_w55",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1548,
+        "sequence_index": 25,
+        "sequence_id": "seq_event_2026-01-01_050619_w25",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4046,
+        "sequence_index": 67,
+        "sequence_id": "seq_event_2026-05-20_200617_w67",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 48,
+        "sequence_index": 0,
+        "sequence_id": "seq_event_2026-01-01_030119_w00",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4924,
+        "sequence_index": 82,
+        "sequence_id": "seq_event_2026-05-20_212117_w82",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5493,
+        "sequence_index": 91,
+        "sequence_id": "seq_event_2026-05-20_220617_w91",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2741,
+        "sequence_index": 45,
+        "sequence_id": "seq_event_2026-01-01_064619_w45",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3393,
+        "sequence_index": 56,
+        "sequence_id": "seq_event_2026-05-20_191117_w56",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2901,
+        "sequence_index": 48,
+        "sequence_id": "seq_event_2026-01-01_070119_w48",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4807,
+        "sequence_index": 80,
+        "sequence_id": "seq_event_2026-05-20_211117_w80",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6432,
+        "sequence_index": 107,
+        "sequence_id": "seq_event_2026-05-20_232617_w107",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4748,
+        "sequence_index": 79,
+        "sequence_id": "seq_event_2026-05-20_210617_w79",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 716,
+        "sequence_index": 11,
+        "sequence_id": "seq_event_2026-01-01_035619_w11",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 869,
+        "sequence_index": 14,
+        "sequence_id": "seq_event_2026-01-01_041119_w14",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4663,
+        "sequence_index": 77,
+        "sequence_id": "seq_event_2026-05-20_205617_w77",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3372,
+        "sequence_index": 56,
+        "sequence_id": "seq_event_2026-05-20_191117_w56",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 799,
+        "sequence_index": 13,
+        "sequence_id": "seq_event_2026-01-01_040619_w13",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5446,
+        "sequence_index": 90,
+        "sequence_id": "seq_event_2026-05-20_220117_w90",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3610,
+        "sequence_index": 60,
+        "sequence_id": "seq_event_2026-05-20_193117_w60",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 112,
+        "sequence_index": 1,
+        "sequence_id": "seq_event_2026-01-01_030619_w01",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 505,
+        "sequence_index": 8,
+        "sequence_id": "seq_event_2026-01-01_034119_w08",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4641,
+        "sequence_index": 77,
+        "sequence_id": "seq_event_2026-05-20_205617_w77",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2458,
+        "sequence_index": 40,
+        "sequence_id": "seq_event_2026-01-01_062119_w40",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5424,
+        "sequence_index": 90,
+        "sequence_id": "seq_event_2026-05-20_220117_w90",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1006,
+        "sequence_index": 16,
+        "sequence_id": "seq_event_2026-01-01_042119_w16",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2495,
+        "sequence_index": 41,
+        "sequence_id": "seq_event_2026-01-01_062619_w41",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4193,
+        "sequence_index": 69,
+        "sequence_id": "seq_event_2026-05-20_201617_w69",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2359,
+        "sequence_index": 39,
+        "sequence_id": "seq_event_2026-01-01_061619_w39",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5724,
+        "sequence_index": 95,
+        "sequence_id": "seq_event_2026-05-20_222617_w95",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6131,
+        "sequence_index": 102,
+        "sequence_id": "seq_event_2026-05-20_230117_w102",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3922,
+        "sequence_index": 65,
+        "sequence_id": "seq_event_2026-05-20_195617_w65",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3818,
+        "sequence_index": 63,
+        "sequence_id": "seq_event_2026-05-20_194617_w63",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2413,
+        "sequence_index": 40,
+        "sequence_id": "seq_event_2026-01-01_062119_w40",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5462,
+        "sequence_index": 91,
+        "sequence_id": "seq_event_2026-05-20_220617_w91",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3710,
+        "sequence_index": 61,
+        "sequence_id": "seq_event_2026-05-20_193617_w61",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3538,
+        "sequence_index": 58,
+        "sequence_id": "seq_event_2026-05-20_192117_w58",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4446,
+        "sequence_index": 74,
+        "sequence_id": "seq_event_2026-05-20_204117_w74",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4507,
+        "sequence_index": 75,
+        "sequence_id": "seq_event_2026-05-20_204617_w75",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 619,
+        "sequence_index": 10,
+        "sequence_id": "seq_event_2026-01-01_035119_w10",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6280,
+        "sequence_index": 104,
+        "sequence_id": "seq_event_2026-05-20_231117_w104",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4335,
+        "sequence_index": 72,
+        "sequence_id": "seq_event_2026-05-20_203117_w72",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2675,
+        "sequence_index": 44,
+        "sequence_id": "seq_event_2026-01-01_064119_w44",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4865,
+        "sequence_index": 81,
+        "sequence_id": "seq_event_2026-05-20_211617_w81",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4646,
+        "sequence_index": 77,
+        "sequence_id": "seq_event_2026-05-20_205617_w77",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6056,
+        "sequence_index": 100,
+        "sequence_id": "seq_event_2026-05-20_225117_w100",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5714,
+        "sequence_index": 95,
+        "sequence_id": "seq_event_2026-05-20_222617_w95",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3676,
+        "sequence_index": 61,
+        "sequence_id": "seq_event_2026-05-20_193617_w61",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3170,
+        "sequence_index": 52,
+        "sequence_id": "seq_event_2026-01-01_072119_w52",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2307,
+        "sequence_index": 38,
+        "sequence_id": "seq_event_2026-01-01_061119_w38",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3156,
+        "sequence_index": 52,
+        "sequence_id": "seq_event_2026-01-01_072119_w52",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 616,
+        "sequence_index": 10,
+        "sequence_id": "seq_event_2026-01-01_035119_w10",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4801,
+        "sequence_index": 80,
+        "sequence_id": "seq_event_2026-05-20_211117_w80",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4249,
+        "sequence_index": 70,
+        "sequence_id": "seq_event_2026-05-20_202117_w70",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 153,
+        "sequence_index": 2,
+        "sequence_id": "seq_event_2026-01-01_031119_w02",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4754,
+        "sequence_index": 79,
+        "sequence_id": "seq_event_2026-05-20_210617_w79",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2203,
+        "sequence_index": 36,
+        "sequence_id": "seq_event_2026-01-01_060119_w36",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5282,
+        "sequence_index": 88,
+        "sequence_id": "seq_event_2026-05-20_215117_w88",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 426,
+        "sequence_index": 7,
+        "sequence_id": "seq_event_2026-01-01_033619_w07",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5830,
+        "sequence_index": 97,
+        "sequence_id": "seq_event_2026-05-20_223617_w97",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5488,
+        "sequence_index": 91,
+        "sequence_id": "seq_event_2026-05-20_220617_w91",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 430,
+        "sequence_index": 7,
+        "sequence_id": "seq_event_2026-01-01_033619_w07",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 775,
+        "sequence_index": 12,
+        "sequence_id": "seq_event_2026-01-01_040119_w12",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5934,
+        "sequence_index": 98,
+        "sequence_id": "seq_event_2026-05-20_224117_w98",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6155,
+        "sequence_index": 102,
+        "sequence_id": "seq_event_2026-05-20_230117_w102",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4286,
+        "sequence_index": 71,
+        "sequence_id": "seq_event_2026-05-20_202617_w71",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6273,
+        "sequence_index": 104,
+        "sequence_id": "seq_event_2026-05-20_231117_w104",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      }
+    ],
+    "4": [
+      {
+        "patch_index": 5837,
+        "sequence_index": 97,
+        "sequence_id": "seq_event_2026-05-20_223617_w97",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 266,
+        "sequence_index": 4,
+        "sequence_id": "seq_event_2026-01-01_032119_w04",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3226,
+        "sequence_index": 53,
+        "sequence_id": "seq_event_2026-01-01_072619_w53",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3517,
+        "sequence_index": 58,
+        "sequence_id": "seq_event_2026-05-20_192117_w58",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6015,
+        "sequence_index": 100,
+        "sequence_id": "seq_event_2026-05-20_225117_w100",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6396,
+        "sequence_index": 106,
+        "sequence_id": "seq_event_2026-05-20_232117_w106",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5910,
+        "sequence_index": 98,
+        "sequence_id": "seq_event_2026-05-20_224117_w98",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3968,
+        "sequence_index": 66,
+        "sequence_id": "seq_event_2026-05-20_200117_w66",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4534,
+        "sequence_index": 75,
+        "sequence_id": "seq_event_2026-05-20_204617_w75",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2924,
+        "sequence_index": 48,
+        "sequence_id": "seq_event_2026-01-01_070119_w48",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3324,
+        "sequence_index": 55,
+        "sequence_id": "seq_event_2026-05-20_190617_w55",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1598,
+        "sequence_index": 26,
+        "sequence_id": "seq_event_2026-01-01_051119_w26",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5964,
+        "sequence_index": 99,
+        "sequence_id": "seq_event_2026-05-20_224617_w99",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3404,
+        "sequence_index": 56,
+        "sequence_id": "seq_event_2026-05-20_191117_w56",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4669,
+        "sequence_index": 77,
+        "sequence_id": "seq_event_2026-05-20_205617_w77",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5243,
+        "sequence_index": 87,
+        "sequence_id": "seq_event_2026-05-20_214617_w87",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4463,
+        "sequence_index": 74,
+        "sequence_id": "seq_event_2026-05-20_204117_w74",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5428,
+        "sequence_index": 90,
+        "sequence_id": "seq_event_2026-05-20_220117_w90",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1834,
+        "sequence_index": 30,
+        "sequence_id": "seq_event_2026-01-01_053119_w30",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2219,
+        "sequence_index": 36,
+        "sequence_id": "seq_event_2026-01-01_060119_w36",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4057,
+        "sequence_index": 67,
+        "sequence_id": "seq_event_2026-05-20_200617_w67",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1808,
+        "sequence_index": 30,
+        "sequence_id": "seq_event_2026-01-01_053119_w30",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6191,
+        "sequence_index": 103,
+        "sequence_id": "seq_event_2026-05-20_230617_w103",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 352,
+        "sequence_index": 5,
+        "sequence_id": "seq_event_2026-01-01_032619_w05",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1508,
+        "sequence_index": 25,
+        "sequence_id": "seq_event_2026-01-01_050619_w25",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4890,
+        "sequence_index": 81,
+        "sequence_id": "seq_event_2026-05-20_211617_w81",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2961,
+        "sequence_index": 49,
+        "sequence_id": "seq_event_2026-01-01_070619_w49",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6031,
+        "sequence_index": 100,
+        "sequence_id": "seq_event_2026-05-20_225117_w100",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4708,
+        "sequence_index": 78,
+        "sequence_id": "seq_event_2026-05-20_210117_w78",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1400,
+        "sequence_index": 23,
+        "sequence_id": "seq_event_2026-01-01_045619_w23",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5300,
+        "sequence_index": 88,
+        "sequence_id": "seq_event_2026-05-20_215117_w88",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2782,
+        "sequence_index": 46,
+        "sequence_id": "seq_event_2026-01-01_065119_w46",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1852,
+        "sequence_index": 30,
+        "sequence_id": "seq_event_2026-01-01_053119_w30",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1582,
+        "sequence_index": 26,
+        "sequence_id": "seq_event_2026-01-01_051119_w26",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1426,
+        "sequence_index": 23,
+        "sequence_id": "seq_event_2026-01-01_045619_w23",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4867,
+        "sequence_index": 81,
+        "sequence_id": "seq_event_2026-05-20_211617_w81",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3446,
+        "sequence_index": 57,
+        "sequence_id": "seq_event_2026-05-20_191617_w57",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1056,
+        "sequence_index": 17,
+        "sequence_id": "seq_event_2026-01-01_042619_w17",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5661,
+        "sequence_index": 94,
+        "sequence_id": "seq_event_2026-05-20_222117_w94",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5351,
+        "sequence_index": 89,
+        "sequence_id": "seq_event_2026-05-20_215617_w89",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 55,
+        "sequence_index": 0,
+        "sequence_id": "seq_event_2026-01-01_030119_w00",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6350,
+        "sequence_index": 105,
+        "sequence_id": "seq_event_2026-05-20_231617_w105",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5580,
+        "sequence_index": 93,
+        "sequence_id": "seq_event_2026-05-20_221617_w93",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3033,
+        "sequence_index": 50,
+        "sequence_id": "seq_event_2026-01-01_071119_w50",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6048,
+        "sequence_index": 100,
+        "sequence_id": "seq_event_2026-05-20_225117_w100",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4497,
+        "sequence_index": 74,
+        "sequence_id": "seq_event_2026-05-20_204117_w74",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4238,
+        "sequence_index": 70,
+        "sequence_id": "seq_event_2026-05-20_202117_w70",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6003,
+        "sequence_index": 100,
+        "sequence_id": "seq_event_2026-05-20_225117_w100",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4218,
+        "sequence_index": 70,
+        "sequence_id": "seq_event_2026-05-20_202117_w70",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4060,
+        "sequence_index": 67,
+        "sequence_id": "seq_event_2026-05-20_200617_w67",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5169,
+        "sequence_index": 86,
+        "sequence_id": "seq_event_2026-05-20_214117_w86",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2801,
+        "sequence_index": 46,
+        "sequence_id": "seq_event_2026-01-01_065119_w46",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 236,
+        "sequence_index": 3,
+        "sequence_id": "seq_event_2026-01-01_031619_w03",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 131,
+        "sequence_index": 2,
+        "sequence_id": "seq_event_2026-01-01_031119_w02",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6321,
+        "sequence_index": 105,
+        "sequence_id": "seq_event_2026-05-20_231617_w105",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2471,
+        "sequence_index": 41,
+        "sequence_id": "seq_event_2026-01-01_062619_w41",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5883,
+        "sequence_index": 98,
+        "sequence_id": "seq_event_2026-05-20_224117_w98",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1753,
+        "sequence_index": 29,
+        "sequence_id": "seq_event_2026-01-01_052619_w29",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 570,
+        "sequence_index": 9,
+        "sequence_id": "seq_event_2026-01-01_034619_w09",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4461,
+        "sequence_index": 74,
+        "sequence_id": "seq_event_2026-05-20_204117_w74",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4502,
+        "sequence_index": 75,
+        "sequence_id": "seq_event_2026-05-20_204617_w75",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2062,
+        "sequence_index": 34,
+        "sequence_id": "seq_event_2026-01-01_055119_w34",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6111,
+        "sequence_index": 101,
+        "sequence_id": "seq_event_2026-05-20_225617_w101",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2461,
+        "sequence_index": 41,
+        "sequence_id": "seq_event_2026-01-01_062619_w41",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5494,
+        "sequence_index": 91,
+        "sequence_id": "seq_event_2026-05-20_220617_w91",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5882,
+        "sequence_index": 98,
+        "sequence_id": "seq_event_2026-05-20_224117_w98",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6406,
+        "sequence_index": 106,
+        "sequence_id": "seq_event_2026-05-20_232117_w106",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2240,
+        "sequence_index": 37,
+        "sequence_id": "seq_event_2026-01-01_060619_w37",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5260,
+        "sequence_index": 87,
+        "sequence_id": "seq_event_2026-05-20_214617_w87",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 854,
+        "sequence_index": 14,
+        "sequence_id": "seq_event_2026-01-01_041119_w14",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5291,
+        "sequence_index": 88,
+        "sequence_id": "seq_event_2026-05-20_215117_w88",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3576,
+        "sequence_index": 59,
+        "sequence_id": "seq_event_2026-05-20_192617_w59",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1291,
+        "sequence_index": 21,
+        "sequence_id": "seq_event_2026-01-01_044619_w21",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6446,
+        "sequence_index": 107,
+        "sequence_id": "seq_event_2026-05-20_232617_w107",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3829,
+        "sequence_index": 63,
+        "sequence_id": "seq_event_2026-05-20_194617_w63",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6127,
+        "sequence_index": 102,
+        "sequence_id": "seq_event_2026-05-20_230117_w102",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3020,
+        "sequence_index": 50,
+        "sequence_id": "seq_event_2026-01-01_071119_w50",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6359,
+        "sequence_index": 105,
+        "sequence_id": "seq_event_2026-05-20_231617_w105",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2115,
+        "sequence_index": 35,
+        "sequence_id": "seq_event_2026-01-01_055619_w35",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1247,
+        "sequence_index": 20,
+        "sequence_id": "seq_event_2026-01-01_044119_w20",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1214,
+        "sequence_index": 20,
+        "sequence_id": "seq_event_2026-01-01_044119_w20",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2168,
+        "sequence_index": 36,
+        "sequence_id": "seq_event_2026-01-01_060119_w36",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2760,
+        "sequence_index": 46,
+        "sequence_id": "seq_event_2026-01-01_065119_w46",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3998,
+        "sequence_index": 66,
+        "sequence_id": "seq_event_2026-05-20_200117_w66",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5219,
+        "sequence_index": 86,
+        "sequence_id": "seq_event_2026-05-20_214117_w86",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5398,
+        "sequence_index": 89,
+        "sequence_id": "seq_event_2026-05-20_215617_w89",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4842,
+        "sequence_index": 80,
+        "sequence_id": "seq_event_2026-05-20_211117_w80",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1996,
+        "sequence_index": 33,
+        "sequence_id": "seq_event_2026-01-01_054619_w33",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4560,
+        "sequence_index": 76,
+        "sequence_id": "seq_event_2026-05-20_205117_w76",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4132,
+        "sequence_index": 68,
+        "sequence_id": "seq_event_2026-05-20_201117_w68",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4599,
+        "sequence_index": 76,
+        "sequence_id": "seq_event_2026-05-20_205117_w76",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1102,
+        "sequence_index": 18,
+        "sequence_id": "seq_event_2026-01-01_043119_w18",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6101,
+        "sequence_index": 101,
+        "sequence_id": "seq_event_2026-05-20_225617_w101",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4445,
+        "sequence_index": 74,
+        "sequence_id": "seq_event_2026-05-20_204117_w74",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1204,
+        "sequence_index": 20,
+        "sequence_id": "seq_event_2026-01-01_044119_w20",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1752,
+        "sequence_index": 29,
+        "sequence_id": "seq_event_2026-01-01_052619_w29",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6085,
+        "sequence_index": 101,
+        "sequence_id": "seq_event_2026-05-20_225617_w101",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5922,
+        "sequence_index": 98,
+        "sequence_id": "seq_event_2026-05-20_224117_w98",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1296,
+        "sequence_index": 21,
+        "sequence_id": "seq_event_2026-01-01_044619_w21",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5089,
+        "sequence_index": 84,
+        "sequence_id": "seq_event_2026-05-20_213117_w84",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": true
+      }
+    ],
+    "5": [
+      {
+        "patch_index": 4312,
+        "sequence_index": 71,
+        "sequence_id": "seq_event_2026-05-20_202617_w71",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6338,
+        "sequence_index": 105,
+        "sequence_id": "seq_event_2026-05-20_231617_w105",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4714,
+        "sequence_index": 78,
+        "sequence_id": "seq_event_2026-05-20_210117_w78",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 537,
+        "sequence_index": 8,
+        "sequence_id": "seq_event_2026-01-01_034119_w08",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 289,
+        "sequence_index": 4,
+        "sequence_id": "seq_event_2026-01-01_032119_w04",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1713,
+        "sequence_index": 28,
+        "sequence_id": "seq_event_2026-01-01_052119_w28",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4115,
+        "sequence_index": 68,
+        "sequence_id": "seq_event_2026-05-20_201117_w68",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3521,
+        "sequence_index": 58,
+        "sequence_id": "seq_event_2026-05-20_192117_w58",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5160,
+        "sequence_index": 86,
+        "sequence_id": "seq_event_2026-05-20_214117_w86",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5357,
+        "sequence_index": 89,
+        "sequence_id": "seq_event_2026-05-20_215617_w89",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6207,
+        "sequence_index": 103,
+        "sequence_id": "seq_event_2026-05-20_230617_w103",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5563,
+        "sequence_index": 92,
+        "sequence_id": "seq_event_2026-05-20_221117_w92",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6392,
+        "sequence_index": 106,
+        "sequence_id": "seq_event_2026-05-20_232117_w106",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5236,
+        "sequence_index": 87,
+        "sequence_id": "seq_event_2026-05-20_214617_w87",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2844,
+        "sequence_index": 47,
+        "sequence_id": "seq_event_2026-01-01_065619_w47",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2178,
+        "sequence_index": 36,
+        "sequence_id": "seq_event_2026-01-01_060119_w36",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2555,
+        "sequence_index": 42,
+        "sequence_id": "seq_event_2026-01-01_063119_w42",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5610,
+        "sequence_index": 93,
+        "sequence_id": "seq_event_2026-05-20_221617_w93",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4986,
+        "sequence_index": 83,
+        "sequence_id": "seq_event_2026-05-20_212617_w83",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3788,
+        "sequence_index": 63,
+        "sequence_id": "seq_event_2026-05-20_194617_w63",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3278,
+        "sequence_index": 54,
+        "sequence_id": "seq_event_2026-05-20_190117_w54",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3348,
+        "sequence_index": 55,
+        "sequence_id": "seq_event_2026-05-20_190617_w55",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 901,
+        "sequence_index": 15,
+        "sequence_id": "seq_event_2026-01-01_041619_w15",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6420,
+        "sequence_index": 107,
+        "sequence_id": "seq_event_2026-05-20_232617_w107",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5322,
+        "sequence_index": 88,
+        "sequence_id": "seq_event_2026-05-20_215117_w88",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2261,
+        "sequence_index": 37,
+        "sequence_id": "seq_event_2026-01-01_060619_w37",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4203,
+        "sequence_index": 70,
+        "sequence_id": "seq_event_2026-05-20_202117_w70",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4764,
+        "sequence_index": 79,
+        "sequence_id": "seq_event_2026-05-20_210617_w79",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 802,
+        "sequence_index": 13,
+        "sequence_id": "seq_event_2026-01-01_040619_w13",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3468,
+        "sequence_index": 57,
+        "sequence_id": "seq_event_2026-05-20_191617_w57",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5533,
+        "sequence_index": 92,
+        "sequence_id": "seq_event_2026-05-20_221117_w92",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3533,
+        "sequence_index": 58,
+        "sequence_id": "seq_event_2026-05-20_192117_w58",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5263,
+        "sequence_index": 87,
+        "sequence_id": "seq_event_2026-05-20_214617_w87",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6405,
+        "sequence_index": 106,
+        "sequence_id": "seq_event_2026-05-20_232117_w106",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4013,
+        "sequence_index": 66,
+        "sequence_id": "seq_event_2026-05-20_200117_w66",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2304,
+        "sequence_index": 38,
+        "sequence_id": "seq_event_2026-01-01_061119_w38",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 325,
+        "sequence_index": 5,
+        "sequence_id": "seq_event_2026-01-01_032619_w05",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4769,
+        "sequence_index": 79,
+        "sequence_id": "seq_event_2026-05-20_210617_w79",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3938,
+        "sequence_index": 65,
+        "sequence_id": "seq_event_2026-05-20_195617_w65",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5639,
+        "sequence_index": 93,
+        "sequence_id": "seq_event_2026-05-20_221617_w93",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2635,
+        "sequence_index": 43,
+        "sequence_id": "seq_event_2026-01-01_063619_w43",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2227,
+        "sequence_index": 37,
+        "sequence_id": "seq_event_2026-01-01_060619_w37",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 228,
+        "sequence_index": 3,
+        "sequence_id": "seq_event_2026-01-01_031619_w03",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3264,
+        "sequence_index": 54,
+        "sequence_id": "seq_event_2026-05-20_190117_w54",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3028,
+        "sequence_index": 50,
+        "sequence_id": "seq_event_2026-01-01_071119_w50",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5843,
+        "sequence_index": 97,
+        "sequence_id": "seq_event_2026-05-20_223617_w97",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2571,
+        "sequence_index": 42,
+        "sequence_id": "seq_event_2026-01-01_063119_w42",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 361,
+        "sequence_index": 6,
+        "sequence_id": "seq_event_2026-01-01_033119_w06",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 915,
+        "sequence_index": 15,
+        "sequence_id": "seq_event_2026-01-01_041619_w15",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4415,
+        "sequence_index": 73,
+        "sequence_id": "seq_event_2026-05-20_203617_w73",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4779,
+        "sequence_index": 79,
+        "sequence_id": "seq_event_2026-05-20_210617_w79",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5391,
+        "sequence_index": 89,
+        "sequence_id": "seq_event_2026-05-20_215617_w89",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6402,
+        "sequence_index": 106,
+        "sequence_id": "seq_event_2026-05-20_232117_w106",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1705,
+        "sequence_index": 28,
+        "sequence_id": "seq_event_2026-01-01_052119_w28",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 235,
+        "sequence_index": 3,
+        "sequence_id": "seq_event_2026-01-01_031619_w03",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2457,
+        "sequence_index": 40,
+        "sequence_id": "seq_event_2026-01-01_062119_w40",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2540,
+        "sequence_index": 42,
+        "sequence_id": "seq_event_2026-01-01_063119_w42",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5664,
+        "sequence_index": 94,
+        "sequence_id": "seq_event_2026-05-20_222117_w94",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5167,
+        "sequence_index": 86,
+        "sequence_id": "seq_event_2026-05-20_214117_w86",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4806,
+        "sequence_index": 80,
+        "sequence_id": "seq_event_2026-05-20_211117_w80",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6298,
+        "sequence_index": 104,
+        "sequence_id": "seq_event_2026-05-20_231117_w104",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4258,
+        "sequence_index": 70,
+        "sequence_id": "seq_event_2026-05-20_202117_w70",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3403,
+        "sequence_index": 56,
+        "sequence_id": "seq_event_2026-05-20_191117_w56",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 699,
+        "sequence_index": 11,
+        "sequence_id": "seq_event_2026-01-01_035619_w11",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3291,
+        "sequence_index": 54,
+        "sequence_id": "seq_event_2026-05-20_190117_w54",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3238,
+        "sequence_index": 53,
+        "sequence_id": "seq_event_2026-01-01_072619_w53",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6270,
+        "sequence_index": 104,
+        "sequence_id": "seq_event_2026-05-20_231117_w104",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3381,
+        "sequence_index": 56,
+        "sequence_id": "seq_event_2026-05-20_191117_w56",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6192,
+        "sequence_index": 103,
+        "sequence_id": "seq_event_2026-05-20_230617_w103",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2947,
+        "sequence_index": 49,
+        "sequence_id": "seq_event_2026-01-01_070619_w49",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 715,
+        "sequence_index": 11,
+        "sequence_id": "seq_event_2026-01-01_035619_w11",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5820,
+        "sequence_index": 97,
+        "sequence_id": "seq_event_2026-05-20_223617_w97",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5768,
+        "sequence_index": 96,
+        "sequence_id": "seq_event_2026-05-20_223117_w96",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2419,
+        "sequence_index": 40,
+        "sequence_id": "seq_event_2026-01-01_062119_w40",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 81,
+        "sequence_index": 1,
+        "sequence_id": "seq_event_2026-01-01_030619_w01",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4762,
+        "sequence_index": 79,
+        "sequence_id": "seq_event_2026-05-20_210617_w79",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4402,
+        "sequence_index": 73,
+        "sequence_id": "seq_event_2026-05-20_203617_w73",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3242,
+        "sequence_index": 54,
+        "sequence_id": "seq_event_2026-05-20_190117_w54",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 1776,
+        "sequence_index": 29,
+        "sequence_id": "seq_event_2026-01-01_052619_w29",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4692,
+        "sequence_index": 78,
+        "sequence_id": "seq_event_2026-05-20_210117_w78",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          128,
+          256
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4071,
+        "sequence_index": 67,
+        "sequence_id": "seq_event_2026-05-20_200617_w67",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6275,
+        "sequence_index": 104,
+        "sequence_id": "seq_event_2026-05-20_231117_w104",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 1525,
+        "sequence_index": 25,
+        "sequence_id": "seq_event_2026-01-01_050619_w25",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3779,
+        "sequence_index": 62,
+        "sequence_id": "seq_event_2026-05-20_194117_w62",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4615,
+        "sequence_index": 76,
+        "sequence_id": "seq_event_2026-05-20_205117_w76",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 5279,
+        "sequence_index": 87,
+        "sequence_id": "seq_event_2026-05-20_214617_w87",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4195,
+        "sequence_index": 69,
+        "sequence_id": "seq_event_2026-05-20_201617_w69",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          320,
+          448
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2880,
+        "sequence_index": 48,
+        "sequence_id": "seq_event_2026-01-01_070119_w48",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          0,
+          128
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 3198,
+        "sequence_index": 53,
+        "sequence_id": "seq_event_2026-01-01_072619_w53",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 4766,
+        "sequence_index": 79,
+        "sequence_id": "seq_event_2026-05-20_210617_w79",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          384,
+          512
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 3364,
+        "sequence_index": 56,
+        "sequence_id": "seq_event_2026-05-20_191117_w56",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 4834,
+        "sequence_index": 80,
+        "sequence_id": "seq_event_2026-05-20_211117_w80",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          256,
+          384
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 5823,
+        "sequence_index": 97,
+        "sequence_id": "seq_event_2026-05-20_223617_w97",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          192,
+          320
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 819,
+        "sequence_index": 13,
+        "sequence_id": "seq_event_2026-01-01_040619_w13",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 148,
+        "sequence_index": 2,
+        "sequence_id": "seq_event_2026-01-01_031119_w02",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          128,
+          256
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 2599,
+        "sequence_index": 43,
+        "sequence_id": "seq_event_2026-01-01_063619_w43",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          64,
+          192
+        ],
+        "col_slice": [
+          576,
+          704
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6118,
+        "sequence_index": 101,
+        "sequence_id": "seq_event_2026-05-20_225617_w101",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          320,
+          448
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 6307,
+        "sequence_index": 105,
+        "sequence_id": "seq_event_2026-05-20_231617_w105",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          0,
+          128
+        ],
+        "col_slice": [
+          448,
+          576
+        ],
+        "is_convective": true
+      },
+      {
+        "patch_index": 2861,
+        "sequence_index": 47,
+        "sequence_id": "seq_event_2026-01-01_065619_w47",
+        "event_id": "event_2026-01-01",
+        "row_slice": [
+          256,
+          384
+        ],
+        "col_slice": [
+          64,
+          192
+        ],
+        "is_convective": false
+      },
+      {
+        "patch_index": 6458,
+        "sequence_index": 107,
+        "sequence_id": "seq_event_2026-05-20_232617_w107",
+        "event_id": "event_2026-05-20",
+        "row_slice": [
+          192,
+          320
+        ],
+        "col_slice": [
+          512,
+          640
+        ],
+        "is_convective": true
+      }
+    ]
+  }
+}

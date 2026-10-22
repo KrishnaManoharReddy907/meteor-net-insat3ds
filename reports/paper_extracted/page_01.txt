@@ -1,0 +1,107 @@
+=== PAGE 1 ===
+
+IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026 5403719
+Self-Supervised Temporal Super-Resolution
+Framework With METEOR-Net for Enhancing
+Convective Process Reconstruction in
+Geostationary Satellite Cloud Data
+Xiang Lin
+ , Yunying Li
+ , Zitong Chen
+ , and Xiongwei Kou
+Abstract—Next-generation geostationary satellite FY-4A pro-
+vides cloud data with a temporal resolution of 15 min, while
+shallow convection may evolve into deep convection in less than
+30 min. This temporal sparsity limits the satellite’s abil-
+ity to capture rapid convective processes, thereby hindering
+eﬀective weather monitoring and early warning. Temporal super-
+resolution technology is used to address this limitation, but
+existing temporal super-resolution methods often directly apply
+video frame interpolation (VFI) paradigms designed for RGB
+images, resulting in transfer errors. To address such issues, a
+novel spatiotemporal self-supervised temporal super-resolution
+framework is proposed, which leverages the spatiotemporal
+consistency between the regional and full-disk observations of the
+FY-4A satellite to establish a temporal super-resolution mapping
+relationship without the need for manually labeled data. In
+addition, a multichannel encoding and temporal-ﬂow evolution
+network for optimized-observation reconstruction (METEOR-
+Net) is proposed, which addresses the challenges of multichannel
+asynchrony and complex nonlinear evolution in geostationary
+satellite cloud data through multichannel collaborative encoding
+(MCE), temporal-ﬂow estimation and evolution (TFEE), and
+evolution-aware feature fusion mechanisms. To enhance the
+focus on convective regions, a new convective region-weighted
+loss function and evaluation metrics are designed. Experimental
+results demonstrate that this method achieves state-of-the-art
+(SOTA) performance in visual quality and convective process
+reconstruction accuracy in the FY-4A satellite cloud data tempo-
+ral super-resolution reconstruction task, successfully enhancing
+the temporal resolution of FY-4A cloud data from 15 to 5 min.
+This provides high-resolution satellite cloud data for future
+convective weather monitoring and early warning systems.
+Index Terms—Multichannel collaborative, self-supervised
+learning, temporal super-resolution, temporal-ﬂow evolution.
+Received 20 January 2025; revised 5 December 2025 and 9 February 2026;
+accepted 17 March 2026. Date of publication 24 March 2026; date of current
+version 6 April 2026. This work was supported in part by the National Natural
+Science Foundation of China under Grant U2242201 and in part by Hunan
+Provincial Natural Science Foundation of China under Grant 2021JC0009.
+(Corresponding author: Yunying Li.)
+Xiang Lin and Zitong Chen are with the College of Meteorology and
+Oceanography, National University of Defense Technology, Changsha 410073,
+China (e-mail: linxiang2022@nudt.edu.cn; chenzt10@nudt.edu.cn).
+Yunying Li is with the College of Meteorology and Oceanography, National
+University of Defense Technology, Changsha 410073, China, and also with
+the Key Laboratory of High Impact Weather (Special), China Meteorological
+Administration, Changsha 410073, China (e-mail: ghlyy@mail.iap.ac.cn).
+Xiongwei Kou is with the Unit No. 94595 of Chinese People’s Liberation
+Army, Gaomi 261500, China (e-mail: kouxiongwei24@nudt.edu.cn).
+Digital Object Identiﬁer 10.1109/TGRS.2026.3677111
+I. I NTRODUCTION
+M
+ETEOROLOGICAL satellites are deployed in space
+to monitor Earth’s atmosphere, oceans, and surface
+conditions. These satellites are equipped with advanced remote
+sensing instruments that capture reﬂectance and radiation
+intensity at speciﬁed spectral wavelengths and spatiotemporal
+resolutions, providing essential information support for various
+meteorological operations. Based on their orbital characteris-
+tics, meteorological satellites are categorized into two types:
+polar-orbiting satellites [1], [2], [3], [4] and geostationary
+satellites [5], [6], [7]. Polar-orbiting satellites operate in low-
+Earth polar orbits, enabling comprehensive coverage of every
+region on Earth within a ﬁxed time period. These satellites
+are particularly suitable for long-term climate monitoring and
+polar observations. However, their revisit time of approxi-
+mately 12 h precludes continuous meteorological monitoring
+of speciﬁc regions. In contrast, geostationary satellites oper-
+ate in geostationary orbit, allowing sustained observation of
+the same region, making them ideal for real-time weather
+monitoring and early warning systems.
+Next-generation geostationary satellites, including GOES-
+16 [5], Himawari-8 [6], and FY-4A [7], are capable of full-disk
+observations and providing cloud data. For example, FY-4A
+provides geostationary satellite cloud data with a temporal res-
+olution of 15 min, based on its 15-min revisit time. While this
+temporal resolution is suﬃcient for studying long-term atmo-
+spheric trends, climate models, and other gradually evolving
+processes [8], [9], [10], [11], it proves inadequate for rapidly
+developing convective events, such as convective processes
+that may evolve from shallow convection to deep convection
+in just 30 min. When relying solely on full-disk data, only
+the initial and ﬁnal states of diﬀerent convective stages are
+captured, while the actual rapid evolution process within a
+revisit period remains unobserved, which limits the tracking
+and early warning for convective events. Consequently, con-
+vective weather monitoring and warning research is limited
+to mesoscale systems where temporal high-resolution satellite
+observations are available [12], [13], [14], making large-
+scale implementation challenging. This limitation is referred
+to as the temporal sparsity dilemma of geostationary satellites.
+Solving this dilemma requires temporal high-resolution data
+capable of capturing the actual convective evolution process.
+1558-0644 © 2026 IEEE. All rights reserved, including rights for text and data mining, and training of artiﬁcial intelligence and
+similar technologies. Personal use is permitted, but republication/redistribution requires IEEE permission.
+See https://www.ieee.org/publications/rights/index.html for more information.
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 

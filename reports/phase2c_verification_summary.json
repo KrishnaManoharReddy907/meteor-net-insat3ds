@@ -1,0 +1,748 @@
+{
+  "calibration": {
+    "IMG_TIR1": {
+      "channel": "IMG_TIR1",
+      "attrs": {
+        "DIMENSION_LIST": [
+          [
+            "<HDF5 object reference>"
+          ],
+          [
+            "<HDF5 object reference>"
+          ],
+          [
+            "<HDF5 object reference>"
+          ]
+        ],
+        "_FillValue": [
+          1023
+        ],
+        "bandwidth": [
+          0.8985999822616577
+        ],
+        "bits_per_pixel": [
+          10
+        ],
+        "central_wavelength": [
+          10.784199714660645
+        ],
+        "coordinates": "time Latitude Longitude",
+        "invert": "true",
+        "long_name": "Thermal Infrared1 Count",
+        "online_radiance_add_offset": [
+          -0.042161498218774796
+        ],
+        "online_radiance_add_offset_gsics": [
+          -0.05352510139346123
+        ],
+        "online_radiance_quad": [
+          0.0
+        ],
+        "online_radiance_quad_gsics": [
+          0.0
+        ],
+        "online_radiance_scale_factor": [
+          0.0018655899912118912
+        ],
+        "online_radiance_scale_factor_gsics": [
+          0.0019214999629184604
+        ],
+        "radiance_units": "mW.cm-2.sr-1.micron-1",
+        "resolution": [
+          4.0
+        ],
+        "resolution_unit": "km",
+        "wavelength_unit": "micron"
+      },
+      "temp_attrs": {
+        "DIMENSION_LIST": "[array([<HDF5 object reference>], dtype=object)]",
+        "_FillValue": "[999.]",
+        "invert": "true",
+        "long_name": "Thermal Infrared1 Brightness Temperature",
+        "units": "K"
+      },
+      "rad_attrs": {
+        "DIMENSION_LIST": "[array([<HDF5 object reference>], dtype=object)]",
+        "_FillValue": "[999.]",
+        "invert": "true",
+        "long_name": "Thermal Infrared1 Radiance",
+        "units": "mW.cm-2.sr-1.micron-1"
+      },
+      "temp_lut_shape": [
+        1024
+      ],
+      "temp_lut_dtype": "float32",
+      "is_temp_nonincreasing": true,
+      "is_temp_strictly_decreasing": false,
+      "temp_min": 180.0,
+      "temp_max": 340.0,
+      "count_range_at_max_temp": [
+        0,
+        138
+      ],
+      "count_range_at_min_temp": [
+        970,
+        1022
+      ],
+      "is_rad_nonincreasing": true,
+      "rad_min": 0.0,
+      "rad_max": 1.9121710062026978,
+      "count_samples": [
+        {
+          "count": 0,
+          "temp_K": 340.0,
+          "rad": 1.9121710062026978
+        },
+        {
+          "count": 1,
+          "temp_K": 340.0,
+          "rad": 1.910249948501587
+        },
+        {
+          "count": 100,
+          "temp_K": 340.0,
+          "rad": 1.7200210094451904
+        },
+        {
+          "count": 200,
+          "temp_K": 333.7783508300781,
+          "rad": 1.527871012687683
+        },
+        {
+          "count": 418,
+          "temp_K": 309.4082946777344,
+          "rad": 1.108983039855957
+        },
+        {
+          "count": 500,
+          "temp_K": 298.9336853027344,
+          "rad": 0.9514200091362
+        },
+        {
+          "count": 647,
+          "temp_K": 277.2939758300781,
+          "rad": 0.6689599752426147
+        },
+        {
+          "count": 800,
+          "temp_K": 247.70974731445312,
+          "rad": 0.3749699890613556
+        },
+        {
+          "count": 969,
+          "temp_K": 180.4958953857422,
+          "rad": 0.05023600161075592
+        },
+        {
+          "count": 1021,
+          "temp_K": 180.0,
+          "rad": 0.0
+        },
+        {
+          "count": 1022,
+          "temp_K": 180.0,
+          "rad": 0.0
+        },
+        {
+          "count": 1023,
+          "temp_K": 180.0,
+          "rad": 0.0
+        }
+      ]
+    },
+    "IMG_TIR2": {
+      "channel": "IMG_TIR2",
+      "attrs": {
+        "DIMENSION_LIST": [
+          [
+            "<HDF5 object reference>"
+          ],
+          [
+            "<HDF5 object reference>"
+          ],
+          [
+            "<HDF5 object reference>"
+          ]
+        ],
+        "_FillValue": [
+          1023
+        ],
+        "bandwidth": [
+          0.8299999833106995
+        ],
+        "bits_per_pixel": [
+          10
+        ],
+        "central_wavelength": [
+          11.984600067138672
+        ],
+        "coordinates": "time Latitude Longitude",
+        "invert": "true",
+        "long_name": "Thermal Infrared2 Count",
+        "online_radiance_add_offset": [
+          -0.054617300629615784
+        ],
+        "online_radiance_add_offset_gsics": [
+          -0.048655301332473755
+        ],
+        "online_radiance_quad": [
+          0.0
+        ],
+        "online_radiance_quad_gsics": [
+          0.0
+        ],
+        "online_radiance_scale_factor": [
+          0.002124049933627248
+        ],
+        "online_radiance_scale_factor_gsics": [
+          0.0021306199487298727
+        ],
+        "radiance_units": "mW.cm-2.sr-1.micron-1",
+        "resolution": [
+          4.0
+        ],
+        "resolution_unit": "km",
+        "wavelength_unit": "micron"
+      },
+      "temp_attrs": {
+        "DIMENSION_LIST": "[array([<HDF5 object reference>], dtype=object)]",
+        "_FillValue": "[999.]",
+        "invert": "true",
+        "long_name": "Thermal Infrared2 Brightness Temperature",
+        "units": "K"
+      },
+      "rad_attrs": {
+        "DIMENSION_LIST": "[array([<HDF5 object reference>], dtype=object)]",
+        "_FillValue": "[999.]",
+        "invert": "true",
+        "long_name": "Thermal Infrared2 Radiance",
+        "units": "mW.cm-2.sr-1.micron-1"
+      },
+      "temp_lut_shape": [
+        1024
+      ],
+      "temp_lut_dtype": "float32",
+      "is_temp_nonincreasing": true,
+      "is_temp_strictly_decreasing": false,
+      "temp_min": 180.0,
+      "temp_max": 340.0,
+      "count_range_at_max_temp": [
+        0,
+        317
+      ],
+      "count_range_at_min_temp": [
+        972,
+        1022
+      ],
+      "is_rad_nonincreasing": true,
+      "rad_min": 0.0,
+      "rad_max": 2.1309709548950195,
+      "count_samples": [
+        {
+          "count": 0,
+          "temp_K": 340.0,
+          "rad": 2.1309709548950195
+        },
+        {
+          "count": 1,
+          "temp_K": 340.0,
+          "rad": 2.128840923309326
+        },
+        {
+          "count": 100,
+          "temp_K": 340.0,
+          "rad": 1.917909026145935
+        },
+        {
+          "count": 200,
+          "temp_K": 340.0,
+          "rad": 1.704846978187561
+        },
+        {
+          "count": 418,
+          "temp_K": 325.724853515625,
+          "rad": 1.2403709888458252
+        },
+        {
+          "count": 500,
+          "temp_K": 313.1515808105469,
+          "rad": 1.065659999847412
+        },
+        {
+          "count": 647,
+          "temp_K": 287.5738525390625,
+          "rad": 0.7524589896202087
+        },
+        {
+          "count": 800,
+          "temp_K": 253.55218505859375,
+          "rad": 0.426474004983902
+        },
+        {
+          "count": 969,
+          "temp_K": 182.3048095703125,
+          "rad": 0.0663980022072792
+        },
+        {
+          "count": 1021,
+          "temp_K": 180.0,
+          "rad": 0.0
+        },
+        {
+          "count": 1022,
+          "temp_K": 180.0,
+          "rad": 0.0
+        },
+        {
+          "count": 1023,
+          "temp_K": 180.0,
+          "rad": 0.0
+        }
+      ]
+    },
+    "IMG_WV": {
+      "channel": "IMG_WV",
+      "attrs": {
+        "DIMENSION_LIST": [
+          [
+            "<HDF5 object reference>"
+          ],
+          [
+            "<HDF5 object reference>"
+          ],
+          [
+            "<HDF5 object reference>"
+          ]
+        ],
+        "_FillValue": [
+          1023
+        ],
+        "bandwidth": [
+          0.5153999924659729
+        ],
+        "bits_per_pixel": [
+          10
+        ],
+        "central_wavelength": [
+          6.823999881744385
+        ],
+        "coordinates": "time Latitude Longitude",
+        "invert": "true",
+        "long_name": "Water Vapor Count",
+        "online_radiance_add_offset": [
+          -0.032969698309898376
+        ],
+        "online_radiance_add_offset_gsics": [
+          -0.03558050096035004
+        ],
+        "online_radiance_quad": [
+          0.0
+        ],
+        "online_radiance_quad_gsics": [
+          0.0
+        ],
+        "online_radiance_scale_factor": [
+          0.001324219978414476
+        ],
+        "online_radiance_scale_factor_gsics": [
+          0.0013692800421267748
+        ],
+        "radiance_units": "mW.cm-2.sr-1.micron-1",
+        "resolution": [
+          4.0
+        ],
+        "resolution_unit": "km",
+        "wavelength_unit": "micron"
+      },
+      "temp_attrs": {
+        "DIMENSION_LIST": "[array([<HDF5 object reference>], dtype=object)]",
+        "_FillValue": "[999.]",
+        "invert": "true",
+        "long_name": "Water Vapor Brightness Temperature",
+        "units": "K"
+      },
+      "rad_attrs": {
+        "DIMENSION_LIST": "[array([<HDF5 object reference>], dtype=object)]",
+        "_FillValue": "[999.]",
+        "invert": "true",
+        "long_name": "Water Vapor Radiance",
+        "units": "mW.cm-2.sr-1.micron-1"
+      },
+      "temp_lut_shape": [
+        1024
+      ],
+      "temp_lut_dtype": "float32",
+      "is_temp_nonincreasing": true,
+      "is_temp_strictly_decreasing": false,
+      "temp_min": 180.0,
+      "temp_max": 330.4927978515625,
+      "count_range_at_max_temp": [
+        0,
+        0
+      ],
+      "count_range_at_min_temp": [
+        993,
+        1022
+      ],
+      "is_rad_nonincreasing": true,
+      "rad_min": 0.0,
+      "rad_max": 1.3651909828186035,
+      "count_samples": [
+        {
+          "count": 0,
+          "temp_K": 330.4927978515625,
+          "rad": 1.3651909828186035
+        },
+        {
+          "count": 1,
+          "temp_K": 330.4408874511719,
+          "rad": 1.3638219833374023
+        },
+        {
+          "count": 100,
+          "temp_K": 325.1133728027344,
+          "rad": 1.228263020515442
+        },
+        {
+          "count": 200,
+          "temp_K": 319.2998046875,
+          "rad": 1.0913360118865967
+        },
+        {
+          "count": 418,
+          "temp_K": 304.5702209472656,
+          "rad": 0.7928329706192017
+        },
+        {
+          "count": 500,
+          "temp_K": 297.9981384277344,
+          "rad": 0.6805520057678223
+        },
+        {
+          "count": 647,
+          "temp_K": 283.92547607421875,
+          "rad": 0.47926801443099976
+        },
+        {
+          "count": 800,
+          "temp_K": 263.51849365234375,
+          "rad": 0.26976901292800903
+        },
+        {
+          "count": 969,
+          "temp_K": 211.7970428466797,
+          "rad": 0.03836100175976753
+        },
+        {
+          "count": 1021,
+          "temp_K": 180.0,
+          "rad": 0.0
+        },
+        {
+          "count": 1022,
+          "temp_K": 180.0,
+          "rad": 0.0
+        },
+        {
+          "count": 1023,
+          "temp_K": 180.0,
+          "rad": 0.0
+        }
+      ]
+    },
+    "IMG_MIR": {
+      "channel": "IMG_MIR",
+      "attrs": {
+        "DIMENSION_LIST": [
+          [
+            "<HDF5 object reference>"
+          ],
+          [
+            "<HDF5 object reference>"
+          ],
+          [
+            "<HDF5 object reference>"
+          ]
+        ],
+        "_FillValue": [
+          1023
+        ],
+        "bandwidth": [
+          0.18799999356269836
+        ],
+        "bits_per_pixel": [
+          10
+        ],
+        "central_wavelength": [
+          3.900599956512451
+        ],
+        "coordinates": "time Latitude Longitude",
+        "invert": "true",
+        "long_name": "Middle Infrared Count",
+        "online_radiance_add_offset": [
+          -0.007240020204335451
+        ],
+        "online_radiance_add_offset_gsics": [
+          -0.007666470017284155
+        ],
+        "online_radiance_quad": [
+          0.0
+        ],
+        "online_radiance_quad_gsics": [
+          0.0
+        ],
+        "online_radiance_scale_factor": [
+          0.0003455929982010275
+        ],
+        "online_radiance_scale_factor_gsics": [
+          0.00036179699236527085
+        ],
+        "radiance_units": "mW.cm-2.sr-1.micron-1",
+        "resolution": [
+          4.0
+        ],
+        "resolution_unit": "km",
+        "wavelength_unit": "micron"
+      },
+      "temp_attrs": {
+        "DIMENSION_LIST": "[array([<HDF5 object reference>], dtype=object)]",
+        "_FillValue": "[999.]",
+        "invert": "true",
+        "long_name": "Middle Infrared Brightness Temperature",
+        "units": "K"
+      },
+      "rad_attrs": {
+        "DIMENSION_LIST": "[array([<HDF5 object reference>], dtype=object)]",
+        "_FillValue": "[999.]",
+        "invert": "true",
+        "long_name": "Middle Infrared Radiance",
+        "units": "mW.cm-2.sr-1.micron-1"
+      },
+      "temp_lut_shape": [
+        1024
+      ],
+      "temp_lut_dtype": "float32",
+      "is_temp_nonincreasing": true,
+      "is_temp_strictly_decreasing": false,
+      "temp_min": 180.0,
+      "temp_max": 340.0,
+      "count_range_at_max_temp": [
+        0,
+        291
+      ],
+      "count_range_at_min_temp": [
+        1002,
+        1022
+      ],
+      "is_rad_nonincreasing": true,
+      "rad_min": 0.0,
+      "rad_max": 0.3624509871006012,
+      "count_samples": [
+        {
+          "count": 0,
+          "temp_K": 340.0,
+          "rad": 0.3624509871006012
+        },
+        {
+          "count": 1,
+          "temp_K": 340.0,
+          "rad": 0.36208999156951904
+        },
+        {
+          "count": 100,
+          "temp_K": 340.0,
+          "rad": 0.32627201080322266
+        },
+        {
+          "count": 200,
+          "temp_K": 340.0,
+          "rad": 0.29009199142456055
+        },
+        {
+          "count": 418,
+          "temp_K": 333.9615783691406,
+          "rad": 0.21121999621391296
+        },
+        {
+          "count": 500,
+          "temp_K": 329.4413146972656,
+          "rad": 0.18155300617218018
+        },
+        {
+          "count": 647,
+          "temp_K": 319.5353698730469,
+          "rad": 0.12836900353431702
+        },
+        {
+          "count": 800,
+          "temp_K": 304.62371826171875,
+          "rad": 0.07301399856805801
+        },
+        {
+          "count": 969,
+          "temp_K": 264.8250427246094,
+          "rad": 0.011870999820530415
+        },
+        {
+          "count": 1021,
+          "temp_K": 180.0,
+          "rad": 0.0
+        },
+        {
+          "count": 1022,
+          "temp_K": 180.0,
+          "rad": 0.0
+        },
+        {
+          "count": 1023,
+          "temp_K": 180.0,
+          "rad": 0.0
+        }
+      ]
+    }
+  },
+  "geolocation": {
+    "lat_range": [
+      -81.04000091552734,
+      81.04000091552734
+    ],
+    "lon_range": [
+      0.8399999737739563,
+      163.14999389648438
+    ],
+    "valid_geo_count": 5761417,
+    "landmarks": {
+      "Sub-Satellite Point (SSP)": {
+        "target_lat": 0.0,
+        "target_lon": 82.0,
+        "row": 1408,
+        "col": 1402,
+        "actual_lat": 0.0,
+        "actual_lon": 82.0,
+        "angular_err_deg": 0.0
+      },
+      "New Delhi": {
+        "target_lat": 28.61,
+        "target_lon": 77.21,
+        "row": 669,
+        "col": 1288,
+        "actual_lat": 28.59000015258789,
+        "actual_lon": 77.20999908447266,
+        "angular_err_deg": 0.019999847433063725
+      },
+      "Mumbai": {
+        "target_lat": 19.08,
+        "target_lon": 72.88,
+        "row": 898,
+        "col": 1166,
+        "actual_lat": 19.06999969482422,
+        "actual_lon": 72.86000061035156,
+        "angular_err_deg": 0.022360270345382016
+      },
+      "Chennai": {
+        "target_lat": 13.08,
+        "target_lon": 80.27,
+        "row": 1052,
+        "col": 1355,
+        "actual_lat": 13.079999923706055,
+        "actual_lon": 80.25,
+        "angular_err_deg": 0.02000000000014154
+      },
+      "Kolkata": {
+        "target_lat": 22.57,
+        "target_lon": 88.36,
+        "row": 811,
+        "col": 1563,
+        "actual_lat": 22.559999465942383,
+        "actual_lon": 88.3699951171875,
+        "angular_err_deg": 0.014139061108483697
+      },
+      "Arabian Sea Center": {
+        "target_lat": 15.0,
+        "target_lon": 65.0,
+        "row": 1005,
+        "col": 959,
+        "actual_lat": 15.0,
+        "actual_lon": 65.0,
+        "angular_err_deg": 0.0
+      },
+      "Bay of Bengal Center": {
+        "target_lat": 15.0,
+        "target_lon": 90.0,
+        "row": 1002,
+        "col": 1615,
+        "actual_lat": 15.00999927520752,
+        "actual_lon": 90.0199966430664,
+        "angular_err_deg": 0.02235735312153404
+      },
+      "Cape Comorin (Kanyakumari)": {
+        "target_lat": 8.08,
+        "target_lon": 77.55,
+        "row": 1186,
+        "col": 1280,
+        "actual_lat": 8.09000015258789,
+        "actual_lon": 77.54000091552734,
+        "angular_err_deg": 0.014141596164236646
+      },
+      "Srinagar": {
+        "target_lat": 34.08,
+        "target_lon": 74.8,
+        "row": 551,
+        "col": 1242,
+        "actual_lat": 34.09000015258789,
+        "actual_lon": 74.80999755859375,
+        "angular_err_deg": 0.014140517303714564
+      }
+    },
+    "target_crop": {
+      "row_min": 492,
+      "row_max": 1271,
+      "col_min": 943,
+      "col_max": 1809,
+      "height": 780,
+      "width": 867,
+      "invalid_pixels_in_box": 0
+    }
+  },
+  "masks": {
+    "IMG_TIR1": {
+      "total_pixels": 7898880,
+      "valid_pixels": 5753727,
+      "fill_pixels": 2145153,
+      "valid_pct": 72.84231435342731,
+      "geo_valid_img_fill": 7690,
+      "geo_fill_img_valid": 0
+    },
+    "IMG_TIR2": {
+      "total_pixels": 7898880,
+      "valid_pixels": 5753727,
+      "fill_pixels": 2145153,
+      "valid_pct": 72.84231435342731,
+      "geo_valid_img_fill": 7690,
+      "geo_fill_img_valid": 0
+    },
+    "IMG_WV": {
+      "total_pixels": 7898880,
+      "valid_pixels": 5737802,
+      "fill_pixels": 2161078,
+      "valid_pct": 72.64070349214066,
+      "geo_valid_img_fill": 23615,
+      "geo_fill_img_valid": 0
+    },
+    "IMG_MIR": {
+      "total_pixels": 7898880,
+      "valid_pixels": 5753726,
+      "fill_pixels": 2145154,
+      "valid_pct": 72.84230169340464,
+      "geo_valid_img_fill": 7691,
+      "geo_fill_img_valid": 0
+    }
+  },
+  "temporal": {
+    "start_time": "20-OCT-2026T00:00:26.414",
+    "end_time": "20-OCT-2026T00:27:20.107",
+    "nominal_gmt": "0000",
+    "first_scan_line": null,
+    "last_scan_line": null
+  }
+}

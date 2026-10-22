@@ -1,0 +1,120 @@
+=== PAGE 2 ===
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+However, due to technical and economic constraints, current
+geostationary satellites cannot acquire continuous full-disk
+data at high temporal resolutions. Therefore, temporal super-
+resolution technology, which enhances the temporal resolution
+of data through algorithms, o ﬀers a preferred solution without
+the need to modify the hardware.
+Traditional geostationary satellite cloud data processing
+often uses linear interpolation methods [15] for temporal
+super-resolution. These methods generate intermediate frames
+by a weighted combination of adjacent geostationary satellite
+cloud data frames, thereby increasing the frame rate within
+the same time period. However, such methods do not extract
+incremental information from geostationary satellite cloud
+data, fail to model complex cloud motion dynamics eﬀectively,
+making it challenging to obtain suﬃciently reliable temporal
+high-resolution data for practical applications.
+In the exploration of optimal temporal super-resolution
+solutions for geostationary satellite cloud data, artiﬁcial intel-
+ligence techniques based on spatiotemporal self-supervised
+learning have been increasingly applied to meteorological data
+mining and utilization [16], [17], [18], [19], [20], [21]. This
+self-supervised, data-driven paradigm, which does not rely on
+labeled data, oﬀers new insights for geostationary satellite
+cloud data temporal super-resolution.
+Due to the similarity between satellite temporal super-
+resolution and video frame interpolation (VFI), VFI methods
+based on spatiotemporal self-supervised learning have gained
+signiﬁcant attention. VFI methods based on spatiotemporal
+self-supervised learning are primarily categorized into two
+types: kernel or phase-based direct generation methods without
+ﬂow [22], [23], [24], [25], [26], [27], [28], [29], [30], and
+ﬂow-based generation methods [31], [32], [33], [34], [35],
+[36], [37], [38], [39], [40]. Compared to kernel or phase-based
+direct generation methods, ﬂow-based methods have become
+mainstream due to their ability to maintain motion consis-
+tency through ﬂow estimation, thereby avoiding incorrect and
+incoherent spatial displacements. The key idea of ﬂow-based
+generation methods lies in decomposing the VFI process
+into ﬂow estimation and ﬂow-guided frame reconstruction.
+Most studies adopt ﬂow-based generation methods, where
+neural networks are employed to estimate optical ﬂow between
+adjacent frames as explicit motion representations, followed
+by ﬂow-guided warping for intermediate frame reconstruction.
+Dosovitskiy et al. [41] pioneered data-driven optical ﬂow
+estimation using convolutional neural networks. Subsequently,
+Jiang et al. [31] proposed SuperSlomo, using a UNet archi-
+tecture for bidirectional optical ﬂow estimation and frame
+reconstruction through ﬂow-based warping for multiframe
+interpolation. Later research largely adopted this optical ﬂow-
+based interpolation paradigm, and focused on achieving more
+accurate ﬂow estimation [32], [35], [37], [38], [40].
+With the maturation of spatiotemporal self-supervised VFI
+technology, Vandal and Nemani [42] formulated the temporal
+super-resolution of geostationary satellite cloud data as a VFI
+task, adopted the VFI framework and optical ﬂow-based mod-
+eling paradigm, adapting the SuperSlomo-T (SSM-T) model
+to geostationary satellite cloud data temporal super-resolution
+through parameter ﬁne-tuning and retraining. Experimental
+results show that this method achieves higher accuracy
+compared to traditional super-resolution methods.
+However, despite the proven feasibility of transferring
+spatiotemporal self-supervised VFI methods to geostationary
+satellite cloud data temporal super-resolution, direct appli-
+cation of VFI frameworks and optical ﬂow-based modeling
+paradigms presents three signiﬁcant challenges due to funda-
+mental diﬀerences in data characteristics and task objectives
+as follows.
+First, a data construction challenge. As a data-driven
+method, the learning capacity of deep learning models is
+bounded by the characteristics of training data. While video
+frames can be readily captured at varying frequencies using
+low-cost recording devices, enabling the acquisition of con-
+tinuous high and low-frequency images for learning VFI
+mapping relationships, geostationary satellites, with their high
+operational costs, are limited to low-frequency full-disk obser-
+vation at 15-min intervals. Ensuring the reliability of the
+super-resolution mapping relationship constructed from geo-
+stationary satellite cloud data under these constraints presents
+the primary technical challenge that must be addressed.
+Notably, previous studies have not conducted systematic
+analyses of such reliability considerations.
+Second, model adaptation requirements. The spatiotemporal
+evolution characteristics of geostationary satellite cloud data
+diﬀer signiﬁcantly from video data, potentially introducing
+transfer errors when directly applying optical ﬂow-based
+VFI paradigms. These diﬀerences manifest in two aspects.
+First, geostationary satellite cloud data exhibits multichan-
+nel temporal asynchrony. Unlike RGB video frames, whose
+channels exhibit synchronized spatiotemporal variations in
+primary change regions as shown in Fig. 1(a), geostation-
+ary satellite cloud data shows the asynchronous temporal
+evolution dynamics of diﬀerent channels as illustrated in
+Fig. 1(b). These channels form complementary spatiotemporal
+relationships, exempliﬁed by mid-level water vapor enrich-
+ment preceding cloud-top brightness temperature decrease
+[43], [44]. Therefore, geostationary satellite temporal super-
+resolution modeling requires extra processing of multichannel
+to make use of their complementary evolution information, in
+contrast to VFI approaches that apply uniform optical ﬂow
+across RGB channels. Second, geostationary satellite cloud
+data presents complex nonlinear evolution characteristics. The
+changes in video frames as shown in Fig. 1(c), typically
+comprise static backgrounds (buildings) and moving fore-
+grounds (vehicles) with approximately linear, spatiotemporally
+continuous motion due to short temporal intervals, and the
+occlusion eﬀects generated by foreground object motion are
+typically processed through occlusion coeﬃcients as accom-
+panying processes to uniform motion, this allows optical
+ﬂow estimation using adjacent-frames under small motion
+assumption. However, as shown in Fig. 1(d), geostationary
+satellite cloud data exhibits extended temporal intervals with
+complex atmospheric processes aﬀecting cloud and water
+vapor dynamics. These dynamics, which are inﬂuenced by
+atmospheric circulation, cannot be approximated as linear
+small motion and violate basic optical ﬂow assumptions. In
+addition, the foreground changes of geostationary satellite
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 

@@ -1,0 +1,150 @@
+=== PAGE 19 ===
+
+LIN et al.: SELF-SUPERVISED TEMPORAL SUPER-RESOLUTION FRAMEWORK WITH METEOR-Net 5403719
+[17] H. Wu, Z. Yao, J. Wang, and M. Long, “MotionRNN: A ﬂexible
+model for video prediction with spacetime-varying motions,” in Proc.
+IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR) , Jun. 2021,
+pp. 15430–15439.
+[18] Z. Ma, H. Zhang, and J. Liu, “MM-RNN: A multimodal RNN for
+precipitation nowcasting,” IEEE Trans. Geosci. Remote Sens., vol. 61,
+2023, Art. no. 4101914.
+[19] K. Bi, L. Xie, H. Zhang, X. Chen, X. Gu, and Q. Tian, “Accurate
+medium-range global weather forecasting with 3D neural networks,”
+Nature, vol. 619, no. 7970, pp. 533–538, Jul. 2023.
+[20] X. Peng, Q. Li, L. Chen, X. Ning, H. Chu, and J. Liu, “A structured
+graph neural network for improving the numerical weather prediction
+of rainfall,” J. Geophys. Res., Atmos., vol. 128, no. 22, p. 2023, Nov.
+2023.
+[21] L. Chen et al., “FuXi: A cascade machine learning forecasting system
+for 15-day global weather forecast,” npj Climate Atmos. Sci., vol. 6,
+no. 1, p. 190, Nov. 2023.
+[22] S. Meyer, O. Wang, H. Zimmer, M. Grosse, and A. Sorkine-Hornung,
+“Phase-based frame interpolation for video,” in Proc. IEEE Conf.
+Comput. Vis. Pattern Recognit. (CVPR), Jun. 2015, pp. 1410–1418.
+[23] S. Niklaus, L. Mai, and F. Liu, “Video frame interpolation via adaptive
+separable convolution,” in Proc. IEEE Int. Conf. Comput. Vis. (ICCV),
+Oct. 2017, pp. 261–270.
+[24] Z. Liu, R. A. Yeh, X. Tang, Y . Liu, and A. Agarwala, “Video frame
+synthesis using deep voxel ﬂow,” in Proc. IEEE Int. Conf. Comput. Vis.
+(ICCV), Oct. 2017, pp. 4463–4471.
+[25] S. Meyer, A. Djelouah, B. McWilliams, A. Sorkine-Hornung, M. Gross,
+and C. Schroers, “PhaseNet for video frame interpolation,” in
+Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit., Jun. 2018,
+pp. 498–507.
+[26] X. Cheng and Z. Chen, “Video frame interpolation via deformable
+separable convolution,” in Proc. AAAI Conf. Artif. Intell., 2020, vol. 34,
+no. 7, pp. 10607–10614.
+[27] H. Lee, T. Kim, T.-Y . Chung, D. Pak, Y . Ban, and S. Lee, “AdaCoF:
+Adaptive collaboration of ﬂows for video frame interpolation,” in Proc.
+IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR) , Jun. 2020,
+pp. 5316–5325.
+[28] M. Choi, H. Kim, B. Han, N. Xu, and K. M. Lee, “Channel attention is
+all you need for video frame interpolation,” in Proc. AAAI Conf. Artif.
+Intell., Feb. 2020, vol. 34, no. 7, pp. 10663–10671.
+[29] Z. Shi, X. Liu, K. Shi, L. Dai, and J. Chen, “Video frame interpola-
+tion via generalized deformable convolution,” IEEE Trans. Multimedia,
+vol. 24, pp. 426–439, 2022.
+[30] T. Kalluri, D. Pathak, M. Chandraker, and D. Tran, “FLA VR: Flow-
+agnostic video representations for fast frame interpolation,” in Proc.
+IEEE/CVF Winter Conf. Appl. Comput. Vis. (WACV), Jan. 2023,
+pp. 2070–2081.
+[31] H. Jiang, D. Sun, V . Jampani, M. Yang, E. Learned-Miller, and J. Kautz,
+“Super SloMo: High quality estimation of multiple intermediate frames
+for video interpolation,” in Proc. IEEE/CVF Conf. Comput. Vis. Pattern
+Recognit., Jun. 2018, pp. 9000–9008.
+[32] W. Bao, W.-S. Lai, C. Ma, X. Zhang, Z. Gao, and M.-H. Yang, “Depth-
+aware video frame interpolation,” in Proc. IEEE/CVF Conf. Comput.
+Vis. Pattern Recognit. (CVPR), Jun. 2019, pp. 3698–3707.
+[33] Y . Liu, L. Xie, L. Siyao, W. Sun, Y . Qiao, and C. Dong, “Enhanced
+quadratic video interpolation,” in Proc. Eur. Conf. Comput. Vis. Work-
+shop, 2020, pp. 41–56.
+[34] J. Park, K. Ko, C. Lee, and C. Kim, “BMBC: Bilateral motion estimation
+with bilateral cost volume for video interpolation,” in Proc. Eur. Comput.
+Conf. Comput. Vis. (ECCV), Aug. 2020, pp. 109–125.
+[35] J. Park, C. Lee, and C.-S. Kim, “Asymmetric bilateral motion estimation
+for video frame interpolation,” in Proc. IEEE/CVF Int. Conf. Comput.
+Vis. (ICCV), Oct. 2021, pp. 14539–14548.
+[36] L. Kong et al., “IFRNet: Intermediate feature reﬁne network for eﬃcient
+frame interpolation,” in Proc. IEEE/CVF Conf. Comput. Vis. Pattern
+Recognit. (CVPR), Jun. 2022, pp. 1969–1978.
+[37] X. Jin, L. Wu, J. Chen, Y . Chen, J. Koo, and C.-H. Hahm, “A uniﬁed
+pyramid recurrent network for video frame interpolation,” in Proc.
+IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR) , Jun. 2023,
+pp. 1578–1587.
+[38] Z. Shi, X. Xu, X. Liu, J. Chen, and M.-H. Yang, “Video frame inter-
+polation transformer,” in Proc. IEEE/CVF Conf. Comput. Vis. Pattern
+Recognit. (CVPR), Jun. 2022, pp. 17461–17470.
+[39] X. Jin et al., “Enhanced bi-directional motion estimation for video
+frame interpolation,” in Proc. IEEE/CVF Winter Conf. Appl. Comput.
+Vis. (WACV), Jan. 2023, pp. 5038–5046.
+[40] Z. Huang, T. Zhang, W. Heng, B. Shi, and S. Zhou, “Real-time
+intermediate ﬂow estimation for video frame interpolation,” in Proc.
+Eur. Conf. Comput. Vis. (ECCV), Oct. 2020, pp. 624–642.
+[41] A. Dosovitskiy et al., “FlowNet: Learning optical ﬂow with convolu-
+tional networks,” in Proc. IEEE Int. Conf. Comput. Vis. (ICCV), Dec.
+2015, pp. 2758–2766.
+[42] T. J. Vandal and R. R. Nemani, “Temporal interpolation of geostationary
+satellite imagery with optical ﬂow,” IEEE Trans. Neural Netw. Learn.
+Syst., vol. 34, no. 7, pp. 3245–3254, Jul. 2023.
+[43] T. Krennert and V . Zwatz-Meise, “Initiation of convective cells in
+relation to water vapour boundaries in satellite images,” Atmos. Res.,
+vols. 67–68, pp. 353–366, Jul. 2003.
+[44] P. Santurette and C. Georgiev, “Water vapour imagery analysis
+in 7.3µ/6.2µ for diagnosing thermo-dynamic context of intense
+convection,” in Proc. Joint EUMETSAT Meteorol. Satell. Conf. 15th
+AMS Satell. Meteorol. Oceanogr. Conf., 2007, pp. 24–28.
+[45] R. A. Houze, “100 years of research on mesoscale convective
+systems,” Meteorological Monographs, vol. 59, pp. 1–54,
+Jan. 2018.
+[46] D. Chen, J. Guo, D. Yao, Z. Feng, and Y . Lin, “Elucidating the life cycle
+of warm-season mesoscale convective systems in eastern China from
+the Himawari-8 geostationary satellite,” Remote Sens., vol. 12, no. 14,
+p. 2307, Jul. 2020.
+[47] J. Hu, L. Shen, and G. Sun, “Squeeze-and-excitation networks,” in
+Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit., Jun. 2018,
+pp. 7132–7141.
+[48] X. Xu, S. Li, W. Sun, Q. Yin, and M.-H. Yang, “Quadratic video
+interpolation,” in Proc. Adv. Neural Inf. Process. Syst., vol. 32, Dec.
+2019, pp. 1645–1654.
+[49] Z. Chen, Z. He, and Z.-M. Lu, “DEA-Net: Single image dehazing based
+on detail-enhanced convolution and content-guided attention,” IEEE
+Trans. Image Process., vol. 33, pp. 1002–1015, 2024.
+[50] R. A. Maddox, “Mesoscale convective complexes,” Bull. Amer. Meteo-
+rol. Soc., vol. 61, no. 11, pp. 1374–1387, Nov. 1980.
+[51] Z. Xu, J. Du, J. Wang, C. Jiang, and Y . Ren, “Satellite image prediction
+relying on GAN and LSTM neural networks,” in Proc. IEEE Int. Conf.
+Commun. (ICC), May 2019, pp. 1–6.
+[52] K. Dai et al., “Exploiting spatial–temporal dynamics for satellite image
+sequence prediction,” IEEE Geosci. Remote Sens. Lett., vol. 20, pp. 1–5,
+2023.
+[53] K. Dai, X. Li, Y . Ye, S. Feng, D. Qin, and R. Ye, “MSTCGAN:
+Multiscale time conditional generative adversarial network for long-term
+satellite image sequence prediction,” IEEE Trans. Geosci. Remote Sens.,
+vol. 60, 2022, Art. no. 4108516.
+[54] A. L. Maas, A. Y . Hannun, and A. Y . Ng, “Rectiﬁer nonlinearities
+improve neural network acoustic models,” in Proc. Int. Conf. Mach.
+Learn., 2013, vol. 30, no. 1, p. 3.
+[55] J. Korhonen and J. You, “Peak signal-to-noise ratio revisited: Is simple
+beautiful?,” in Proc. 4th Int. Workshop Quality Multimedia Exper., Jul.
+2012, pp. 37–38.
+[56] Z. Wang, A. C. Bovik, H. R. Sheikh, and E. P. Simoncelli, “Image
+quality assessment: From error visibility to structural similarity,” IEEE
+Trans. Image Process., vol. 13, no. 4, pp. 600–612, Apr. 2004.
+[57] H. Wu et al., “Earthfarsser: Versatile spatio-temporal dynamical systems
+modeling in one model,” in Proc. AAAI Conf. Artif. Intell., Mar. 2024,
+vol. 38, no. 14, pp. 15906–15914.
+[58] S. Ravuri et al., “Skilful precipitation nowcasting using deep gen-
+erative models of radar,” Nature, vol. 597, no. 7878, pp. 672–677,
+Sep. 2021.
+[59] L. Espeholt et al., “Deep learning for twelve hour precipitation
+forecasts,” Nature Commun., vol. 13, no. 1, pp. 1–10, Sep. 2022.
+[60] Y . Pei et al., “MPFNet: Multiproduct fusion network for radar echo
+extrapolation,” IEEE Trans. Geosci. Remote Sens., vol. 62, Nov. 2024,
+Art. no. 4112820.
+[61] G. Farneb ¨ack, “Two-frame motion estimation based on polyno-
+mial expansion,” in Proc. Scandin. Conf. Image Anal., Jan. 2003,
+pp. 363–370.
+[62] H. Wang, Q. Zeng, H. Wang, J. He, T. Yu, and G. Liu, “Temporal super-
+resolution reconstruction of weather radar echoes using a deep learning
+approach,” Expert Syst. Appl., vol. 300, Mar. 2026, Art. no. 130189.
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 

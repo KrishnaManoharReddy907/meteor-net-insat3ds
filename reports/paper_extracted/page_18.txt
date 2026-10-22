@@ -1,0 +1,132 @@
+=== PAGE 18 ===
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+At the same time, the physical credibility of the tempo-
+rally super-resolved ﬁelds produced by METEOR-Net is
+further supported by independent validations using radar and
+precipitation-based tasks.
+This study improves the temporal resolution of FY-4A
+cloud data from 15 to 5 min, which alleviates the temporal
+sparsity of geostationary measurements and provides higher
+temporal-resolution cloud observation sequences for future
+convective weather identiﬁcation and warning. Case analyses
+of convective evolution show that METEOR-Net reconstructs
+the cloud-top cooling evolution associated with early deep
+convection formation within the 15 min observation gap.
+Under more challenging rapidly developing conditions, it also
+captures the formation location and timing of the very low
+brightness temperature core and its subsequent displacement.
+Independent validation based on radar reﬂectivity con-
+sistency checks and station-precipitation-based downstream
+identiﬁcation and prediction tasks further indicates that the
+reconstructed ﬁelds exhibit good spatiotemporal correspon-
+dence with regions of intense radar echoes, do not produce
+widespread spurious cold cloud tops, and provide more phys-
+ically meaningful information for downstream applications.
+Although the temporal super-resolution model performs
+well in reconstruction experiments, we ﬁnd that its reconstruc-
+tion errors remain nonnegligible for operational applications.
+The multichannel error maps in the experiments show that
+large errors tend to concentrate in regions with rapid evolution.
+This challenge is most pronounced during convective initiation
+and rapid development, when cloud systems exhibit strong
+nonlinearity and high temporal variability, which makes inter-
+mediate frame reconstruction more diﬃcult. During initiation,
+the cold cloud-top signal can be weak and conﬁned to a
+small fraction of pixels, which increases sensitivity to small
+perturbations. During rapid development, fast nonlinear evolu-
+tion, and displacement can increase the risk of spatiotemporal
+biases.
+Based on these characteristics, we recommend com-
+bining the 5-min super-resolved frames with the original
+FY-4A observations at the 15-min anchor times to perform
+temporal-consistency checks and quality control, with partic-
+ular attention to the propagation of reconstruction errors into
+downstream applications. For example, convective identiﬁca-
+tion can suﬀer from missed detections or false alarms due
+to biases in cold cloud-top location or intensity, and short-
+term precipitation nowcasting can also be aﬀected. For critical
+operational applications, it is further advisable to incorporate
+uncertainty-aware safeguards, including multisource informa-
+tion fusion such as radar and numerical weather prediction
+(NWP), multimodel or ensemble consistency checks, and
+conﬁdence-based quality control, to ﬂag and manage low-
+conﬁdence reconstructions.
+Finally, in this study, METEOR-Net is instantiated to per-
+form temporal super-resolution from 15 to 5 min within each
+full-disk revisit interval. Speciﬁcally, two intermediate frames
+at T + 5 min and T + 10 min are reconstructed using 5-min
+FY-4A/AGRI REGC observations as temporal high-resolution
+ground truth labels. Nevertheless, the sequence-ﬂow-based
+architecture itself is not intrinsically restricted to a ﬁxed
+temporal step and can, in principle, be extended via time con-
+ditioning to interpolate intermediate frames at arbitrary time
+points within the revisit window. At present, this capability
+cannot be rigorously validated on FY-4A because the available
+ground truth observations have a temporal resolution of only
+5 min. The next-generation geostationary satellite FY-4B,
+however, can provide regional observations with a temporal
+resolution of 1 min. In future work, we plan to migrate
+the proposed temporal super-resolution framework to FY-4B
+data and to conduct more stringent observational validation of
+intermediate reconstructions at ﬁner time resolutions, further
+assessing the physical ﬁdelity of METEOR-Net’s arbitrary
+time interpolation for rapidly evolving convective processes.
+REFERENCES
+[1] G. L. Stephens et al., “The cloudsat mission and the a-train: A new
+dimension of space-based observations of clouds and precipitation,”
+Bull. Amer. Meteorological Soc., vol. 83, no. 12, pp. 1771–1790, Dec.
+2002.
+[2] D. P. Roy et al., “Landsat-8: Science and product vision for terrestrial
+global change research,” Remote Sens. Environ., vol. 145, pp. 154–172,
+Apr. 2014.
+[3] R. Torres et al., “GMES Sentinel-1 mission,” Remote Sens. Environ.,
+vol. 120, pp. 9–24, May 2012.
+[4] T. S. Pagano and R. M. Durham, “Moderate resolution imaging spec-
+troradiometer (MODIS),” Proc. SPIE, vol. 1939, pp. 2–17, Aug. 1993.
+[5] Goes-R Advanced Baseline Imager (ABI) Algorithm Theoretical Basis
+Document for Cloud and Moisture Imagery Product (CMIP). Accessed:
+Jun. 24, 2019. [Online]. Available: https://www.star.nesdis.noaa
+[6] K. Bessho et al., “An introduction to Himawari-8/9- Japan’s new-
+generation geostationary meteorological satellites,” J. Meteorological
+Soc. Japan. Ser. II, vol. 94, no. 2, pp. 151–183, 2016.
+[7] J. Yang, Z. Zhang, C. Wei, F. Lu, and Q. Guo, “Introducing the new
+generation of Chinese geostationary weather satellites, Fengyun-4,” Bull.
+Amer. Meteorological Soc., vol. 98, no. 8, pp. 1637–1658, Aug. 2017.
+[8] K. R. Knapp et al., “Globally Gridded Satellite observations for climate
+studies,” Bull. Amer. Meteorological Soc., vol. 92, no. 7, pp. 893–907,
+Jul. 2011.
+[9] D. B. Millet, P. I. Palmer, P. F. Levelt, L. Gallardo, and L. Shikwambana,
+“Coordinated geostationary, multispectral satellite observations are crit-
+ical for climate and air quality progress,” AGU Adv., vol. 5, no. 5,
+p. 2024, Aug. 2024.
+[10] R. Roca, T. Fiolleau, V . O. John, and J. Schulz, “METEOSAT long-term
+observations reveal changes in convective organization over tropi-
+cal Africa and Atlantic Ocean,” Surveys Geophysics, vol. 45, no. 6,
+pp. 1979–1998, Oct. 2024.
+[11] B. Chen et al., “Estimation of atmospheric PM10 concentration in China
+using an interpretable deep learning model and top-of-the-atmosphere
+reﬂectance data from China’s new generation geostationary meteorolog-
+ical satellite, FY-4A,” J. Geophys. Res., Atmos., vol. 127, no. 9, p. 2021,
+Apr. 2022.
+[12] Y . Lee, C. D. Kummerow, and I. Ebert-Uphoﬀ, “Applying machine
+learning methods to detect convection using geostationary operational
+environmental satellite-16 (GOES-16) advanced baseline imager (ABI)
+data,” Atmos. Meas. Techn., vol. 14, no. 4, pp. 2699–2716, Apr. 2021.
+[13] J. M. Sieglaﬀ, D. C. Hartung, W. F. Feltz, L. M. Cronce, and
+V . Lakshmanan, “A satellite-based convective cloud object tracking
+and multipurpose data fusion tool with application to developing
+convection,” J. Atmos. Ocean. Technol. , vol. 30, no. 3, pp. 510–525,
+Mar. 2013.
+[14] J. M. Apke, K. A. Hilburn, S. D. Miller, and D. A. Peterson, “Towards
+objective identiﬁcation and tracking of convective outﬂow boundaries in
+next-generation geostationary satellite imagery,” Atmos. Meas. Techn.,
+vol. 13, no. 3, pp. 1593–1608, Apr. 2020.
+[15] B. Liebmann, “Description of a complete (interpolated) outgoing long-
+wave radiation dataset,” Bull. Amer. Meteorol. Soc., vol. 77, no. 6,
+pp. 1275–1277, Jun. 1996.
+[16] X. Shi, Z. Chen, H. Wang, D. Yeung, W. K. Wong, and W. Woo,
+“Convolutional LSTM network: A machine learning approach for pre-
+cipitation nowcasting,” in Proc. Adv. Neural Inf. Process. Syst., Jan.
+2015, pp. 802–810.
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 

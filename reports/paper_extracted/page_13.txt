@@ -1,0 +1,21 @@
+=== PAGE 13 ===
+
+LIN et al.: SELF-SUPERVISED TEMPORAL SUPER-RESOLUTION FRAMEWORK WITH METEOR-Net 5403719
+Fig. 10. Case study of temporal super-resolution reconstruction for convective processes. T and T + 15 min represent temporal low-resolution full-disk
+observations, while T + 5 min and T + 10 min represent ground truth frames or frames reconstructed through temporal super-resolution, and the ﬁrst row
+shows the real observation of the convection process, the second row shows an enlarged image of this observation, the subsequent rows display the results of
+temporal super-resolution reconstruction of the convection process using diﬀerent methods. (a) Time is from 05:15 UTC to 05:30 UTC on July 24, 2023. (b)
+Time is from 09:30 UTC to 09:45 UTC on June 30, 2023.
+TABLE IV
+FIVEFOLD CROSS -VALIDATION STATISTICS OF METEOR-N ET
+region-weighted loss, and temporal-ﬂow evolution mechanism,
+ultimately reducing to a basic U-shaped encoder–decoder. The
+progressive performance degradation across all evaluation met-
+rics demonstrates the eﬃcacy of each architectural component
+and design choice.
+G. Quantitative Veriﬁcation Experiment of Temporal-Flow
+Evolution
+To quantify the beneﬁt of temporal-ﬂow evolution, we
+conduct a controlled quantitative veriﬁcation experiment. We
+construct an optical ﬂow variant, denoted as OF, by replacing
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 

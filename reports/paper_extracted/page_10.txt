@@ -1,0 +1,112 @@
+=== PAGE 10 ===
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+nontraining subregion blocks located in areas with complex
+terrain and diﬀerent climatic regimes, in order to assess the
+model’s generalization ability and applicability in regions that
+were not used for training.
+B. Experimental Setup
+The METEOR-Net is conﬁgured with the following archi-
+tectural parameters: The sequence branch of the MCE module
+comprises three layers, while the skip branch consists of
+one layer, both with 64 hidden units. The TFEE module
+is structured with four layers and 256 hidden units. In the
+EFFR module, 3 × 3 convolutional/deconvolutional kernels
+are used for the reconstruction module, while 7 × 7 con-
+volutional kernels are used for evolution-aware mapping and
+pixel rearrangement in the fusion module. LeakyReLU [54]
+is used as the primary activation function in most parts of
+the network, except for weighting processes where Sigmoid
+activation is applied for normalization, and the recurrent unit,
+where Sigmoid and Tanh are used. In the region-weighted loss
+function, α, β, and γ are set to 1, 2, and 5, respectively.
+To ensure experimental fairness in comparative analysis, all
+models used for comparison are implemented using oﬃcial
+open-source code. Model training is conducted uniformly on
+NVIDIA Tesla A100 GPUs with consistent hyperparameters:
+batch size of 64, maximum training epochs of 200, Adam
+optimizer with initial learning rate of 3 × 10−4. The learning
+rate decreases when the validation set loss no longer decreases,
+and training stops when it drops below 8 × 10−5.
+C. Evaluation Metrics
+The quantitative evaluation metrics for model performance
+are categorized into two groups: image quality metrics and
+meteorological evaluation metrics. Both groups are calculated
+frame-wise and then averaged over all evaluated frames.
+Image quality metrics include peak signal-to-noise ratio
+(PSNR) [55], structural similarity index (SSIM) [56], and root
+mean square error (RMSE). PSNR is based on mean square
+error (mse) between ground-truth frames and reconstruction
+frames, with higher values indicating smaller reconstruc-
+tion deviations. SSIM quantiﬁes structural similarity between
+ground truth and reconstructed frames, where higher values
+denote greater similarity. RMSE quantiﬁes the pixel-level error
+between the reconstructed frames and the ground truth frames,
+where a lower value indicates smaller errors. These metrics
+evaluate temporal super-resolution global visual ﬁdelity across
+all channels (channel 7–14), failing to assess the critical recon-
+struction performance of convective processes in geostationary
+satellite temporal super-resolution.
+Meteorological evaluation metrics include critical success
+index (CSI), probability of detection (POD), and false alarm
+rate (FAR), which are commonly used in precipitation now-
+casting evaluation [57], [58], [59], [60]. CSI, POD, and FAR,
+traditionally utilized in precipitation forecast evaluation, are
+adapted for geostationary satellite cloud data assessment. Since
+the 10.7-µm channel is situated within the infrared atmospheric
+window and experiences minimal atmospheric absorption,
+it serves as the primary channel for the identiﬁcation and
+tracking of convective clouds. Quantitative evaluation results
+from the 10.7-µm channel eﬀectively reﬂect the model’s per-
+formance in reconstructing convective processes. Therefore,
+the 10.7-µm channel is selected as the channel for assessing
+the performance of convective reconstruction. Brightness tem-
+perature thresholds of 273K, 241K, and 221K are established
+to identify cold cloud, convective cloud, and strong convective
+cloud regions [50], respectively. Given that lower cloud-top
+brightness temperatures typically indicate stronger convec-
+tive activity, pixels below these thresholds are designated
+as positive samples. This enables the computation of hits
+(reconstruction = 1 and truth = 1), misses (reconstruction = 0
+and truth = 1), and false alarms (reconstruction = 1 and truth
+= 0) for subsequent CSI, POD, and FAR calculations.
+CSI, also known as the threat score, integrates hit, miss, and
+false alarm events as
+CSI = HitsHits + Misses + False Alarm. (25)
+POD measures the model’s ability to capture actual events
+as
+POD = HitsHits + Misses. (26)
+FAR quantiﬁes the proportion of incorrectly identiﬁed
+events as
+FAR = False AlarmHits + False Alarm. (27)
+D. Multichannel Reconstruction Comparison Experiment
+In this section, the performance of METEOR-Net in the
+multichannel temporal super-resolution reconstruction task
+will be evaluated and compared with traditional temporal
+super-resolution methods and deep learning-based temporal
+super-resolution methods. Traditional methods include linear
+interpolation and optical ﬂow methods [61], where linear
+interpolation serves as a baseline using bilinear interpolation
+for intermediate frame generation, while the optical ﬂow
+method uses the classical Farneback algorithm for dense
+optical ﬂow ﬁeld estimation between adjacent frames. The
+deep learning-based baselines include FLA VR, SSM-T, and
+EMAIRA-VFI models. FLA VR, proposed by Kalluri et al.
+[30], represents the SOTA performance in VFI algorithms.
+SSM-T, recently developed by Vandal and Nemani [42] for
+the GOES-R satellite, represents the current SOTA in tem-
+poral super-resolution of geostationary satellite cloud data.
+EMAIRA-VFI, proposed by Wang et al. [62] is a transformer-
+based temporal super-resolution model for meteorological
+data, representing advanced techniques in meteorological tem-
+poral super-resolution.
+Table II presents quantitative evaluation results across chan-
+nels 7–14 of FY-4A for METEOR-Net and comparative
+models. EMAIRA-VFI provides a strong Transformer-based
+baseline and achieves competitive performance among the
+learning-based methods. Nevertheless, METEOR-Net still
+attains the best PSNR and the lowest RMSE on all channels,
+and achieves the best SSIM on 7 out of the 8 chan-
+nels, attributed to its architectural design speciﬁcally tailored
+for geostationary satellite cloud data characteristics. These
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 

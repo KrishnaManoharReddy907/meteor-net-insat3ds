@@ -1,0 +1,58 @@
+=== PAGE 14 ===
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+TABLE V
+ABLATION STUDY QUANTITATIVE EVALUATION RESULTS
+TABLE VI
+FRAME -L EVEL PERFORMANCE UNDER STRONG AND WEAK CONVECTION SUBSETS
+the temporal-ﬂow evolution module in TFEE with a latent
+space bidirectional optical ﬂow interpolation module while
+keeping all other components unchanged. We further deﬁne
+two subsets from the test set, including a strong convection
+subset with min(T) < 221K and a weak convection subset
+with 221K ≤ min(T) < 241K. For each subset, we report
+the mean and standard deviation of frame-level metrics for
+TFEE and OF. Metrics at T < 221K are not applicable for
+the weak convection subset by deﬁnition. Table VI shows that
+TFEE consistently achieves higher SSIM and PSNR and lower
+RMSE on both subsets, and it also performs better on con-
+vection process metrics (CSI, POD, and FAR). TFEE further
+exhibits lower overall standard deviations, which indicates that
+temporal-ﬂow evolution is more robust and stable than optical
+ﬂow in both strong and weak convection scenarios.
+H. Regional Transfer Generalization Experiments
+To evaluate the generalization performance of the model
+trained over the central China region when applied to temporal
+super-resolution reconstruction over more complex terrain
+and diﬀerent climatic zones, we conduct a set of regional
+transfer generalization experiments. As shown in Fig. 11, four
+representative subregions are selected: 1) the Yunnan–Guizhou
+Plateau (complex high-elevation mountainous terrain); 2) the
+Yangtze River Delta coastal lowlands (land-sea transition
+zone); 3) a South China heavy-rainfall region around the
+Pearl River Delta (frequent severe convection and torrential
+rainfall); and 4) the semi-arid boundary region along the
+northern/western margins of the Loess Plateau. These subre-
+gions jointly cover typical combinations of terrain and climate
+from plateau to coastal areas and from humid to semi-arid
+environments.
+For each subregion, we evaluate the temporal super-
+resolution reconstruction performance of METEOR-Net and
+Fig. 11. Schematic locations of subregions. Red boxes denote the subregions
+used for regional transfer generalization experiments, and the blue dashed box
+indicates the subregion used for model training.
+the comparative methods on the 10.7-µm channel. As summa-
+rized in Table VII, METEOR-Net consistently achieves higher
+SSIM/PSNR and lower RMSE than SSM-T, FLA VR, and
+EMAIRA-VFI across the four subregions, and yields generally
+better or comparable CSI/POD/FAR values, indicating robust
+cross-regional generalization. This indicates that METEOR-
+Net exhibits good cross-regional generalization ability under
+markedly diﬀerent cloud regimes, ranging from plateau and
+coastal areas to heavy-rainfall and semi-arid regions. At the
+same time, the absolute metric values diﬀer among subre-
+gions, reﬂecting genuine diﬀerences in local cloud evolution
+characteristics.
+To further investigate these regional performance diﬀerences
+and account for the distinct cloud microphysical processes and
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 

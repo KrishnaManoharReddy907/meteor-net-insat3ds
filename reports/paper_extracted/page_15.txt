@@ -1,0 +1,59 @@
+=== PAGE 15 ===
+
+LIN et al.: SELF-SUPERVISED TEMPORAL SUPER-RESOLUTION FRAMEWORK WITH METEOR-Net 5403719
+TABLE VII
+REGIONAL GENERALIZATION PERFORMANCE OF METEOR-N ET AND COMPARATIVE METHODS ON FOUR REPRESENTATIVE SUBREGIONS
+TABLE VIII
+PERFORMANCE OF METEOR-N ET BEFORE AND AFTER SMALL -S AMPLE REGIONAL FINE -T UNING ON FOUR REPRESENTATIVE SUBREGIONS
+triggering mechanisms in diﬀerent regions, we also examine
+the eﬀect of small-sample regional ﬁne-tuning. For each
+subregion, we randomly sample about 10% of the available
+training sequences and perform a lightweight ﬁne-tuning of
+the METEOR-Net model originally trained over central China,
+using only about 5% of the total training iterations. As reported
+in Table VIII, SSIM, PSNR, and RMSE are clearly improved
+in all four subregions after ﬁne-tuning, and CSI scores increase
+overall; POD and FAR also move toward more favorable
+values at most thresholds. These results show that, starting
+from a uniﬁed model, low-cost regional ﬁne-tuning with a
+small amount of local data can eﬀectively adapt METEOR-
+Net to convective cloud evolution under diﬀerent terrain and
+climate backgrounds, and signiﬁcantly mitigate performance
+gaps among diﬀerent cloud regimes. Taken together, these
+additional experiments provide a more comprehensive assess-
+ment of the model’s regional transfer generalization ability
+over complex terrain and diverse climate zones, and oﬀer
+practical guidance for further optimizing the model in speciﬁc
+key regions with limited local samples.
+I. Independent Validation With Radar and
+Precipitation-Based Tasks
+To further assess the physical credibility of the reconstructed
+ﬁelds, we introduce external datasets, including Doppler
+weather radar and surface precipitation observations from
+national meteorological stations, to independently validate the
+temporal super-resolution results.
+As illustrated in Fig. 12, two representative severe convec-
+tive cases are selected. In each case, the background shows
+the FY-4A 10.7-µm brightness temperature ﬁeld, and the
+green mask denotes composite radar reﬂectivity exceeding
+35 dBZ. Time instants at multiples of 15 min correspond
+to the original FY-4A observations, while the intermediate
+time steps are the temporally super-resolved reconstructions
+produced by METEOR-Net. In both examples, strong radar
+echoes exhibit good spatial correspondence with regions of
+markedly low brightness temperature, and this relationship is
+maintained consistently over time. Moreover, no large areas
+of spuriously cold cloud tops are found in regions where no
+pronounced radar echoes are present. These results indicate
+that, within the AGRI observation framework, METEOR-Net
+provides a physically reasonable description of the evolution
+of deep convective cloud systems, rather than learning spurious
+patterns that contradict the physical laws of atmospheric
+convection.
+To further validate the physical realism of the tempo-
+rally super-resolved reconstructions from a more quantitative
+perspective, we perform an additional independent eval-
+uation based on surface precipitation observations from
+national meteorological stations. Speciﬁcally, two downstream
+tasks are designed: station-based severe convective weather
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 

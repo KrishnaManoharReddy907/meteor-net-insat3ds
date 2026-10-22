@@ -1,0 +1,79 @@
+=== PAGE 16 ===
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+Fig. 12. Two representative severe convective cases. Background shows the FY-4A/AGRI 10.7-µm brightness temperature ﬁeld, and the green mask denotes
+composite radar reﬂectivity ≥35 dBZ. (a) Typhoon rainband case from 23:05 to 23:30 UTC on July 27, 2023. (b) Mesoscale convective system case from
+20:40 to 21:05 UTC on May 4, 2023.
+identiﬁcation and station-based severe convective weather
+prediction. The experimental domain covers eastern and cen-
+tral China (20.40◦–38.28◦N, 107.04◦–124.92◦E) and contains
+nearly 1000 national meteorological stations. The dataset is
+split chronologically, with data from 2018 to 2021 used for
+training, 2022 for validation, and 2023 for testing. For both
+tasks, the objective is to determine, for all stations within
+the domain, whether severe convective weather is occurring
+at the current time or will occur within the next 1–3 h.
+Severe convective weather is deﬁned as the occurrence of
+heavy precipitation≥ 20 mm/h within a 40-km radius around
+a station.
+In both downstream tasks, we adopt the same U-Net
+architecture and training conﬁguration, and only vary the
+input sequences during training/validation/testing among three
+options: 1) the original FY-4A sequences with 15-min tempo-
+ral resolution (raw); 2) 5-min sequences obtained by simple
+temporal linear interpolation (linear); and 3) 5-min temporally
+super-resolved sequences produced by METEOR-Net (our).
+Since severe convective weather identiﬁcation and prediction
+must extract convective signals that are closely related to the
+occurrence of heavy surface precipitation from the temporal
+evolution of satellite cloud ﬁelds, performance diﬀerences
+under the same network architecture and training setup mainly
+reﬂect diﬀerences in the completeness of physically relevant
+information and the noise level carried by the respective input
+sequences. Therefore, superior performance in these down-
+stream tasks indicates that the input sequence provides a more
+realistic and detailed description of convective development
+and is more physically consistent with the independent surface
+precipitation observations.
+Table IX compares the results of the severe convective
+weather identiﬁcation task. Because temporal linear interpola-
+tion is only a simple weighted average of neighboring frames,
+it introduces erroneous convective structures and degrades the
+quality of the convective signal. As a result, using the linearly
+interpolated sequences as input leads to lower CSI and POD
+and higher FAR than using the original 15-min sequences. In
+contrast, when the METEOR-Net super-resolved sequences are
+used as input, CSI and POD are improved, and FAR is reduced
+TABLE IX
+SEVERE CONVECTION IDENTIFICATION PERFORMANCE
+WITH DIFFERENT INPUT SEQUENCES
+relative to the raw input. This indicates that the convective
+signals reconstructed by METEOR-Net are more consistent
+with the actual occurrence of heavy precipitation and provide
+more detailed, physically meaningful information for severe
+convective weather identiﬁcation that cannot be fully captured
+from the original 15-min sequences alone.
+Fig. 13 presents the comparison results for the severe
+convective weather prediction task. As expected, CSI and POD
+decrease with increasing lead time for all methods, while
+FAR increases. The METEOR-Net input (our) consistently
+achieves the highest CSI at lead times of 1, 2, and 3 h, and
+achieves the highest POD at 2 and 3 h, while maintaining the
+lowest FAR at all three lead times. These ﬁndings demonstrate
+that, under the independent constraint of surface precipita-
+tion observations, the temporally super-resolved sequences
+produced by METEOR-Net provide substantial beneﬁts for
+short-term severe convection forecasting, rather than merely
+yielding visually smoother images or ﬁtting noise.
+J. Channel Collaboration Interpretability Analysis
+As shown in Fig. 14, heat map analysis reveals several
+interesting ﬁndings, particularly in channel 12, a primary
+infrared imaging channel. During channel 12 reconstruction,
+a notable weight disparity emerges between channels 9 and
+10. Channel 12 (centered at 10.7 µm) operates within the
+infrared window region with minimal atmospheric absorption,
+enabling eﬀective cloud-top temperature measurement and
+cloud detection. In contrast, Channel 9 (6.25 µm) primarily
+detects upper-level water vapor, inﬂuencing large-scale atmo-
+spheric patterns while exhibiting limited direct impact on local
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 

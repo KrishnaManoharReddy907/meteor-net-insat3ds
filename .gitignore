@@ -1,0 +1,63 @@
+# ==============================================================================
+# METEOR-Net .gitignore
+# Excludes raw satellite data, large checkpoints, virtual environments, caches,
+# credentials, and local machine-specific artifacts.
+# ==============================================================================
+
+# 1. Raw Satellite Data & Calibration Archives (Root data/ only, >7 GB)
+/data/
+*.nc
+*.nc4
+*.h5
+*.hdf5
+*.part
+
+# 2. Large Model Checkpoints & Weights (>80 MB - 253 MB each)
+*.pt
+*.pth
+*.ckpt
+/checkpoints/
+outputs/**/*.pt
+outputs/overfit_diagnostic/*.pt
+outputs/phase7b/*.pt
+
+# 3. Intermediate Binary Array Dumps & Large Numpy Archives
+*.npz
+*.npy
+/outputs/processed_sample/
+
+# 4. Python Byte-code, Caches & Profiling Data
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.prof
+
+# 5. Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# 6. Credentials, Keys & Local Secrets
+.env
+.env.*
+*credentials*
+*.key
+*.pem
+*.token
+
+# 7. IDE, Editor & OS Machine-Specific Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+*.tmp
+
+# 8. Temporary Logs and Scratch Scripts
+*.log
+/scratch/

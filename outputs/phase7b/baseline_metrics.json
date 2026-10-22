@@ -1,0 +1,294 @@
+{
+  "timestamp": "2026-10-22T13:34:24Z",
+  "model_architecture": "METEORNet",
+  "seed": 42,
+  "initial_val_loss_kelvin": 29.8967,
+  "initial_train_diag_loss_kelvin": 20.1526,
+  "val_patches_evaluated": 25,
+  "train_diag_patches_evaluated": 10,
+  "baseline_eval_time_s": 130.884,
+  "val_patches_detail": [
+    {
+      "patch_index": 40,
+      "sequence_id": "seq_event_2026-07-19_210115_w108",
+      "event_id": "event_2026-07-19",
+      "is_convective": false,
+      "b13_min_kelvin": 279.7565612792969,
+      "loss_kelvin": 16.5476
+    },
+    {
+      "patch_index": 136,
+      "sequence_id": "seq_event_2026-07-19_211115_w110",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 205.82823181152344,
+      "loss_kelvin": 65.7371
+    },
+    {
+      "patch_index": 259,
+      "sequence_id": "seq_event_2026-07-19_212115_w112",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 210.62158203125,
+      "loss_kelvin": 15.971
+    },
+    {
+      "patch_index": 434,
+      "sequence_id": "seq_event_2026-07-19_213615_w115",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 206.19696044921875,
+      "loss_kelvin": 47.7329
+    },
+    {
+      "patch_index": 533,
+      "sequence_id": "seq_event_2026-07-19_214115_w116",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 204.9678955078125,
+      "loss_kelvin": 118.2173
+    },
+    {
+      "patch_index": 660,
+      "sequence_id": "seq_event_2026-07-19_215615_w119",
+      "event_id": "event_2026-07-19",
+      "is_convective": false,
+      "b13_min_kelvin": 218.79489135742188,
+      "loss_kelvin": 14.9256
+    },
+    {
+      "patch_index": 788,
+      "sequence_id": "seq_event_2026-07-19_220615_w121",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 211.72775268554688,
+      "loss_kelvin": 29.6188
+    },
+    {
+      "patch_index": 911,
+      "sequence_id": "seq_event_2026-07-19_221615_w123",
+      "event_id": "event_2026-07-19",
+      "is_convective": false,
+      "b13_min_kelvin": 288.1142272949219,
+      "loss_kelvin": 15.7493
+    },
+    {
+      "patch_index": 1079,
+      "sequence_id": "seq_event_2026-07-19_222615_w125",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 205.52096557617188,
+      "loss_kelvin": 30.1621
+    },
+    {
+      "patch_index": 1167,
+      "sequence_id": "seq_event_2026-07-19_223615_w127",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 211.4204864501953,
+      "loss_kelvin": 29.8942
+    },
+    {
+      "patch_index": 1333,
+      "sequence_id": "seq_event_2026-07-19_225115_w130",
+      "event_id": "event_2026-07-19",
+      "is_convective": false,
+      "b13_min_kelvin": 237.84539794921875,
+      "loss_kelvin": 15.6044
+    },
+    {
+      "patch_index": 1466,
+      "sequence_id": "seq_event_2026-07-19_230115_w132",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 204.9678955078125,
+      "loss_kelvin": 47.4527
+    },
+    {
+      "patch_index": 1605,
+      "sequence_id": "seq_event_2026-07-19_231115_w134",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 217.07418823242188,
+      "loss_kelvin": 16.688
+    },
+    {
+      "patch_index": 1711,
+      "sequence_id": "seq_event_2026-07-19_232115_w136",
+      "event_id": "event_2026-07-19",
+      "is_convective": false,
+      "b13_min_kelvin": 259.1082458496094,
+      "loss_kelvin": 16.429
+    },
+    {
+      "patch_index": 1811,
+      "sequence_id": "seq_event_2026-07-19_233115_w138",
+      "event_id": "event_2026-07-19",
+      "is_convective": false,
+      "b13_min_kelvin": 285.34881591796875,
+      "loss_kelvin": 15.3275
+    },
+    {
+      "patch_index": 1972,
+      "sequence_id": "seq_event_2026-07-19_234115_w140",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 226.04638671875,
+      "loss_kelvin": 18.341
+    },
+    {
+      "patch_index": 2091,
+      "sequence_id": "seq_event_2026-07-19_235115_w142",
+      "event_id": "event_2026-07-19",
+      "is_convective": false,
+      "b13_min_kelvin": 239.504638671875,
+      "loss_kelvin": 14.5866
+    },
+    {
+      "patch_index": 2195,
+      "sequence_id": "seq_event_2026-07-19_000115_w144",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 211.11322021484375,
+      "loss_kelvin": 27.1181
+    },
+    {
+      "patch_index": 2323,
+      "sequence_id": "seq_event_2026-07-19_001115_w146",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 213.75570678710938,
+      "loss_kelvin": 19.8043
+    },
+    {
+      "patch_index": 2456,
+      "sequence_id": "seq_event_2026-07-19_002115_w148",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 207.61038208007812,
+      "loss_kelvin": 43.1493
+    },
+    {
+      "patch_index": 2593,
+      "sequence_id": "seq_event_2026-07-19_003615_w151",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 209.26962280273438,
+      "loss_kelvin": 16.5485
+    },
+    {
+      "patch_index": 2723,
+      "sequence_id": "seq_event_2026-07-19_004615_w153",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 208.47073364257812,
+      "loss_kelvin": 18.6703
+    },
+    {
+      "patch_index": 2870,
+      "sequence_id": "seq_event_2026-07-19_005615_w155",
+      "event_id": "event_2026-07-19",
+      "is_convective": false,
+      "b13_min_kelvin": 276.9297180175781,
+      "loss_kelvin": 15.9376
+    },
+    {
+      "patch_index": 3005,
+      "sequence_id": "seq_event_2026-07-19_011115_w158",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 211.23611450195312,
+      "loss_kelvin": 46.3974
+    },
+    {
+      "patch_index": 3097,
+      "sequence_id": "seq_event_2026-07-19_011615_w159",
+      "event_id": "event_2026-07-19",
+      "is_convective": true,
+      "b13_min_kelvin": 209.39251708984375,
+      "loss_kelvin": 30.8067
+    }
+  ],
+  "train_diag_patches_detail": [
+    {
+      "patch_index": 5911,
+      "sequence_id": "seq_event_2026-05-20_224117_w98",
+      "event_id": "event_2026-05-20",
+      "is_convective": true,
+      "b13_min_kelvin": 217.93453979492188,
+      "loss_kelvin": 29.8102
+    },
+    {
+      "patch_index": 73,
+      "sequence_id": "seq_event_2026-01-01_030619_w01",
+      "event_id": "event_2026-01-01",
+      "is_convective": false,
+      "b13_min_kelvin": 272.5665283203125,
+      "loss_kelvin": 5.3468
+    },
+    {
+      "patch_index": 6428,
+      "sequence_id": "seq_event_2026-05-20_232617_w107",
+      "event_id": "event_2026-05-20",
+      "is_convective": true,
+      "b13_min_kelvin": 221.314453125,
+      "loss_kelvin": 13.4254
+    },
+    {
+      "patch_index": 3976,
+      "sequence_id": "seq_event_2026-05-20_200117_w66",
+      "event_id": "event_2026-05-20",
+      "is_convective": true,
+      "b13_min_kelvin": 210.3143310546875,
+      "loss_kelvin": 19.7468
+    },
+    {
+      "patch_index": 5112,
+      "sequence_id": "seq_event_2026-05-20_213617_w85",
+      "event_id": "event_2026-05-20",
+      "is_convective": true,
+      "b13_min_kelvin": 209.82269287109375,
+      "loss_kelvin": 59.4268
+    },
+    {
+      "patch_index": 3276,
+      "sequence_id": "seq_event_2026-05-20_190117_w54",
+      "event_id": "event_2026-05-20",
+      "is_convective": true,
+      "b13_min_kelvin": 211.4204864501953,
+      "loss_kelvin": 23.9222
+    },
+    {
+      "patch_index": 5870,
+      "sequence_id": "seq_event_2026-05-20_223617_w97",
+      "event_id": "event_2026-05-20",
+      "is_convective": false,
+      "b13_min_kelvin": 229.54922485351562,
+      "loss_kelvin": 11.6799
+    },
+    {
+      "patch_index": 2876,
+      "sequence_id": "seq_event_2026-01-01_065619_w47",
+      "event_id": "event_2026-01-01",
+      "is_convective": false,
+      "b13_min_kelvin": 274.7174072265625,
+      "loss_kelvin": 13.0878
+    },
+    {
+      "patch_index": 1898,
+      "sequence_id": "seq_event_2026-01-01_053619_w31",
+      "event_id": "event_2026-01-01",
+      "is_convective": false,
+      "b13_min_kelvin": 267.5273742675781,
+      "loss_kelvin": 9.0885
+    },
+    {
+      "patch_index": 1911,
+      "sequence_id": "seq_event_2026-01-01_053619_w31",
+      "event_id": "event_2026-01-01",
+      "is_convective": false,
+      "b13_min_kelvin": 289.3432922363281,
+      "loss_kelvin": 15.9913
+    }
+  ]
+}

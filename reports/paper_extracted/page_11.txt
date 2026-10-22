@@ -1,0 +1,55 @@
+=== PAGE 11 ===
+
+LIN et al.: SELF-SUPERVISED TEMPORAL SUPER-RESOLUTION FRAMEWORK WITH METEOR-Net 5403719
+TABLE II
+QUANTITATIVE EVALUATION RESULTS OF MULTICHANNEL TEMPORAL SUPER -R ESOLUTION RECONSTRUCTION
+Fig. 8. Comparison of error maps for individual cases of FY-4A multichannel temporal super-resolution reconstruction. T and T + 15 min represent full-disk
+observations of temporal low-resolution input, while T + 5 min and T + 10 min represent the RMSE error maps between the temporal super-resolution frames
+and the ground truth frames. The time is from 01:45 UTC to 02:00 UTC on July 4, 2023. (a) Channel 8 of the mediumwave infrared channel. (b) Channel
+10 of the water vapor channel. (c) Channel 12 of the longwave infrared channel.
+quantitative results validate the model’s capability for accu-
+rate temporal super-resolution reconstruction across diverse
+spectral channels.
+Fig. 8(a)–(c) illustrates error map examples for channels 8,
+10, and 12 (mediumwave infrared, water vapor, and longwave
+infrared, respectively). Compared to traditional linear interpo-
+lation and optical ﬂow methods, deep learning-based methods
+demonstrate a signiﬁcant reduction in both error extent and
+magnitude. However, high-error regions persist in areas of
+substantial variation. METEOR-Net, through its nonlinear
+dynamic modeling of channel temporal-ﬂow evolution, further
+reduces the occurrence of high-error points.
+E. Convective Processes Reconstruction Comparison
+Experiment
+The 10.7-µm channel of the FY-4A geostationary satellite
+is located within an atmospheric window with minimal
+absorption, enabling its channel brightness temperature to
+eﬀectively represent the cloud-top temperature of convective
+clouds. Consequently, this channel is commonly utilized
+for the identiﬁcation and tracking of convective clouds.
+Thresholds of 273K, 241K, and 221K [50] are applied to the
+10.7-µm channel to calculate CSI, POD, and FAR, thereby
+quantitatively evaluating the model’s temporal super-
+resolution reconstruction performance in cold cloud regions,
+convective cloud regions, and strong convective cloud regions.
+These quantitative evaluation results are used to indicate the
+model’s performance in reconstructing convective processes.
+Fig. 9 illustrates the variation in CSI, POD, and FAR across
+these three brightness temperature thresholds for six tem-
+poral super-resolution reconstruction methods, with metrics
+averaged across all test samples. METEOR-Net consistently
+achieves superior CSI and POD values across all thresholds
+while maintaining low FAR, and exhibits notably slower
+degradation with decreasing brightness temperature thresholds
+compared to alternative methods. This performance charac-
+teristic indicates robust capability of METEOR-Net in ﬁtting
+rapid convective evolution processes within convective and
+strong convective cloud regions. While competing methods
+achieve comparable CSI and POD values at the 273K thresh-
+old, their performance deteriorates rapidly at lower thresholds,
+suggesting limited capability in modeling nonlinear processes
+such as convective cloud generation, development, merger, and
+dissipation within convective regions.
+Fig. 10 presents two case studies of convective evolution.
+Fig. 10(a) depicts a typical early stage deep convective cloud
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 

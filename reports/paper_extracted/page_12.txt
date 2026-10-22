@@ -1,0 +1,67 @@
+=== PAGE 12 ===
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+Fig. 9. Comparison of the changes in CSI, POD, and FAR metrics of temporal super-resolution reconstruction results for diﬀerent models with decreasing
+brightness temperature thresholds.
+TABLE III
+QUANTITATIVE RESULTS OF MULTISCALE INPUT EXPERIMENTS WITH DIFFERENT INPUT PATCH SIZES
+formation process. The process involves cloud-top center
+ascent to the tropopause accompanied by cooling. While the
+convective evolution process is not captured in temporally
+low-resolution full-disk observations, METEOR-Net success-
+fully reconstructs the high-resolution evolution process and is
+more accurate than other models, nearly matching the ground
+truth labels. Fig. 10(b) presents a case of temporal super-
+resolution reconstruction for a highly challenging convective
+process. In the temporal low-resolution full-disk observations,
+the extremely low temperature points form on the left side
+of the convective region at t = T + 15 min. However, in reality,
+the points form on the right side of the convective region at
+t = T + 5 min and subsequently move to the left. Except for
+METEOR-Net, all methods incorrectly identify this, which is
+related to the linear constraints in these methods. In contrast,
+METEOR-Net accurately locates the generation position and
+time of the points by learning the nonlinear dynamics of clouds
+and water vapor.
+To evaluate the temporal super-resolution reconstruction
+capability of METEOR-Net for convective processes when
+smaller local regions are used as input, we conduct a set
+of multiscale input experiments. On the test set, three infer-
+ence settings are considered: 1) full-patch input, where each
+128×128 subregion block is super-resolved as a whole; 2) 1/4
+local input, where each 128 × 128 block is divided into four
+64× 64 subpatches, which are super-resolved independently
+and then stitched back to 128 × 128; and 3) 1/16 local input,
+where each 128 × 128 block is divided into 16 32 × 32
+subpatches that are likewise super-resolved independently and
+then stitched back to 128 × 128.
+Quantitative results are reported in Table III. As the input
+patch size decreases from 128 × 128 to 32 × 32, SSIM
+only slightly decreases from 0.9948 to 0.9940, while RMSE
+increases mildly from 0.6816K to 0.7220K. The changes in
+CSI and POD at diﬀerent thresholds remain within about 0.01,
+and FAR increases by only 0.01–0.02. These results indicate
+that METEOR-Net maintains strong quantitative performance
+even when inference is performed on smaller local subregions.
+All the reconstruction comparison experiments above are
+conducted under the ﬁxed data split described. To quantify the
+uncertainty of METEOR-Net with respect to diﬀerent dataset
+partitions, a ﬁvefold cross-validation over the years 2018–2022
+has further been performed. In each fold, one year is used as
+the validation set and the remaining four years are used for
+training, while the test set is still ﬁxed as 2023 and is never
+involved in training or validation. The mean and standard
+deviation of each evaluation metric on the test set over the
+ﬁve runs are then computed. As summarized in Table IV, the
+cross-validation means are very close to the results obtained
+with the ﬁxed split, and the standard deviations are extremely
+small, indicating that the performance of METEOR-Net is
+insensitive to the particular combination of training years and,
+from another perspective, supporting the use of the ﬁxed split
+in the main experiments.
+F . Ablation Study
+An ablation study is conducted to validate the eﬀectiveness
+of individual components in the METEOR-Net. As shown
+in Table V, the model architecture is systematically ablated
+by sequentially removing the MCE mechanism, convective
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 

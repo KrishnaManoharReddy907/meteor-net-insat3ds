@@ -1,0 +1,95 @@
+{
+  "timestamp": "2026-10-22T15:33:25.667505",
+  "total_observations": 288,
+  "events": {
+    "event_2026-01-01": {
+      "total_scans": 72,
+      "total_windows": 54,
+      "sample_target_time": "2026-01-01 05:31:19 UTC",
+      "b13_min_kelvin": 206.50421142578125,
+      "b13_mean_kelvin": 269.9976806640625,
+      "b13_max_kelvin": 298.131103515625,
+      "b13_p01_kelvin": 223.28097534179688,
+      "b13_p05_kelvin": 234.40402221679688,
+      "b13_p50_kelvin": 273.11962890625,
+      "frac_below_241k": 0.09477057726278526,
+      "frac_below_221k": 0.006094516177730751,
+      "count_below_221k": 22567,
+      "sample_128x128_patches": 60,
+      "sample_convective_patches": 0,
+      "convective_patch_pct": 0.0
+    },
+    "event_2026-05-20": {
+      "total_scans": 72,
+      "total_windows": 54,
+      "sample_target_time": "2026-05-20 21:31:17 UTC",
+      "b13_min_kelvin": 198.3923797607422,
+      "b13_mean_kelvin": 279.7163391113281,
+      "b13_max_kelvin": 323.5113525390625,
+      "b13_p01_kelvin": 219.839599609375,
+      "b13_p05_kelvin": 234.89566040039062,
+      "b13_p50_kelvin": 287.6840515136719,
+      "frac_below_241k": 0.07456687939544733,
+      "frac_below_221k": 0.01168725493452723,
+      "count_below_221k": 43276,
+      "sample_128x128_patches": 60,
+      "sample_convective_patches": 46,
+      "convective_patch_pct": 76.7
+    },
+    "event_2026-07-19": {
+      "total_scans": 72,
+      "total_windows": 54,
+      "sample_target_time": "2026-07-19 23:31:15 UTC",
+      "b13_min_kelvin": 197.16331481933594,
+      "b13_mean_kelvin": 281.53497314453125,
+      "b13_max_kelvin": 314.416259765625,
+      "b13_p01_kelvin": 212.03501892089844,
+      "b13_p05_kelvin": 226.90670776367188,
+      "b13_p50_kelvin": 292.0472412109375,
+      "frac_below_241k": 0.09337624097415036,
+      "frac_below_221k": 0.03178076701728971,
+      "count_below_221k": 117679,
+      "sample_128x128_patches": 60,
+      "sample_convective_patches": 41,
+      "convective_patch_pct": 68.3
+    },
+    "event_2026-09-07": {
+      "total_scans": 72,
+      "total_windows": 54,
+      "sample_target_time": "2026-09-07 19:31:17 UTC",
+      "b13_min_kelvin": 191.81686401367188,
+      "b13_mean_kelvin": 278.5937805175781,
+      "b13_max_kelvin": 316.5056457519531,
+      "b13_p01_kelvin": 212.03501892089844,
+      "b13_p05_kelvin": 226.90670776367188,
+      "b13_p50_kelvin": 288.23712158203125,
+      "frac_below_241k": 0.11050310883249789,
+      "frac_below_221k": 0.031355417481244784,
+      "count_below_221k": 116104,
+      "sample_128x128_patches": 60,
+      "sample_convective_patches": 46,
+      "convective_patch_pct": 76.7
+    }
+  },
+  "training_normalization": {
+    "stats_file": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\outputs\\normalization\\frozen_global_train_stats.json",
+    "mean_kelvin": [
+      248.68121337890625,
+      279.7364501953125,
+      279.0452575683594,
+      276.9892883300781
+    ],
+    "std_kelvin": [
+      10.284988403320312,
+      17.90009880065918,
+      18.279577255249023,
+      17.661449432373047
+    ],
+    "channel_order": [
+      9,
+      13,
+      14,
+      15
+    ]
+  }
+}

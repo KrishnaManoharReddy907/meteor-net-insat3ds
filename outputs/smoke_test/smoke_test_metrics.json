@@ -1,0 +1,86 @@
+{
+  "status": "PASS",
+  "timestamp": "2026-10-22T11:24:52Z",
+  "model_architecture": {
+    "class": "METEORNet",
+    "total_parameters": 22086943,
+    "trainable_parameters": 22086943,
+    "in_channels": 4,
+    "out_channels": 4
+  },
+  "dataset_integration": {
+    "train_patch": {
+      "event_id": "event_2026-01-01",
+      "sequence_id": "seq_event_2026-01-01_030119_w00",
+      "input_shape": [
+        1,
+        4,
+        4,
+        128,
+        128
+      ],
+      "target_shape": [
+        1,
+        4,
+        128,
+        128
+      ],
+      "mask_shape": [
+        1,
+        128,
+        128
+      ],
+      "valid_pixels": 16384,
+      "is_convective": false
+    },
+    "val_patch": {
+      "event_id": "event_2026-07-19",
+      "sequence_id": "seq_event_2026-07-19_210115_w108",
+      "input_shape": [
+        1,
+        4,
+        4,
+        128,
+        128
+      ],
+      "target_shape": [
+        1,
+        4,
+        128,
+        128
+      ],
+      "mask_shape": [
+        1,
+        128,
+        128
+      ],
+      "valid_pixels": 16384,
+      "is_convective": true
+    },
+    "event_isolation_verified": true
+  },
+  "optimization": {
+    "train_loss_physical_kelvin": 5.658814430236816,
+    "val_loss_physical_kelvin": 15.62575912475586,
+    "optimizer": "AdamW",
+    "lr": 0.0001,
+    "mean_grad_norm": 2.741688624118419,
+    "parameters_updated_count": 104,
+    "val_weight_mutation_count": 0,
+    "normalization_stats_mutated": false
+  },
+  "checkpoint": {
+    "path": "checkpoints/smoke_test\\smoke_test_checkpoint.pt",
+    "size_mb": 252.89,
+    "save_time_s": 0.3086,
+    "reload_time_s": 0.4557,
+    "reproduction_max_diff": 0.0
+  },
+  "resources": {
+    "total_duration_s": 18.437,
+    "train_step_duration_s": 7.074,
+    "val_step_duration_s": 3.644,
+    "peak_python_heap_mb": 513.91,
+    "current_python_heap_mb": 229.04
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "bs1": {
+    "mean_step_time_s": 8.451080999989063,
+    "mean_load_time_s": 0.715436160005629,
+    "mean_fwd_time_s": 2.4556069800630214,
+    "mean_bwd_time_s": 5.2035214801318945,
+    "mean_opt_time_s": 0.076486099883914
+  },
+  "bs2": {
+    "mean_step_time_s": 16.603355099912733,
+    "mean_load_time_s": 0.009850299917161465,
+    "mean_fwd_time_s": 5.595331100048497,
+    "mean_bwd_time_s": 10.885065850103274
+  },
+  "val": {
+    "mean_val_step_time_s": 3.7074442501179874
+  },
+  "memory": {
+    "peak_heap_mb": 514.1184520721436,
+    "current_heap_mb": 228.6125831604004
+  }
+}

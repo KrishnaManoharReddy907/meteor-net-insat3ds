@@ -1,0 +1,1799 @@
+
+
+========================================
+=== PAGE 1 ===
+========================================
+
+IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026 5403719
+Self-Supervised Temporal Super-Resolution
+Framework With METEOR-Net for Enhancing
+Convective Process Reconstruction in
+Geostationary Satellite Cloud Data
+Xiang Lin
+ , Yunying Li
+ , Zitong Chen
+ , and Xiongwei Kou
+Abstract—Next-generation geostationary satellite FY-4A pro-
+vides cloud data with a temporal resolution of 15 min, while
+shallow convection may evolve into deep convection in less than
+30 min. This temporal sparsity limits the satellite’s abil-
+ity to capture rapid convective processes, thereby hindering
+eﬀective weather monitoring and early warning. Temporal super-
+resolution technology is used to address this limitation, but
+existing temporal super-resolution methods often directly apply
+video frame interpolation (VFI) paradigms designed for RGB
+images, resulting in transfer errors. To address such issues, a
+novel spatiotemporal self-supervised temporal super-resolution
+framework is proposed, which leverages the spatiotemporal
+consistency between the regional and full-disk observations of the
+FY-4A satellite to establish a temporal super-resolution mapping
+relationship without the need for manually labeled data. In
+addition, a multichannel encoding and temporal-ﬂow evolution
+network for optimized-observation reconstruction (METEOR-
+Net) is proposed, which addresses the challenges of multichannel
+asynchrony and complex nonlinear evolution in geostationary
+satellite cloud data through multichannel collaborative encoding
+(MCE), temporal-ﬂow estimation and evolution (TFEE), and
+evolution-aware feature fusion mechanisms. To enhance the
+focus on convective regions, a new convective region-weighted
+loss function and evaluation metrics are designed. Experimental
+results demonstrate that this method achieves state-of-the-art
+(SOTA) performance in visual quality and convective process
+reconstruction accuracy in the FY-4A satellite cloud data tempo-
+ral super-resolution reconstruction task, successfully enhancing
+the temporal resolution of FY-4A cloud data from 15 to 5 min.
+This provides high-resolution satellite cloud data for future
+convective weather monitoring and early warning systems.
+Index Terms—Multichannel collaborative, self-supervised
+learning, temporal super-resolution, temporal-ﬂow evolution.
+Received 20 January 2025; revised 5 December 2025 and 9 February 2026;
+accepted 17 March 2026. Date of publication 24 March 2026; date of current
+version 6 April 2026. This work was supported in part by the National Natural
+Science Foundation of China under Grant U2242201 and in part by Hunan
+Provincial Natural Science Foundation of China under Grant 2021JC0009.
+(Corresponding author: Yunying Li.)
+Xiang Lin and Zitong Chen are with the College of Meteorology and
+Oceanography, National University of Defense Technology, Changsha 410073,
+China (e-mail: linxiang2022@nudt.edu.cn; chenzt10@nudt.edu.cn).
+Yunying Li is with the College of Meteorology and Oceanography, National
+University of Defense Technology, Changsha 410073, China, and also with
+the Key Laboratory of High Impact Weather (Special), China Meteorological
+Administration, Changsha 410073, China (e-mail: ghlyy@mail.iap.ac.cn).
+Xiongwei Kou is with the Unit No. 94595 of Chinese People’s Liberation
+Army, Gaomi 261500, China (e-mail: kouxiongwei24@nudt.edu.cn).
+Digital Object Identiﬁer 10.1109/TGRS.2026.3677111
+I. I NTRODUCTION
+M
+ETEOROLOGICAL satellites are deployed in space
+to monitor Earth’s atmosphere, oceans, and surface
+conditions. These satellites are equipped with advanced remote
+sensing instruments that capture reﬂectance and radiation
+intensity at speciﬁed spectral wavelengths and spatiotemporal
+resolutions, providing essential information support for various
+meteorological operations. Based on their orbital characteris-
+tics, meteorological satellites are categorized into two types:
+polar-orbiting satellites [1], [2], [3], [4] and geostationary
+satellites [5], [6], [7]. Polar-orbiting satellites operate in low-
+Earth polar orbits, enabling comprehensive coverage of every
+region on Earth within a ﬁxed time period. These satellites
+are particularly suitable for long-term climate monitoring and
+polar observations. However, their revisit time of approxi-
+mately 12 h precludes continuous meteorological monitoring
+of speciﬁc regions. In contrast, geostationary satellites oper-
+ate in geostationary orbit, allowing sustained observation of
+the same region, making them ideal for real-time weather
+monitoring and early warning systems.
+Next-generation geostationary satellites, including GOES-
+16 [5], Himawari-8 [6], and FY-4A [7], are capable of full-disk
+observations and providing cloud data. For example, FY-4A
+provides geostationary satellite cloud data with a temporal res-
+olution of 15 min, based on its 15-min revisit time. While this
+temporal resolution is suﬃcient for studying long-term atmo-
+spheric trends, climate models, and other gradually evolving
+processes [8], [9], [10], [11], it proves inadequate for rapidly
+developing convective events, such as convective processes
+that may evolve from shallow convection to deep convection
+in just 30 min. When relying solely on full-disk data, only
+the initial and ﬁnal states of diﬀerent convective stages are
+captured, while the actual rapid evolution process within a
+revisit period remains unobserved, which limits the tracking
+and early warning for convective events. Consequently, con-
+vective weather monitoring and warning research is limited
+to mesoscale systems where temporal high-resolution satellite
+observations are available [12], [13], [14], making large-
+scale implementation challenging. This limitation is referred
+to as the temporal sparsity dilemma of geostationary satellites.
+Solving this dilemma requires temporal high-resolution data
+capable of capturing the actual convective evolution process.
+1558-0644 © 2026 IEEE. All rights reserved, including rights for text and data mining, and training of artiﬁcial intelligence and
+similar technologies. Personal use is permitted, but republication/redistribution requires IEEE permission.
+See https://www.ieee.org/publications/rights/index.html for more information.
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 2 ===
+========================================
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+However, due to technical and economic constraints, current
+geostationary satellites cannot acquire continuous full-disk
+data at high temporal resolutions. Therefore, temporal super-
+resolution technology, which enhances the temporal resolution
+of data through algorithms, o ﬀers a preferred solution without
+the need to modify the hardware.
+Traditional geostationary satellite cloud data processing
+often uses linear interpolation methods [15] for temporal
+super-resolution. These methods generate intermediate frames
+by a weighted combination of adjacent geostationary satellite
+cloud data frames, thereby increasing the frame rate within
+the same time period. However, such methods do not extract
+incremental information from geostationary satellite cloud
+data, fail to model complex cloud motion dynamics eﬀectively,
+making it challenging to obtain suﬃciently reliable temporal
+high-resolution data for practical applications.
+In the exploration of optimal temporal super-resolution
+solutions for geostationary satellite cloud data, artiﬁcial intel-
+ligence techniques based on spatiotemporal self-supervised
+learning have been increasingly applied to meteorological data
+mining and utilization [16], [17], [18], [19], [20], [21]. This
+self-supervised, data-driven paradigm, which does not rely on
+labeled data, oﬀers new insights for geostationary satellite
+cloud data temporal super-resolution.
+Due to the similarity between satellite temporal super-
+resolution and video frame interpolation (VFI), VFI methods
+based on spatiotemporal self-supervised learning have gained
+signiﬁcant attention. VFI methods based on spatiotemporal
+self-supervised learning are primarily categorized into two
+types: kernel or phase-based direct generation methods without
+ﬂow [22], [23], [24], [25], [26], [27], [28], [29], [30], and
+ﬂow-based generation methods [31], [32], [33], [34], [35],
+[36], [37], [38], [39], [40]. Compared to kernel or phase-based
+direct generation methods, ﬂow-based methods have become
+mainstream due to their ability to maintain motion consis-
+tency through ﬂow estimation, thereby avoiding incorrect and
+incoherent spatial displacements. The key idea of ﬂow-based
+generation methods lies in decomposing the VFI process
+into ﬂow estimation and ﬂow-guided frame reconstruction.
+Most studies adopt ﬂow-based generation methods, where
+neural networks are employed to estimate optical ﬂow between
+adjacent frames as explicit motion representations, followed
+by ﬂow-guided warping for intermediate frame reconstruction.
+Dosovitskiy et al. [41] pioneered data-driven optical ﬂow
+estimation using convolutional neural networks. Subsequently,
+Jiang et al. [31] proposed SuperSlomo, using a UNet archi-
+tecture for bidirectional optical ﬂow estimation and frame
+reconstruction through ﬂow-based warping for multiframe
+interpolation. Later research largely adopted this optical ﬂow-
+based interpolation paradigm, and focused on achieving more
+accurate ﬂow estimation [32], [35], [37], [38], [40].
+With the maturation of spatiotemporal self-supervised VFI
+technology, Vandal and Nemani [42] formulated the temporal
+super-resolution of geostationary satellite cloud data as a VFI
+task, adopted the VFI framework and optical ﬂow-based mod-
+eling paradigm, adapting the SuperSlomo-T (SSM-T) model
+to geostationary satellite cloud data temporal super-resolution
+through parameter ﬁne-tuning and retraining. Experimental
+results show that this method achieves higher accuracy
+compared to traditional super-resolution methods.
+However, despite the proven feasibility of transferring
+spatiotemporal self-supervised VFI methods to geostationary
+satellite cloud data temporal super-resolution, direct appli-
+cation of VFI frameworks and optical ﬂow-based modeling
+paradigms presents three signiﬁcant challenges due to funda-
+mental diﬀerences in data characteristics and task objectives
+as follows.
+First, a data construction challenge. As a data-driven
+method, the learning capacity of deep learning models is
+bounded by the characteristics of training data. While video
+frames can be readily captured at varying frequencies using
+low-cost recording devices, enabling the acquisition of con-
+tinuous high and low-frequency images for learning VFI
+mapping relationships, geostationary satellites, with their high
+operational costs, are limited to low-frequency full-disk obser-
+vation at 15-min intervals. Ensuring the reliability of the
+super-resolution mapping relationship constructed from geo-
+stationary satellite cloud data under these constraints presents
+the primary technical challenge that must be addressed.
+Notably, previous studies have not conducted systematic
+analyses of such reliability considerations.
+Second, model adaptation requirements. The spatiotemporal
+evolution characteristics of geostationary satellite cloud data
+diﬀer signiﬁcantly from video data, potentially introducing
+transfer errors when directly applying optical ﬂow-based
+VFI paradigms. These diﬀerences manifest in two aspects.
+First, geostationary satellite cloud data exhibits multichan-
+nel temporal asynchrony. Unlike RGB video frames, whose
+channels exhibit synchronized spatiotemporal variations in
+primary change regions as shown in Fig. 1(a), geostation-
+ary satellite cloud data shows the asynchronous temporal
+evolution dynamics of diﬀerent channels as illustrated in
+Fig. 1(b). These channels form complementary spatiotemporal
+relationships, exempliﬁed by mid-level water vapor enrich-
+ment preceding cloud-top brightness temperature decrease
+[43], [44]. Therefore, geostationary satellite temporal super-
+resolution modeling requires extra processing of multichannel
+to make use of their complementary evolution information, in
+contrast to VFI approaches that apply uniform optical ﬂow
+across RGB channels. Second, geostationary satellite cloud
+data presents complex nonlinear evolution characteristics. The
+changes in video frames as shown in Fig. 1(c), typically
+comprise static backgrounds (buildings) and moving fore-
+grounds (vehicles) with approximately linear, spatiotemporally
+continuous motion due to short temporal intervals, and the
+occlusion eﬀects generated by foreground object motion are
+typically processed through occlusion coeﬃcients as accom-
+panying processes to uniform motion, this allows optical
+ﬂow estimation using adjacent-frames under small motion
+assumption. However, as shown in Fig. 1(d), geostationary
+satellite cloud data exhibits extended temporal intervals with
+complex atmospheric processes aﬀecting cloud and water
+vapor dynamics. These dynamics, which are inﬂuenced by
+atmospheric circulation, cannot be approximated as linear
+small motion and violate basic optical ﬂow assumptions. In
+addition, the foreground changes of geostationary satellite
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 3 ===
+========================================
+
+LIN et al.: SELF-SUPERVISED TEMPORAL SUPER-RESOLUTION FRAMEWORK WITH METEOR-Net 5403719
+Fig. 1. Comparison of characteristics between geostationary satellite cloud
+data and video data. (a) Synchronized variation characteristics of the RGB
+channels in video data. (b) Multichannel asynchronous variation character-
+istics of geostationary satellite cloud data. (c) Approximate linear motion
+variation characteristics of video data. (d) Complex nonlinear variation char-
+acteristics of geostationary satellite cloud data.
+cloud data encompass complex nonlinear processes, including
+the generation and dissipation of cloud and water vapor [45],
+[46], requiring information from multiple frames beyond adja-
+cent frames, and background occlusion eﬀects from nonlinear
+foreground change cannot be represented by simple occlusion
+coeﬃcients. These backgrounds, typically composed of the
+Earth’s surface, ocean surfaces, and other elements, which are
+in a relatively static state, should be handled diﬀerently.
+Third, training and evaluation strategy. The goals of geosta-
+tionary satellite temporal super-resolution diﬀer fundamentally
+from VFI goals, requiring adapted training objectives and
+evaluation metrics. While video interpolation aims to gen-
+erate multiple intermediate frames for visual smoothness,
+satellite temporal super-resolution focuses on reconstructing
+unobserved convective evolution processes, requiring inter-
+mediate frames to serve as reliable anchors for critical
+physical transitions. The sparse spatial distribution of con-
+vective regions poses challenges during model training, as
+these crucial features risk being smoothed out. Therefore,
+extra attention must be given to convective regions during
+the training of geostationary satellite temporal super-resolution
+models. Furthermore, image reconstruction metrics used in
+VFI frameworks inadequately quantify model performance in
+reconstructing convective processes, highlighting the need for
+specialized evaluation metrics focused on convective processes
+reconstruction capabilities.
+To address these challenges, we propose a novel spatiotem-
+poral self-supervised learning framework for geostationary
+satellite temporal super-resolution. This framework enhances
+the VFI techniques previously adopted in geostationary
+satellite cloud data temporal super-resolution tasks through
+comprehensive improvements in data construction, model
+architecture, and training-evaluation strategy. Speciﬁcally, we
+propose multichannel encoding and temporal-ﬂow evolution
+network for optimized-observation reconstruction (METEOR-
+Net), a network that maintains the advantages of ﬂow-based
+methods while eliminating dependence on optical ﬂow to
+mitigate the incompatibility issues of ﬂow-based approaches
+with geostationary satellite cloud data. The main contributions
+are as follows.
+1) The spatiotemporal consistency between regional obser-
+vation and full-disk observation of geostationary satel-
+lites is used to construct reliable temporal low-resolution
+and high-resolution data pairs. This method enables
+the formation of ground truth labels for spatiotemporal
+self-supervised learning constrained by spatiotemporal
+consistency relationships, eliminating the requirement
+for additional annotations.
+2) METEOR-Net is proposed as a novel architecture
+that goes beyond previous ﬂow-based methods through
+temporal sequence-ﬂow modeling. The network intro-
+duces three synergistic modules speciﬁcally designed
+to address the challenges of multichannel asynchrony
+and complementarity, nonlinear dynamics, and the
+accompanying occlusion modeling.
+3) A convective region-weighted loss function is pro-
+posed for training the model to make additional focus
+on the convective regions. Furthermore, meteorological
+evaluation metrics targeting convective process recon-
+struction are introduced to evaluate the model’s ability to
+reconstruct convective processes.
+4) Experimental results on the FY-4A satellite cloud data
+temporal super-resolution reconstruction task demon-
+strate that METEOR-Net outperforms existing temporal
+super-resolution methods for geostationary satellite
+data in both visual ﬁdelity and convective process
+reconstruction accuracy, establishing it as the current
+state-of-the-art (SOTA) method.
+II. D ATA
+A. Introduction to FY-4A Satellite Cloud Data
+The geostationary satellite cloud data used in this study
+is acquired from FY-4A, China’s next-generation geostation-
+ary satellite launched in December 2016 [7]. The Advanced
+Geostationary Radiation Imager (AGRI) onboard FY-4A cap-
+tures data across 14 spectral channels, spanning visible,
+near-infrared, mediumwave infrared, water vapor, and long-
+wave infrared. This comprehensive spectral coverage enables
+monitoring of Earth’s atmosphere, cloud systems, oceans, and
+land surface characteristics.
+The study region encompasses central and eastern China
+(20.0◦ N–40.0◦ N, 104.0◦ E–125.0◦ E), where convective
+weather events occur frequently. This region is selected
+to ensure the temporal super-resolution results encompass
+numerous rapid convective processes for model validation.
+To maintain focus on convective events, channels 7–14 are
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 4 ===
+========================================
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+TABLE I
+FY-4A G EOSTATIONARY SATELLITE CHANNELS
+Fig.
+2. FY-4A observation modes for each cycle. Blue represents full-disk
+observation every 15 min, and green represents regional observation three
+times every 15 min.
+selected for experimental analysis due to their strong cor-
+relation with convective weather and continuous availability
+throughout the day. The corresponding channel parameters are
+presented in Table I.
+B. Temporal Low-Resolution and High-Resolution Data
+Pairs
+The FY-4A satellite performs full-disk observations every
+15 min to provide full-disk data. This temporal resolution
+proves insuﬃcient for monitoring rapid convective processes
+and other fast-evolving weather processes. To address this
+limitation, FY-4A implements a regional coverage (REGC)
+observation mode, which conducts three consecutive obser-
+vations within a 15-min interval to provide regional data
+equivalent to 5-min temporal resolution. This observation
+mode enables high-frequency monitoring of target regions,
+providing crucial data support for tracking and warning con-
+vective events. However, FY-4A does not operate continuously
+in REGC mode. As illustrated in Fig. 2, the satellite alternates
+between full-disk and regional observation modes within a 3-h
+operational cycle.
+To meet the requirement for continuous high temporal
+resolution coverage, an optimal approach involves ﬁtting low-
+to-high resolution mapping relationships from full-disk data,
+thereby enhancing the temporal resolution of full-disk data.
+This constitutes the primary objective of the geostationary
+satellite temporal super-resolution tasks. The establishment
+of such mapping relationships requires explicit construction
+Fig.
+3. Sampling mode after spatiotemporal consistency validation for FY-
+4A geostationary satellite observations. The black dashed line represents the
+original full-disk observation, and the red dashed line represents the regional
+observation that replaces the full-disk observation after spatiotemporal con-
+sistency validation.
+of low-to-high resolution data pair representations. Given the
+absence of high temporal resolution records in full-disk obser-
+vations, the direct construction of temporal low-resolution
+and high-resolution data pairs from full-disk data becomes
+infeasible. To overcome this constraint, a mapping relationship
+construction method is proposed. This method leverages the
+spatiotemporal consistency between full-disk data and regional
+data, using temporal low-resolution and high-resolution data
+pairs from regional data to represent full-disk temporal res-
+olution mapping relationships. This enables the construction
+of low-to-high resolution mapping relationship samples in the
+form of data pairs.
+Speciﬁcally, the foundation for using regional data in place
+of full-disk data to construct data pairs lies in the spatiotempo-
+ral consistency between the selected full-disk data and regional
+data. Spatially, both regional and full-disk observation modes
+use the same AGRI instrument, ensuring continuity and con-
+sistency of observational data within identical spatial domains.
+This instrumental consistency validates the spatial correlation
+between full-disk data and regional data within speciﬁed
+latitude–longitude bounds. Temporally, AGRI performs north-
+to-south scanning of the globe within each full-disk revisit
+period. For the study region located in the mid-to-low latitudes
+of the Northern Hemisphere, the scanning time of this area
+in full-disk coverage observations mode approximates the
+middle of the scanning period. Correspondingly, the inter-
+mediate temporal point of regional data during this period
+demonstrates strong temporal alignment with full-disk data.
+Following this spatiotemporal consistency validation, regional
+data at intermediate time points within the study area are
+considered spatiotemporally consistent with full-disk data for
+each scanning period.
+As shown in Fig. 3, after spatiotemporal consistency ver-
+iﬁcation, a temporal low-resolution and high-resolution data
+pair consists of four frames L0, Ht1, Ht2, and L1. The regional
+data marked by the adjacent red dashed lines serve as the
+temporal low-resolution input frames L0 and L1, where the
+subscripts 0–1 denote a full-disk revisit interval of 15 min. Two
+sets of regional data between these adjacent red dashed lines
+constitute the temporal high-resolution ground truth labels Ht1
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 5 ===
+========================================
+
+LIN et al.: SELF-SUPERVISED TEMPORAL SUPER-RESOLUTION FRAMEWORK WITH METEOR-Net 5403719
+Fig. 4. Overview of the proposed METEOR-Net. It consists of the MCE module, TFEE module, and EFFR module, following an encode-evolve-reconstruct
+architecture.
+and Ht2 correspond to two equally spaced time points within
+the 15-min full-disk revisit interval, where the subscripts 0 to
+t1 to t2 to 1 is equivalent to adding 5, 10, and 15 min to the
+initial time point (5-min temporal resolution).
+Considering the complex evolution dynamics in geostation-
+ary satellite cloud data, the proposed temporal super-resolution
+model adopts a sequence-ﬂow modeling paradigm instead of
+the conventional adjacent-frame optical ﬂow-based modeling
+paradigm to capture higher order temporal dynamics. The
+input sequence is accordingly expanded by incorporating
+two additional frames preceding the adjacent frames, form-
+ing a six-frame sequence L−2, L−1, L0, Ht1, Ht2, and L1. Here,
+L−2, L−1, L0, and L1 serve as temporal low-resolution input
+sequence, while Ht1 and Ht2 serve as temporal high-resolution
+ground truth labels.
+Models trained on data constructed through this method
+eﬀectively represent the mapping relationship from 15- to
+5-min temporal resolution in regional observations. Through
+spatiotemporal consistency transfer, this mapping relationship
+is applicable to full-disk observations, enabling the generation
+of temporal high-resolution geostationary satellite cloud data
+at 5-min intervals.
+III. M ETHOD
+A. Preliminaries
+The temporal super-resolution task aims to reconstruct
+temporal high-resolution intermediate frames {Hti}Ti=1, where
+ti ∈ (0, 1), from given temporal low-resolution adjacent
+frames L0 and L1. Existing VFI modeling paradigms based on
+adjacent-frame optical ﬂow estimate the intermediate motion
+ﬁeld from frames L0 and L1. Under the small uniform motion
+assumption, optical ﬂow at diﬀerent time points ti is estimated
+to perform bidirectional ﬂow warping on L0 and L1, thereby
+reconstructing{Hti}Ti=1. This process can be simpliﬁed as
+F = Flow (L0, L1) (1)˚
+Hti
+	T
+i=1 = W (L0, L1, F, ti), ti∈ (0, 1) (2)
+where F represents the optical ﬂow estimated from adjacent
+frames, Flow denotes the optical ﬂow estimation model, W
+indicates the warping operation, and {Hti}Ti=1 represents the
+set of temporal high-resolution intermediate frames generated
+according to resolution requirements. Due to the complex
+nonlinear evolution characteristics of geostationary satellite
+cloud data, this modeling method frequently fails to recon-
+struct accurate temporal super-resolution results.
+To speciﬁcally address temporal super-resolution for geosta-
+tionary satellite cloud data, a sequence-ﬂow-based modeling
+paradigm is proposed as
+˚
+Hti
+	T
+i=1 = M
+ 
+{Lt}bt=−a, ti∈ (0, 1) (3)
+where {Lt}bt=−a represents a sequence of temporal low-
+resolution frames, with indices a and b determined by
+the required sequence length. M denotes a neural net-
+work parameterized by θ. θ is optimized through gradient
+descent to maximize the likelihood of generating temporal
+high-resolution intermediate ground truth frames{Hti}Ti=1 given
+the low-resolution frame sequence {Lt}bt=−a as follows:
+θ∗ = arg maxθP˚Hti	Ti=1 ˇˇ {Lt}bt=−a ;θ. (4)
+B. Multichannel Encoding and Temporal-Flow Evolution
+Network for Optimized-Observation Reconstruction
+The METEOR-Net implements the sequence-ﬂow-based
+modeling paradigm through a parameterized neural network
+M. As illustrated in Fig. 4, METEOR-Net adopts an encode-
+evolve-reconstruct architecture to maintain sequence-ﬂow par-
+ticipation in intermediate frame reconstruction without relying
+on optical ﬂow estimation. The architecture is composed of
+three components: multichannel collaborative encoding (MCE)
+module, temporal-ﬂow estimation and evolution (TFEE) mod-
+ule, and evolution-aware feature fusion and reconstruction
+(EFFR) module. The MCE module performs multichannel
+collaborative feature fusion and encodes the input sequence
+into latent space. Subsequently, the TFEE module estimates
+multiscale temporal-ﬂows and guides high-resolution spa-
+tiotemporal evolution. The EFFR module integrates evolved
+spatiotemporal features with pre-evolution spatial distribution
+features in the original space to reconstruct intermediate
+frames through feature redistribution.
+C. MCE Module
+Unlike RGB channels in video data, the channels in geosta-
+tionary satellite cloud data have distinct physical signiﬁcance
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 6 ===
+========================================
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+Fig. 5. Structure of the MCE module. It is divided into a full sequence branch and a skip branch, each consisting of GCS and local convolution encoding
+(LCE).
+and exhibit asynchronous spatiotemporal evolution characteris-
+tics. These characteristics enable complementary information
+exchange across channels, where temporal evolution in one
+channel can compensate for information gaps in others. For
+instance, water vapor variations typically precede and serve
+as precursors to changes in cloud-top brightness temperature.
+However, previous geostationary satellite cloud data tempo-
+ral super-resolution methods have not adequately addressed
+these characteristics, resulting in a lack of spatiotemporal
+consistency constraints between channels and the utilization of
+collaborative information during the feature encoding process.
+To address these limitations, the MCE module, inspired by
+channel attention mechanisms [47], is designed to perform
+compressed encoding of multichannel geostationary satellite
+cloud data.
+As illustrated in Fig. 5, the MCE module consists of two
+parallel branches, each consisting of a global channel squeeze
+(GCS) submodule and a local convolutional encoding submod-
+ule. The GCS submodule operates in the original data space,
+performing channel squeeze on each multichannel frame to
+generate channel descriptors based on global information.
+These descriptors learn sample-speciﬁc activation through a
+channel-dependent self-gating mechanism, selectively empha-
+sizing and suppressing channel features. This diﬀerentiable
+process enables the model to adjust channel weights in the
+fused features, following the computation as:
+s =σ
+0
+@Ws2∗δ
+0
+@Ws1∗
+HX
+i=1
+WX
+j=1
+Lt (i, j)
+HW + bs1
+1
+A + bs2
+1
+A (5)
+˜Lt = Wxs∗ (Lt⊙ s) (6)
+where Lt ∈ RCin×H×W denotes the module input, s ∈ RCin
+represents the channel descriptors generated from global infor-
+mation, and ˜Lt∈ RCout×H×W indicates the multichannel fused
+features after gating-based weighting. Ws1 and Ws2 denote
+1× 1 convolutional matrices for aﬃne transformation, Wxs
+represents a 3×3 convolutional kernel for local weighted sum-
+mation, bs1 and bs2 are bias terms,δ(·) denotes the LeakyReLU
+activation function, and σ(·) represents the Sigmoid activation
+function.
+The local convolutional encoding submodule follows the
+GCS submodule in series, performing nonlinear spatial trans-
+formations on the compressed and fused data through multiple
+small local convolutional kernels combined with normalization
+and activation functions. This process accomplishes dimen-
+sionality reduction and mapping from the original data space
+to the latent space. The resulting latent space features exhibit
+enhanced abstraction and information density while achieving
+feature dimension compression and redundancy reduction to
+minimize computational overhead. The process is formulated
+as
+f
+  ˜Lt =δ GN  W∗ ˜Lt + b (7)
+Xt = fN◦ fN−1◦···◦ f1
+  ˜Lt (8)
+where f ( ˜Lt) represents single-layer local convolutional encod-
+ing computation, Xt ∈ RCout×H′′×W′′ denotes the compressed
+encoded feature sequence, W represents the convolutional
+matrix, b indicates the bias term, GN denotes group nor-
+malization, and ◦ denotes function composition. The MCE
+module operates two parallel branches at the model’s preinput
+stage. The sequence branch takes the temporal low-resolution
+sequence{Lt}bt=−a as input, compressing and encoding it into
+feature sequence {Xt}bt=−a. The skip branch, taking adjacent
+frames L0, L1 as input, generates skip features {X′ti}Ti=1. The
+skip branch is designed with a single-layer local convolution to
+maximally preserve invariant features from the original space
+and ensure the subsequent reuse of spatial information from
+skip features.
+D. TFEE Module
+The previous optical ﬂow-based VFI paradigm applied to
+video data typically relies on small motion assumptions,
+treating motion as uniform optical ﬂow between adjacent
+frames due to short temporal intervals and small frame-
+to-frame variations. This method enables motion estimation
+and image warping based on the optical ﬂow paradigm.
+However, geostationary satellite cloud data presents funda-
+mentally diﬀerent characteristics, including extended temporal
+intervals and signiﬁcant frame-to-frame variations. Water
+vapor and cloud dynamics, inﬂuenced by complex atmo-
+spheric circulation, frequently exhibit nonlinear evolution
+processes, including convective generation and dissipation
+between frames. These inherent characteristics render small
+uniform motion assumptions inadequate for geostationary
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 7 ===
+========================================
+
+LIN et al.: SELF-SUPERVISED TEMPORAL SUPER-RESOLUTION FRAMEWORK WITH METEOR-Net 5403719
+Fig. 6. Structure of the TFEE module. It consists of a low-resolution temporal-
+ﬂow estimation module and a high-resolution temporal-ﬂow evolution module.
+satellite cloud data modeling. Under nonuniform motion con-
+ditions, the description of continuous motion through ﬁnite
+points presents inherent limitations: two points can only deﬁne
+linear change, failing to capture quadratic variations. Conse-
+quently, adjacent-frame information alone proves insuﬃcient
+for characterizing higher order nonlinear evolution between
+frames [48].
+The TFEE module addresses these complex, nonuniform
+dynamics through comprehensive design considerations. By
+using compressed encoded temporal low-resolution sequences
+rather than adjacent frames as input, the module models tem-
+poral characteristics within the sequence and generates multi-
+scale temporal-ﬂows as implicit variations representations to
+incorporate higher order nonlinear evolution information from
+extended sequences. The module implements a spatiotemporal
+evolution method to simulate cloud system generation, dissipa-
+tion, and movement processes under temporal-ﬂow guidance,
+replacing conventional optical ﬂow warping. This design
+enables better ﬁtting of nonlinear evolution processes while
+avoiding the limitations imposed by optical ﬂow assumption
+inductive bias on model capabilities.
+As illustrated in Fig. 6, the TFEE module architecture
+consists of two submodules: the low-resolution temporal-ﬂow
+estimation module and the high-resolution temporal-ﬂow evo-
+lution module. The module processes low-resolution feature
+sequences {Xt}bt=−a encoded by the MCE module as input.
+During each iteration, the initialized hidden state Znt−1 inter-
+acts with current temporal low-resolution sequence features
+through a long-range convolutional recurrent module. The low-
+resolution sequence spatiotemporal interaction process follows
+as:
+
+int, f nt , ont, ˜cnt =φ LN Wnx∗ Xnt + Wnh∗ Znt−1 + bn (9)
+Cnt = f nt ⊙ Cnt−1 + int⊙ ˜cnt (10)
+Znt = ont⊙φ Cnt (11)
+where Xnt ∈ RCout×H′′×W′′ denotes low-resolution features,
+Znt−1 ∈ RChid×H′′×W′′ represents the initialized hidden state,
+Cnt ∈ RChid×H′′×W′′ indicates the memory state, Wnx and Wnh
+represent convolution matrices associated with input and hid-
+den state calculations, bn denotes bias terms, LN represents
+conﬁgurable layer normalization, φ(·) denotes an abstract
+activation function, and int, f nt , ont , and ˜cnt indicate four gating
+terms in the recurrent process. The superscript n denotes
+the nth layer module, while the subscript t indicates the tth
+moment in recurrent computation.
+Through spatiotemporal interaction calculations across dif-
+ferent layers in the low-resolution temporal-ﬂow estimation
+module, the network receptive ﬁeld expands with increas-
+ing layer depth, accompanied by enhanced nonlocality of
+spatiotemporal features. This enables the establishment of
+temporal-ﬂows at diﬀerent scales through recurrent operations
+across layers. The process is formulated as
+˚
+Fnlow	Nn=1 =Flow{Xt}bt=−a ;˚Wnxl, Wnhl, bnl	Nn=1 (12)
+whereFlow represents the low-resolution sequence spatiotem-
+poral interaction process, {Xt}bt=−a ∈ RCout×H′′×W′′ denotes
+the low-resolution feature sequence, {Wnxl, Wnhl, bn}Nn=1 encom-
+passes all convolution matrices and bias terms associated
+with low-resolution sequence temporal-ﬂows computation, and
+{Fnlow}Nn=1 ∈ RChid×H′′×W′′ represents the generated multiscale
+temporal-ﬂows. Notably, given the distinct locality character-
+istics of convective weather as the research focus, recurrent
+convolutions employ small convolution kernels to prevent
+excessive smoothing of small-scale local features.
+The high-resolution temporal-ﬂow evolution module uses
+multiscale temporal-ﬂows as initial constraints to generate
+evolved features, constituting the core super-resolution mech-
+anism of the model. While the previous optical ﬂow-based
+interpolation paradigm generates intermediate frames by esti-
+mating optical ﬂow from adjacent frames and then warping the
+frames accordingly, this module replaces the warping process
+with temporal-ﬂow evolution to generate intermediate features
+as
+˚
+Fnhigh	Nn=1,˚Yti	Ti=1 =FhighX0,˚Fnlow	Nn=1 ;
+˚
+Wnxh, Wnhh, bnh	Nn=1 (13)
+whereFhigh represents the high-resolution temporal-ﬂow evo-
+lution process, X0∈ RCout×H′′×W′′ denotes the initial input at
+t = 0, Wnxh, Wnhh denote all convolution matrices associated
+with high-resolution temporal-ﬂow evolution computation,
+{Fnhigh}Nn=1 ∈ RChid×H′′×W′′ indicates the continuously updated
+high-resolution temporal-ﬂow, and {Yti}Ti=1 ∈ RCout×H′′×W′′
+represents the evolved feature sequence in latent space.
+The module initializes evolution with sequence features X0
+at t = 0, providing initial spatial distribution characteristics.
+The high-resolution temporal-ﬂow evolution process Fhigh
+symmetrically corresponds to the low-resolution sequence
+spatiotemporal interaction process Flow. During this process,
+multiscale temporal-ﬂows {Fnlow}Nn=1 are introduced in stages,
+generating spatiotemporal features indicating cloud movement,
+generation, and dissipation at diﬀerent scales through recurrent
+convolution calculations. The intermediate evolved features Yt1
+at t1 are produced through dimensional reduction via 1 × 1
+convolution fusion. Yt1 serves as the initial input for subsequent
+evolution, repeating the spatiotemporal interaction evolution
+process to generate all intermediate evolved features accord-
+ing to temporal resolution requirements, thus completing the
+generation of evolved feature sequence{Yti}Ti=1∈ RCout×H′′×W′′.
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 8 ===
+========================================
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+During temporal-ﬂow evolution, the representation of the
+variation ﬁeld{Fnhigh}Nn=1 no longer changes linearly with time
+but updates at ﬁxed temporal anchors. Each super-resolution
+temporal anchor updates the variation ﬁeld to simulate nonuni-
+form evolution processes. The temporal-ﬂow evolution process
+approximates spatiotemporal prediction, with the distinc-
+tion that the constraint information is established through
+multiscale temporal-ﬂow evolution with known initial and
+ﬁnal states {Xt}bt=−a. While spatiotemporal prediction fore-
+casts future states based on historical information, temporal
+super-resolution reconstruction reconstructs the intermediate
+processes based on known future states, essentially implement-
+ing an inverse application of spatiotemporal prediction models
+through the TFEE module.
+E. EFFR Module
+The temporal low-resolution sequence {Lt}bt=−a is mapped
+to latent space through the MCE module and undergoes
+temporal-ﬂow evolution in the TFEE module to generate
+evolved features {Yti}Ti=1. As these evolved features exist in
+latent space, the EFFR module uses a decoding structure
+approximately symmetric to the MCE module to align the
+dimensions of latent space evolved features {Yti}Ti=1 with pre-
+evolution skip features{X′ti}Ti=1. These features are then fused to
+reconstruct temporal high-resolution intermediate frames. The
+skip features, representing pre-evolution spatial distribution
+characteristics extracted through shallow networks from the
+original data, are used to account for relatively static back-
+ground regions in 3-D space, such as land surfaces, ocean
+surfaces, and low-level clouds or fog unaﬀected by weather
+systems. These relatively low-level regions are susceptible to
+varying degrees of occlusion by evolving upper-layer cloud
+systems. The pre-evolution spatial distribution characteristics
+represented by skip features provide a rapid feature memory
+highway for reconstructing these relatively static regions after
+occlusion, thereby balancing potentially inappropriate evolu-
+tion computations in speciﬁc regions.
+The EFFR module architecture, illustrated in Fig. 7, consists
+of a reconstruction module and an evolution-aware fusion
+module. The reconstruction module incorporates alternating
+convolutional and deconvolutional layers to restore dimension-
+ality compressed by the MCE module as
+˜Yti =δ GN WT2∗δ GN  W1∗ Yti + b1 + b2 (14)
+where ˜Yti∈ RCout×H×W denotes dimension-aligned evolved fea-
+tures, Yti∈ RCout×H′′×W′′ represents evolved features in latent
+space, W1 and WT2 indicate convolution and transposed convo-
+lution matrices, respectively, b denotes the bias terms, and GN
+denotes group normalization. The evolved feature sequence
+{Yti}Ti=1 is sequentially input to the reconstruction module to
+obtain the dimension-aligned evolved feature sequence{ ˜Yti}Ti=1.
+The evolution-aware fusion module processes dimension-
+aligned evolved features ˜Yti and skip features X′ti. These inputs
+are added along the channel dimension to form summed
+features Iti∈ RCout×H×W as
+Iti = X′ti + ˜Yti. (15)
+Fig. 7. Structure of the EFFR module. It consists of the reconstruction module
+and the evolution-aware fusion module.
+The summed features undergo evolution-aware map compu-
+tation through channel and spatial decoupling attention blocks
+as
+cmap = Wc2∗δ
+ 
+Wc1∗
+PH
+h=1
+PW
+w=1 Iti (h, w)
+HW + bc1
+!
++ bc2
+(16)
+smap = Ws∗ concat
+ 
+1
+Cout
+CoutX
+c=1
+Iti (c), maxc
+ 
+Iti
+
+!
++ bs (17)
+emap =σ
+ 
+Wp∗ concat
+ 
+cmap + smap, Iti
+
++ bp
+
+(18)
+where cmap, smap, and emap represent channel weight map,
+spatial weight map, and evolution-aware map, respectively,
+W denotes convolution matrices, b indicates bias terms,
+and max performs maximum value selection along chan-
+nels. The evolution-aware map mediates the tradeoﬀ between
+pre-evolution skip features representing original spatial distri-
+bution characteristics and evolved features that have undergone
+both deep encode–decode processing and temporal-ﬂow
+evolution.
+The evolution-aware map performs balanced fusion of
+pre-evolution and evolved features, restoring original spatial
+feature information when the model requires it, thereby ensur-
+ing spatial completeness and granularity in the reconstructed
+intermediate frames. The corresponding process is as follows:
+˜Iti = Iti + emap· ˜Yti + 1− emap· X′ti. (19)
+The fused features ˜Iti ∈ RCout×H×W undergo ﬁnal scale
+restoration to reconstruct intermediate frames ˆHti∈ RCﬁnal×H×W
+in data space as follows:
+ˆHti = Wh1∗ Wh2∗ ˜Iti + bh (20)
+where W and b represent scale restoration convolution matrices
+and bias terms and Wh2 includes GN and activation.
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 9 ===
+========================================
+
+LIN et al.: SELF-SUPERVISED TEMPORAL SUPER-RESOLUTION FRAMEWORK WITH METEOR-Net 5403719
+The design of the EFFR module is inspired by content-
+guided attention in dehazing models [49], where weight
+map fusion of high and low-level features enhances feature
+interaction during image reconstruction. This characteristic
+is adapted for super-resolution modeling, enabling evolution-
+aware fusion of pre-evolution and evolved features during
+intermediate frame pixel reconstruction, thereby strengthening
+the integration of original spatial and temporal evolution
+features to enhance reconstruction accuracy and granularity.
+F . Convective Region-Weighted Loss Function
+Loss functions quantify the diﬀerence between model
+predictions and ground truth values, serving as objective
+functions for optimization during model training. In temporal
+super-resolution tasks, loss functions typically measure the dif-
+ference between reconstructed intermediate frame sequences
+and high-resolution ground truth label sequences. As a
+reconstruction-based regression task, the temporal super-
+resolution task conventionally uses regression losses such
+as mean absolute error (MAE). For video frames, standard
+regression losses eﬀectively address global prediction errors,
+ensuring interframe continuity and smoothness through the
+minimization of overall prediction error, aligning with VFI
+objectives. However, for geostationary satellite cloud data,
+the primary objective of temporal super-resolution lies in
+reconstructing convective processes unobserved by temporal
+low-resolution observations. Given that convective regions,
+which constitute the primary areas of interest, typically occupy
+only a minimal portion of the data, direct application of MAE
+loss functions biases model learning toward global smoothness
+while neglecting intense variations in localized convective
+regions. Consequently, the loss function requires modiﬁcation
+to make additional focus on convective regions during model
+training.
+For model robustness considerations, the MAE loss is
+selected as the foundational loss function
+l
+ 
+H, ˆH = 1n nXi=1 ˇˇHi− ˆHiˇˇ (21)
+where Hi denotes the ith pixel of the high-resolution inter-
+mediate ground truth frame, ˆHi represents the ith pixel of the
+temporal high-resolution intermediate frame, and n indicates
+the total number of pixels.
+Building upon the MAE loss, weighted attention for con-
+vective regions is introduced
+lr
+ 
+H, ˆH = 1n nXi=1 w (Hi)ˇˇHi− ˆHiˇˇ (22)
+w (Hi) =
+8
+ˆ<
+ˆ:
+α, Hi,10.7µm≥ T1
+β, T2≤ Hi,10.7µm < T1
+γ, Hi,10.7µm < T2
+(23)
+where T1 and T2 represent the thresholds for convective and
+deep convective regions, respectively, α, β, and γ represent
+weighted coeﬃcients and Hi,10.7µm represents the 10.7 µm
+channel of the high-resolution intermediate ground truth frame.
+Based on research in convective region identiﬁcation [50],
+areas with brightness temperature below 241K in the 10.7 µm
+channel are identiﬁed as potential convective cloud regions,
+while areas below 221K indicate strong convective activity.
+Accordingly, T1 is set to 241K and T2 to 221K.
+The weighted single-step loss is accumulated across tempo-
+ral super-resolution steps to form the ﬁnal loss function
+lwr = 1T
+TX
+i=1
+lr
+ 
+Hti, ˆHti
+
+. (24)
+IV. E XPERIMENT
+A. Dataset
+The raw data for the dataset is acquired from the AGRI
+aboard the FY-4A satellite [7]. The dataset encompasses L1
+products with 4-km spatial resolution collected from May
+2018 to September 2023, covering a geographical domain of
+20.00◦N –40.00◦N latitude and 104.00◦E–125.00◦E longitude.
+After constructing paired samples and preprocessing
+sequences, we remove invalid data through continuity checks
+and missing data detection. NaN values in FY-4A observations
+are physically meaningless and usually indicate pixel dropout
+caused by scan or calibration anomalies. Even a few NaN
+pixels can produce nonphysical artifacts during normalization
+and convolutional propagation, which degrades training stabil-
+ity and reduces evaluation reproducibility. We therefore apply
+a strict conservative rule: a frame is marked invalid if any
+pixel contains NaN. For time series, temporal super-resolution
+training and evaluation use data pairs built from a six-frame
+window with ﬁxed relative time oﬀsets, L−2, L−1, L0, Ht1, Ht2,
+and L1. A missing frame at any time creates an unevenly
+spaced sequence and violates the temporal constraint, which
+introduces uncontrolled interpolation or alignment errors. To
+keep the input spacing consistent and ensure fair evaluation,
+the maximum allowed number of consecutive missing frames
+within a window is set to 0, and we discard the entire sequence
+once any frame is missing.
+After the above processing, the dataset is split in an approx-
+imate ratio of 4:1:1, with data from 2018 to 2021 used for
+training, data from 2022 used for validation, and data from
+2023 reserved as an independent test set. This “train-on-
+the-past, test-on-the-future” partitioning strategy is commonly
+adopted in temporal deep learning tasks to prevent temporal
+information leakage (e.g., training, validation, and test sets
+sharing data from the same year, which may lead to overﬁt-
+ting and overestimate the generalization to future scenarios)
+and to ensure the reliability of performance evaluation. All
+comparison methods use exactly the same split to guarantee
+a fair comparison. Each sequence L−2, L−1, L0, Ht1, Ht2, and
+L1 consists of six frames, comprising four temporal low-
+resolution input frames at 15-min intervals and two temporal
+high-resolution ground truth frames at 5-min intervals.
+To optimize computational resources and temporal eﬃ-
+ciency while ensuring experimental fairness and validity,
+centrally cropped 128 × 128 subregion blocks are used for
+model training and testing. This method aligns with estab-
+lished practices in neural network experiments involving
+geostationary satellite cloud data [51], [52], [53]. Sub-
+sequently, generalization experiments were conducted over
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 10 ===
+========================================
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+nontraining subregion blocks located in areas with complex
+terrain and diﬀerent climatic regimes, in order to assess the
+model’s generalization ability and applicability in regions that
+were not used for training.
+B. Experimental Setup
+The METEOR-Net is conﬁgured with the following archi-
+tectural parameters: The sequence branch of the MCE module
+comprises three layers, while the skip branch consists of
+one layer, both with 64 hidden units. The TFEE module
+is structured with four layers and 256 hidden units. In the
+EFFR module, 3 × 3 convolutional/deconvolutional kernels
+are used for the reconstruction module, while 7 × 7 con-
+volutional kernels are used for evolution-aware mapping and
+pixel rearrangement in the fusion module. LeakyReLU [54]
+is used as the primary activation function in most parts of
+the network, except for weighting processes where Sigmoid
+activation is applied for normalization, and the recurrent unit,
+where Sigmoid and Tanh are used. In the region-weighted loss
+function, α, β, and γ are set to 1, 2, and 5, respectively.
+To ensure experimental fairness in comparative analysis, all
+models used for comparison are implemented using oﬃcial
+open-source code. Model training is conducted uniformly on
+NVIDIA Tesla A100 GPUs with consistent hyperparameters:
+batch size of 64, maximum training epochs of 200, Adam
+optimizer with initial learning rate of 3 × 10−4. The learning
+rate decreases when the validation set loss no longer decreases,
+and training stops when it drops below 8 × 10−5.
+C. Evaluation Metrics
+The quantitative evaluation metrics for model performance
+are categorized into two groups: image quality metrics and
+meteorological evaluation metrics. Both groups are calculated
+frame-wise and then averaged over all evaluated frames.
+Image quality metrics include peak signal-to-noise ratio
+(PSNR) [55], structural similarity index (SSIM) [56], and root
+mean square error (RMSE). PSNR is based on mean square
+error (mse) between ground-truth frames and reconstruction
+frames, with higher values indicating smaller reconstruc-
+tion deviations. SSIM quantiﬁes structural similarity between
+ground truth and reconstructed frames, where higher values
+denote greater similarity. RMSE quantiﬁes the pixel-level error
+between the reconstructed frames and the ground truth frames,
+where a lower value indicates smaller errors. These metrics
+evaluate temporal super-resolution global visual ﬁdelity across
+all channels (channel 7–14), failing to assess the critical recon-
+struction performance of convective processes in geostationary
+satellite temporal super-resolution.
+Meteorological evaluation metrics include critical success
+index (CSI), probability of detection (POD), and false alarm
+rate (FAR), which are commonly used in precipitation now-
+casting evaluation [57], [58], [59], [60]. CSI, POD, and FAR,
+traditionally utilized in precipitation forecast evaluation, are
+adapted for geostationary satellite cloud data assessment. Since
+the 10.7-µm channel is situated within the infrared atmospheric
+window and experiences minimal atmospheric absorption,
+it serves as the primary channel for the identiﬁcation and
+tracking of convective clouds. Quantitative evaluation results
+from the 10.7-µm channel eﬀectively reﬂect the model’s per-
+formance in reconstructing convective processes. Therefore,
+the 10.7-µm channel is selected as the channel for assessing
+the performance of convective reconstruction. Brightness tem-
+perature thresholds of 273K, 241K, and 221K are established
+to identify cold cloud, convective cloud, and strong convective
+cloud regions [50], respectively. Given that lower cloud-top
+brightness temperatures typically indicate stronger convec-
+tive activity, pixels below these thresholds are designated
+as positive samples. This enables the computation of hits
+(reconstruction = 1 and truth = 1), misses (reconstruction = 0
+and truth = 1), and false alarms (reconstruction = 1 and truth
+= 0) for subsequent CSI, POD, and FAR calculations.
+CSI, also known as the threat score, integrates hit, miss, and
+false alarm events as
+CSI = HitsHits + Misses + False Alarm. (25)
+POD measures the model’s ability to capture actual events
+as
+POD = HitsHits + Misses. (26)
+FAR quantiﬁes the proportion of incorrectly identiﬁed
+events as
+FAR = False AlarmHits + False Alarm. (27)
+D. Multichannel Reconstruction Comparison Experiment
+In this section, the performance of METEOR-Net in the
+multichannel temporal super-resolution reconstruction task
+will be evaluated and compared with traditional temporal
+super-resolution methods and deep learning-based temporal
+super-resolution methods. Traditional methods include linear
+interpolation and optical ﬂow methods [61], where linear
+interpolation serves as a baseline using bilinear interpolation
+for intermediate frame generation, while the optical ﬂow
+method uses the classical Farneback algorithm for dense
+optical ﬂow ﬁeld estimation between adjacent frames. The
+deep learning-based baselines include FLA VR, SSM-T, and
+EMAIRA-VFI models. FLA VR, proposed by Kalluri et al.
+[30], represents the SOTA performance in VFI algorithms.
+SSM-T, recently developed by Vandal and Nemani [42] for
+the GOES-R satellite, represents the current SOTA in tem-
+poral super-resolution of geostationary satellite cloud data.
+EMAIRA-VFI, proposed by Wang et al. [62] is a transformer-
+based temporal super-resolution model for meteorological
+data, representing advanced techniques in meteorological tem-
+poral super-resolution.
+Table II presents quantitative evaluation results across chan-
+nels 7–14 of FY-4A for METEOR-Net and comparative
+models. EMAIRA-VFI provides a strong Transformer-based
+baseline and achieves competitive performance among the
+learning-based methods. Nevertheless, METEOR-Net still
+attains the best PSNR and the lowest RMSE on all channels,
+and achieves the best SSIM on 7 out of the 8 chan-
+nels, attributed to its architectural design speciﬁcally tailored
+for geostationary satellite cloud data characteristics. These
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 11 ===
+========================================
+
+LIN et al.: SELF-SUPERVISED TEMPORAL SUPER-RESOLUTION FRAMEWORK WITH METEOR-Net 5403719
+TABLE II
+QUANTITATIVE EVALUATION RESULTS OF MULTICHANNEL TEMPORAL SUPER -R ESOLUTION RECONSTRUCTION
+Fig. 8. Comparison of error maps for individual cases of FY-4A multichannel temporal super-resolution reconstruction. T and T + 15 min represent full-disk
+observations of temporal low-resolution input, while T + 5 min and T + 10 min represent the RMSE error maps between the temporal super-resolution frames
+and the ground truth frames. The time is from 01:45 UTC to 02:00 UTC on July 4, 2023. (a) Channel 8 of the mediumwave infrared channel. (b) Channel
+10 of the water vapor channel. (c) Channel 12 of the longwave infrared channel.
+quantitative results validate the model’s capability for accu-
+rate temporal super-resolution reconstruction across diverse
+spectral channels.
+Fig. 8(a)–(c) illustrates error map examples for channels 8,
+10, and 12 (mediumwave infrared, water vapor, and longwave
+infrared, respectively). Compared to traditional linear interpo-
+lation and optical ﬂow methods, deep learning-based methods
+demonstrate a signiﬁcant reduction in both error extent and
+magnitude. However, high-error regions persist in areas of
+substantial variation. METEOR-Net, through its nonlinear
+dynamic modeling of channel temporal-ﬂow evolution, further
+reduces the occurrence of high-error points.
+E. Convective Processes Reconstruction Comparison
+Experiment
+The 10.7-µm channel of the FY-4A geostationary satellite
+is located within an atmospheric window with minimal
+absorption, enabling its channel brightness temperature to
+eﬀectively represent the cloud-top temperature of convective
+clouds. Consequently, this channel is commonly utilized
+for the identiﬁcation and tracking of convective clouds.
+Thresholds of 273K, 241K, and 221K [50] are applied to the
+10.7-µm channel to calculate CSI, POD, and FAR, thereby
+quantitatively evaluating the model’s temporal super-
+resolution reconstruction performance in cold cloud regions,
+convective cloud regions, and strong convective cloud regions.
+These quantitative evaluation results are used to indicate the
+model’s performance in reconstructing convective processes.
+Fig. 9 illustrates the variation in CSI, POD, and FAR across
+these three brightness temperature thresholds for six tem-
+poral super-resolution reconstruction methods, with metrics
+averaged across all test samples. METEOR-Net consistently
+achieves superior CSI and POD values across all thresholds
+while maintaining low FAR, and exhibits notably slower
+degradation with decreasing brightness temperature thresholds
+compared to alternative methods. This performance charac-
+teristic indicates robust capability of METEOR-Net in ﬁtting
+rapid convective evolution processes within convective and
+strong convective cloud regions. While competing methods
+achieve comparable CSI and POD values at the 273K thresh-
+old, their performance deteriorates rapidly at lower thresholds,
+suggesting limited capability in modeling nonlinear processes
+such as convective cloud generation, development, merger, and
+dissipation within convective regions.
+Fig. 10 presents two case studies of convective evolution.
+Fig. 10(a) depicts a typical early stage deep convective cloud
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 12 ===
+========================================
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+Fig. 9. Comparison of the changes in CSI, POD, and FAR metrics of temporal super-resolution reconstruction results for diﬀerent models with decreasing
+brightness temperature thresholds.
+TABLE III
+QUANTITATIVE RESULTS OF MULTISCALE INPUT EXPERIMENTS WITH DIFFERENT INPUT PATCH SIZES
+formation process. The process involves cloud-top center
+ascent to the tropopause accompanied by cooling. While the
+convective evolution process is not captured in temporally
+low-resolution full-disk observations, METEOR-Net success-
+fully reconstructs the high-resolution evolution process and is
+more accurate than other models, nearly matching the ground
+truth labels. Fig. 10(b) presents a case of temporal super-
+resolution reconstruction for a highly challenging convective
+process. In the temporal low-resolution full-disk observations,
+the extremely low temperature points form on the left side
+of the convective region at t = T + 15 min. However, in reality,
+the points form on the right side of the convective region at
+t = T + 5 min and subsequently move to the left. Except for
+METEOR-Net, all methods incorrectly identify this, which is
+related to the linear constraints in these methods. In contrast,
+METEOR-Net accurately locates the generation position and
+time of the points by learning the nonlinear dynamics of clouds
+and water vapor.
+To evaluate the temporal super-resolution reconstruction
+capability of METEOR-Net for convective processes when
+smaller local regions are used as input, we conduct a set
+of multiscale input experiments. On the test set, three infer-
+ence settings are considered: 1) full-patch input, where each
+128×128 subregion block is super-resolved as a whole; 2) 1/4
+local input, where each 128 × 128 block is divided into four
+64× 64 subpatches, which are super-resolved independently
+and then stitched back to 128 × 128; and 3) 1/16 local input,
+where each 128 × 128 block is divided into 16 32 × 32
+subpatches that are likewise super-resolved independently and
+then stitched back to 128 × 128.
+Quantitative results are reported in Table III. As the input
+patch size decreases from 128 × 128 to 32 × 32, SSIM
+only slightly decreases from 0.9948 to 0.9940, while RMSE
+increases mildly from 0.6816K to 0.7220K. The changes in
+CSI and POD at diﬀerent thresholds remain within about 0.01,
+and FAR increases by only 0.01–0.02. These results indicate
+that METEOR-Net maintains strong quantitative performance
+even when inference is performed on smaller local subregions.
+All the reconstruction comparison experiments above are
+conducted under the ﬁxed data split described. To quantify the
+uncertainty of METEOR-Net with respect to diﬀerent dataset
+partitions, a ﬁvefold cross-validation over the years 2018–2022
+has further been performed. In each fold, one year is used as
+the validation set and the remaining four years are used for
+training, while the test set is still ﬁxed as 2023 and is never
+involved in training or validation. The mean and standard
+deviation of each evaluation metric on the test set over the
+ﬁve runs are then computed. As summarized in Table IV, the
+cross-validation means are very close to the results obtained
+with the ﬁxed split, and the standard deviations are extremely
+small, indicating that the performance of METEOR-Net is
+insensitive to the particular combination of training years and,
+from another perspective, supporting the use of the ﬁxed split
+in the main experiments.
+F . Ablation Study
+An ablation study is conducted to validate the eﬀectiveness
+of individual components in the METEOR-Net. As shown
+in Table V, the model architecture is systematically ablated
+by sequentially removing the MCE mechanism, convective
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 13 ===
+========================================
+
+LIN et al.: SELF-SUPERVISED TEMPORAL SUPER-RESOLUTION FRAMEWORK WITH METEOR-Net 5403719
+Fig. 10. Case study of temporal super-resolution reconstruction for convective processes. T and T + 15 min represent temporal low-resolution full-disk
+observations, while T + 5 min and T + 10 min represent ground truth frames or frames reconstructed through temporal super-resolution, and the ﬁrst row
+shows the real observation of the convection process, the second row shows an enlarged image of this observation, the subsequent rows display the results of
+temporal super-resolution reconstruction of the convection process using diﬀerent methods. (a) Time is from 05:15 UTC to 05:30 UTC on July 24, 2023. (b)
+Time is from 09:30 UTC to 09:45 UTC on June 30, 2023.
+TABLE IV
+FIVEFOLD CROSS -VALIDATION STATISTICS OF METEOR-N ET
+region-weighted loss, and temporal-ﬂow evolution mechanism,
+ultimately reducing to a basic U-shaped encoder–decoder. The
+progressive performance degradation across all evaluation met-
+rics demonstrates the eﬃcacy of each architectural component
+and design choice.
+G. Quantitative Veriﬁcation Experiment of Temporal-Flow
+Evolution
+To quantify the beneﬁt of temporal-ﬂow evolution, we
+conduct a controlled quantitative veriﬁcation experiment. We
+construct an optical ﬂow variant, denoted as OF, by replacing
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 14 ===
+========================================
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+TABLE V
+ABLATION STUDY QUANTITATIVE EVALUATION RESULTS
+TABLE VI
+FRAME -L EVEL PERFORMANCE UNDER STRONG AND WEAK CONVECTION SUBSETS
+the temporal-ﬂow evolution module in TFEE with a latent
+space bidirectional optical ﬂow interpolation module while
+keeping all other components unchanged. We further deﬁne
+two subsets from the test set, including a strong convection
+subset with min(T) < 221K and a weak convection subset
+with 221K ≤ min(T) < 241K. For each subset, we report
+the mean and standard deviation of frame-level metrics for
+TFEE and OF. Metrics at T < 221K are not applicable for
+the weak convection subset by deﬁnition. Table VI shows that
+TFEE consistently achieves higher SSIM and PSNR and lower
+RMSE on both subsets, and it also performs better on con-
+vection process metrics (CSI, POD, and FAR). TFEE further
+exhibits lower overall standard deviations, which indicates that
+temporal-ﬂow evolution is more robust and stable than optical
+ﬂow in both strong and weak convection scenarios.
+H. Regional Transfer Generalization Experiments
+To evaluate the generalization performance of the model
+trained over the central China region when applied to temporal
+super-resolution reconstruction over more complex terrain
+and diﬀerent climatic zones, we conduct a set of regional
+transfer generalization experiments. As shown in Fig. 11, four
+representative subregions are selected: 1) the Yunnan–Guizhou
+Plateau (complex high-elevation mountainous terrain); 2) the
+Yangtze River Delta coastal lowlands (land-sea transition
+zone); 3) a South China heavy-rainfall region around the
+Pearl River Delta (frequent severe convection and torrential
+rainfall); and 4) the semi-arid boundary region along the
+northern/western margins of the Loess Plateau. These subre-
+gions jointly cover typical combinations of terrain and climate
+from plateau to coastal areas and from humid to semi-arid
+environments.
+For each subregion, we evaluate the temporal super-
+resolution reconstruction performance of METEOR-Net and
+Fig. 11. Schematic locations of subregions. Red boxes denote the subregions
+used for regional transfer generalization experiments, and the blue dashed box
+indicates the subregion used for model training.
+the comparative methods on the 10.7-µm channel. As summa-
+rized in Table VII, METEOR-Net consistently achieves higher
+SSIM/PSNR and lower RMSE than SSM-T, FLA VR, and
+EMAIRA-VFI across the four subregions, and yields generally
+better or comparable CSI/POD/FAR values, indicating robust
+cross-regional generalization. This indicates that METEOR-
+Net exhibits good cross-regional generalization ability under
+markedly diﬀerent cloud regimes, ranging from plateau and
+coastal areas to heavy-rainfall and semi-arid regions. At the
+same time, the absolute metric values diﬀer among subre-
+gions, reﬂecting genuine diﬀerences in local cloud evolution
+characteristics.
+To further investigate these regional performance diﬀerences
+and account for the distinct cloud microphysical processes and
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 15 ===
+========================================
+
+LIN et al.: SELF-SUPERVISED TEMPORAL SUPER-RESOLUTION FRAMEWORK WITH METEOR-Net 5403719
+TABLE VII
+REGIONAL GENERALIZATION PERFORMANCE OF METEOR-N ET AND COMPARATIVE METHODS ON FOUR REPRESENTATIVE SUBREGIONS
+TABLE VIII
+PERFORMANCE OF METEOR-N ET BEFORE AND AFTER SMALL -S AMPLE REGIONAL FINE -T UNING ON FOUR REPRESENTATIVE SUBREGIONS
+triggering mechanisms in diﬀerent regions, we also examine
+the eﬀect of small-sample regional ﬁne-tuning. For each
+subregion, we randomly sample about 10% of the available
+training sequences and perform a lightweight ﬁne-tuning of
+the METEOR-Net model originally trained over central China,
+using only about 5% of the total training iterations. As reported
+in Table VIII, SSIM, PSNR, and RMSE are clearly improved
+in all four subregions after ﬁne-tuning, and CSI scores increase
+overall; POD and FAR also move toward more favorable
+values at most thresholds. These results show that, starting
+from a uniﬁed model, low-cost regional ﬁne-tuning with a
+small amount of local data can eﬀectively adapt METEOR-
+Net to convective cloud evolution under diﬀerent terrain and
+climate backgrounds, and signiﬁcantly mitigate performance
+gaps among diﬀerent cloud regimes. Taken together, these
+additional experiments provide a more comprehensive assess-
+ment of the model’s regional transfer generalization ability
+over complex terrain and diverse climate zones, and oﬀer
+practical guidance for further optimizing the model in speciﬁc
+key regions with limited local samples.
+I. Independent Validation With Radar and
+Precipitation-Based Tasks
+To further assess the physical credibility of the reconstructed
+ﬁelds, we introduce external datasets, including Doppler
+weather radar and surface precipitation observations from
+national meteorological stations, to independently validate the
+temporal super-resolution results.
+As illustrated in Fig. 12, two representative severe convec-
+tive cases are selected. In each case, the background shows
+the FY-4A 10.7-µm brightness temperature ﬁeld, and the
+green mask denotes composite radar reﬂectivity exceeding
+35 dBZ. Time instants at multiples of 15 min correspond
+to the original FY-4A observations, while the intermediate
+time steps are the temporally super-resolved reconstructions
+produced by METEOR-Net. In both examples, strong radar
+echoes exhibit good spatial correspondence with regions of
+markedly low brightness temperature, and this relationship is
+maintained consistently over time. Moreover, no large areas
+of spuriously cold cloud tops are found in regions where no
+pronounced radar echoes are present. These results indicate
+that, within the AGRI observation framework, METEOR-Net
+provides a physically reasonable description of the evolution
+of deep convective cloud systems, rather than learning spurious
+patterns that contradict the physical laws of atmospheric
+convection.
+To further validate the physical realism of the tempo-
+rally super-resolved reconstructions from a more quantitative
+perspective, we perform an additional independent eval-
+uation based on surface precipitation observations from
+national meteorological stations. Speciﬁcally, two downstream
+tasks are designed: station-based severe convective weather
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 16 ===
+========================================
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+Fig. 12. Two representative severe convective cases. Background shows the FY-4A/AGRI 10.7-µm brightness temperature ﬁeld, and the green mask denotes
+composite radar reﬂectivity ≥35 dBZ. (a) Typhoon rainband case from 23:05 to 23:30 UTC on July 27, 2023. (b) Mesoscale convective system case from
+20:40 to 21:05 UTC on May 4, 2023.
+identiﬁcation and station-based severe convective weather
+prediction. The experimental domain covers eastern and cen-
+tral China (20.40◦–38.28◦N, 107.04◦–124.92◦E) and contains
+nearly 1000 national meteorological stations. The dataset is
+split chronologically, with data from 2018 to 2021 used for
+training, 2022 for validation, and 2023 for testing. For both
+tasks, the objective is to determine, for all stations within
+the domain, whether severe convective weather is occurring
+at the current time or will occur within the next 1–3 h.
+Severe convective weather is deﬁned as the occurrence of
+heavy precipitation≥ 20 mm/h within a 40-km radius around
+a station.
+In both downstream tasks, we adopt the same U-Net
+architecture and training conﬁguration, and only vary the
+input sequences during training/validation/testing among three
+options: 1) the original FY-4A sequences with 15-min tempo-
+ral resolution (raw); 2) 5-min sequences obtained by simple
+temporal linear interpolation (linear); and 3) 5-min temporally
+super-resolved sequences produced by METEOR-Net (our).
+Since severe convective weather identiﬁcation and prediction
+must extract convective signals that are closely related to the
+occurrence of heavy surface precipitation from the temporal
+evolution of satellite cloud ﬁelds, performance diﬀerences
+under the same network architecture and training setup mainly
+reﬂect diﬀerences in the completeness of physically relevant
+information and the noise level carried by the respective input
+sequences. Therefore, superior performance in these down-
+stream tasks indicates that the input sequence provides a more
+realistic and detailed description of convective development
+and is more physically consistent with the independent surface
+precipitation observations.
+Table IX compares the results of the severe convective
+weather identiﬁcation task. Because temporal linear interpola-
+tion is only a simple weighted average of neighboring frames,
+it introduces erroneous convective structures and degrades the
+quality of the convective signal. As a result, using the linearly
+interpolated sequences as input leads to lower CSI and POD
+and higher FAR than using the original 15-min sequences. In
+contrast, when the METEOR-Net super-resolved sequences are
+used as input, CSI and POD are improved, and FAR is reduced
+TABLE IX
+SEVERE CONVECTION IDENTIFICATION PERFORMANCE
+WITH DIFFERENT INPUT SEQUENCES
+relative to the raw input. This indicates that the convective
+signals reconstructed by METEOR-Net are more consistent
+with the actual occurrence of heavy precipitation and provide
+more detailed, physically meaningful information for severe
+convective weather identiﬁcation that cannot be fully captured
+from the original 15-min sequences alone.
+Fig. 13 presents the comparison results for the severe
+convective weather prediction task. As expected, CSI and POD
+decrease with increasing lead time for all methods, while
+FAR increases. The METEOR-Net input (our) consistently
+achieves the highest CSI at lead times of 1, 2, and 3 h, and
+achieves the highest POD at 2 and 3 h, while maintaining the
+lowest FAR at all three lead times. These ﬁndings demonstrate
+that, under the independent constraint of surface precipita-
+tion observations, the temporally super-resolved sequences
+produced by METEOR-Net provide substantial beneﬁts for
+short-term severe convection forecasting, rather than merely
+yielding visually smoother images or ﬁtting noise.
+J. Channel Collaboration Interpretability Analysis
+As shown in Fig. 14, heat map analysis reveals several
+interesting ﬁndings, particularly in channel 12, a primary
+infrared imaging channel. During channel 12 reconstruction,
+a notable weight disparity emerges between channels 9 and
+10. Channel 12 (centered at 10.7 µm) operates within the
+infrared window region with minimal atmospheric absorption,
+enabling eﬀective cloud-top temperature measurement and
+cloud detection. In contrast, Channel 9 (6.25 µm) primarily
+detects upper-level water vapor, inﬂuencing large-scale atmo-
+spheric patterns while exhibiting limited direct impact on local
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 17 ===
+========================================
+
+LIN et al.: SELF-SUPERVISED TEMPORAL SUPER-RESOLUTION FRAMEWORK WITH METEOR-Net 5403719
+Fig. 13. Quantitative comparison of the 1–3 h severe convective weather prediction task. Raw denotes using the original FY-4A sequences with 15-min
+temporal resolution as input, Linear denotes using 5-min sequences obtained by temporal linear interpolation as input, and Our denotes using 5-min sequences
+generated by METEOR-Net as input.
+Fig. 14. Collaborative channel contribution heat maps during temporal
+super-resolution reconstruction. The contribution parameters are derived from
+adaptive channel weighting values in METEOR-Net’s MCE module. Each
+row represents a speciﬁc channel’s reconstruction process, with columns
+indicating the collaborative contribution degrees of all channels to that
+particular reconstruction process.
+cloud formations. Channel 10 (7.1 µm), focused on mid-
+level water vapor detection, directly inﬂuences atmospheric
+layer stability through moisture content. Enhanced mid-level
+humidity provides increased water vapor supply, facilitating
+latent heat release through vapor condensation and strengthen-
+ing convective intensity. Despite their proximate wavelengths
+within the water vapor channel, channel 10 demonstrates
+higher auxiliary signiﬁcance than channel 9 in channel 12
+reconstruction, aligning with the model’s adaptive weighting
+mechanism.
+In addition, channel 13, adjacent to channel 12 and tradition-
+ally employed for water vapor correction in cloud detection,
+exhibits elevated correlation with water vapor channels due
+to enhanced absorption sensitivity. This correlation manifests
+in the channel weights during water vapor channel recon-
+struction. These ﬁndings suggest that METEOR-Net may
+have captured the underlying mechanisms of convective cloud
+formation and development during its channel collaborative
+fusion and temporal-ﬂow evolution processes for temporal
+super-resolution reconstruction.
+V. C ONCLUSION AND FUTURE WORK
+In this article, a temporal super-resolution framework
+for geostationary satellite data based on spatiotemporal
+self-supervised learning is proposed, addressing limitations
+in conventional VFI frameworks through comprehensive
+improvements in data construction, model architecture, and
+training-evaluation strategy. In addition, a novel model,
+METEOR-Net, is introduced for temporal super-resolution of
+geostationary satellite cloud data. METEOR-Net is a ﬂow-
+based temporal super-resolution method that replaces optical
+ﬂow-based frame interpolation by estimating and evolving
+temporal-ﬂows, thereby better adapting to the data charac-
+teristics of geostationary satellites. Within this framework,
+extensive quantitative and qualitative experiments indicate that
+METEOR-Net yields temporal super-resolution reconstruc-
+tion results that surpass existing temporal super-resolution
+methods and models for geostationary satellites in terms
+of visual ﬁdelity and the accuracy of convective process
+reconstruction. Regional transfer generalization tests, together
+with additional experiments over subregions with diﬀerent
+terrain and climatic conditions and small-sample regional ﬁne-
+tuning, provide a comprehensive assessment of the model’s
+regional generalization ability and indicate good potential
+for regional transferability. Although an exhaustive evaluation
+across all possible climate zones has not yet been conducted,
+these regional experiments suggest a practically feasible usage
+pattern: ﬁrst, pretrain a general model over a broad domain,
+and then perform lightweight ﬁne-tuning with a small number
+of local samples in the target region, thereby striking a balance
+between computational cost and regional adaptability.
+In addition, an interpretability analysis of METEOR-Net’s
+temporal super-resolution reconstruction process is conducted.
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 18 ===
+========================================
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+At the same time, the physical credibility of the tempo-
+rally super-resolved ﬁelds produced by METEOR-Net is
+further supported by independent validations using radar and
+precipitation-based tasks.
+This study improves the temporal resolution of FY-4A
+cloud data from 15 to 5 min, which alleviates the temporal
+sparsity of geostationary measurements and provides higher
+temporal-resolution cloud observation sequences for future
+convective weather identiﬁcation and warning. Case analyses
+of convective evolution show that METEOR-Net reconstructs
+the cloud-top cooling evolution associated with early deep
+convection formation within the 15 min observation gap.
+Under more challenging rapidly developing conditions, it also
+captures the formation location and timing of the very low
+brightness temperature core and its subsequent displacement.
+Independent validation based on radar reﬂectivity con-
+sistency checks and station-precipitation-based downstream
+identiﬁcation and prediction tasks further indicates that the
+reconstructed ﬁelds exhibit good spatiotemporal correspon-
+dence with regions of intense radar echoes, do not produce
+widespread spurious cold cloud tops, and provide more phys-
+ically meaningful information for downstream applications.
+Although the temporal super-resolution model performs
+well in reconstruction experiments, we ﬁnd that its reconstruc-
+tion errors remain nonnegligible for operational applications.
+The multichannel error maps in the experiments show that
+large errors tend to concentrate in regions with rapid evolution.
+This challenge is most pronounced during convective initiation
+and rapid development, when cloud systems exhibit strong
+nonlinearity and high temporal variability, which makes inter-
+mediate frame reconstruction more diﬃcult. During initiation,
+the cold cloud-top signal can be weak and conﬁned to a
+small fraction of pixels, which increases sensitivity to small
+perturbations. During rapid development, fast nonlinear evolu-
+tion, and displacement can increase the risk of spatiotemporal
+biases.
+Based on these characteristics, we recommend com-
+bining the 5-min super-resolved frames with the original
+FY-4A observations at the 15-min anchor times to perform
+temporal-consistency checks and quality control, with partic-
+ular attention to the propagation of reconstruction errors into
+downstream applications. For example, convective identiﬁca-
+tion can suﬀer from missed detections or false alarms due
+to biases in cold cloud-top location or intensity, and short-
+term precipitation nowcasting can also be aﬀected. For critical
+operational applications, it is further advisable to incorporate
+uncertainty-aware safeguards, including multisource informa-
+tion fusion such as radar and numerical weather prediction
+(NWP), multimodel or ensemble consistency checks, and
+conﬁdence-based quality control, to ﬂag and manage low-
+conﬁdence reconstructions.
+Finally, in this study, METEOR-Net is instantiated to per-
+form temporal super-resolution from 15 to 5 min within each
+full-disk revisit interval. Speciﬁcally, two intermediate frames
+at T + 5 min and T + 10 min are reconstructed using 5-min
+FY-4A/AGRI REGC observations as temporal high-resolution
+ground truth labels. Nevertheless, the sequence-ﬂow-based
+architecture itself is not intrinsically restricted to a ﬁxed
+temporal step and can, in principle, be extended via time con-
+ditioning to interpolate intermediate frames at arbitrary time
+points within the revisit window. At present, this capability
+cannot be rigorously validated on FY-4A because the available
+ground truth observations have a temporal resolution of only
+5 min. The next-generation geostationary satellite FY-4B,
+however, can provide regional observations with a temporal
+resolution of 1 min. In future work, we plan to migrate
+the proposed temporal super-resolution framework to FY-4B
+data and to conduct more stringent observational validation of
+intermediate reconstructions at ﬁner time resolutions, further
+assessing the physical ﬁdelity of METEOR-Net’s arbitrary
+time interpolation for rapidly evolving convective processes.
+REFERENCES
+[1] G. L. Stephens et al., “The cloudsat mission and the a-train: A new
+dimension of space-based observations of clouds and precipitation,”
+Bull. Amer. Meteorological Soc., vol. 83, no. 12, pp. 1771–1790, Dec.
+2002.
+[2] D. P. Roy et al., “Landsat-8: Science and product vision for terrestrial
+global change research,” Remote Sens. Environ., vol. 145, pp. 154–172,
+Apr. 2014.
+[3] R. Torres et al., “GMES Sentinel-1 mission,” Remote Sens. Environ.,
+vol. 120, pp. 9–24, May 2012.
+[4] T. S. Pagano and R. M. Durham, “Moderate resolution imaging spec-
+troradiometer (MODIS),” Proc. SPIE, vol. 1939, pp. 2–17, Aug. 1993.
+[5] Goes-R Advanced Baseline Imager (ABI) Algorithm Theoretical Basis
+Document for Cloud and Moisture Imagery Product (CMIP). Accessed:
+Jun. 24, 2019. [Online]. Available: https://www.star.nesdis.noaa
+[6] K. Bessho et al., “An introduction to Himawari-8/9- Japan’s new-
+generation geostationary meteorological satellites,” J. Meteorological
+Soc. Japan. Ser. II, vol. 94, no. 2, pp. 151–183, 2016.
+[7] J. Yang, Z. Zhang, C. Wei, F. Lu, and Q. Guo, “Introducing the new
+generation of Chinese geostationary weather satellites, Fengyun-4,” Bull.
+Amer. Meteorological Soc., vol. 98, no. 8, pp. 1637–1658, Aug. 2017.
+[8] K. R. Knapp et al., “Globally Gridded Satellite observations for climate
+studies,” Bull. Amer. Meteorological Soc., vol. 92, no. 7, pp. 893–907,
+Jul. 2011.
+[9] D. B. Millet, P. I. Palmer, P. F. Levelt, L. Gallardo, and L. Shikwambana,
+“Coordinated geostationary, multispectral satellite observations are crit-
+ical for climate and air quality progress,” AGU Adv., vol. 5, no. 5,
+p. 2024, Aug. 2024.
+[10] R. Roca, T. Fiolleau, V . O. John, and J. Schulz, “METEOSAT long-term
+observations reveal changes in convective organization over tropi-
+cal Africa and Atlantic Ocean,” Surveys Geophysics, vol. 45, no. 6,
+pp. 1979–1998, Oct. 2024.
+[11] B. Chen et al., “Estimation of atmospheric PM10 concentration in China
+using an interpretable deep learning model and top-of-the-atmosphere
+reﬂectance data from China’s new generation geostationary meteorolog-
+ical satellite, FY-4A,” J. Geophys. Res., Atmos., vol. 127, no. 9, p. 2021,
+Apr. 2022.
+[12] Y . Lee, C. D. Kummerow, and I. Ebert-Uphoﬀ, “Applying machine
+learning methods to detect convection using geostationary operational
+environmental satellite-16 (GOES-16) advanced baseline imager (ABI)
+data,” Atmos. Meas. Techn., vol. 14, no. 4, pp. 2699–2716, Apr. 2021.
+[13] J. M. Sieglaﬀ, D. C. Hartung, W. F. Feltz, L. M. Cronce, and
+V . Lakshmanan, “A satellite-based convective cloud object tracking
+and multipurpose data fusion tool with application to developing
+convection,” J. Atmos. Ocean. Technol. , vol. 30, no. 3, pp. 510–525,
+Mar. 2013.
+[14] J. M. Apke, K. A. Hilburn, S. D. Miller, and D. A. Peterson, “Towards
+objective identiﬁcation and tracking of convective outﬂow boundaries in
+next-generation geostationary satellite imagery,” Atmos. Meas. Techn.,
+vol. 13, no. 3, pp. 1593–1608, Apr. 2020.
+[15] B. Liebmann, “Description of a complete (interpolated) outgoing long-
+wave radiation dataset,” Bull. Amer. Meteorol. Soc., vol. 77, no. 6,
+pp. 1275–1277, Jun. 1996.
+[16] X. Shi, Z. Chen, H. Wang, D. Yeung, W. K. Wong, and W. Woo,
+“Convolutional LSTM network: A machine learning approach for pre-
+cipitation nowcasting,” in Proc. Adv. Neural Inf. Process. Syst., Jan.
+2015, pp. 802–810.
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
+
+========================================
+=== PAGE 19 ===
+========================================
+
+LIN et al.: SELF-SUPERVISED TEMPORAL SUPER-RESOLUTION FRAMEWORK WITH METEOR-Net 5403719
+[17] H. Wu, Z. Yao, J. Wang, and M. Long, “MotionRNN: A ﬂexible
+model for video prediction with spacetime-varying motions,” in Proc.
+IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR) , Jun. 2021,
+pp. 15430–15439.
+[18] Z. Ma, H. Zhang, and J. Liu, “MM-RNN: A multimodal RNN for
+precipitation nowcasting,” IEEE Trans. Geosci. Remote Sens., vol. 61,
+2023, Art. no. 4101914.
+[19] K. Bi, L. Xie, H. Zhang, X. Chen, X. Gu, and Q. Tian, “Accurate
+medium-range global weather forecasting with 3D neural networks,”
+Nature, vol. 619, no. 7970, pp. 533–538, Jul. 2023.
+[20] X. Peng, Q. Li, L. Chen, X. Ning, H. Chu, and J. Liu, “A structured
+graph neural network for improving the numerical weather prediction
+of rainfall,” J. Geophys. Res., Atmos., vol. 128, no. 22, p. 2023, Nov.
+2023.
+[21] L. Chen et al., “FuXi: A cascade machine learning forecasting system
+for 15-day global weather forecast,” npj Climate Atmos. Sci., vol. 6,
+no. 1, p. 190, Nov. 2023.
+[22] S. Meyer, O. Wang, H. Zimmer, M. Grosse, and A. Sorkine-Hornung,
+“Phase-based frame interpolation for video,” in Proc. IEEE Conf.
+Comput. Vis. Pattern Recognit. (CVPR), Jun. 2015, pp. 1410–1418.
+[23] S. Niklaus, L. Mai, and F. Liu, “Video frame interpolation via adaptive
+separable convolution,” in Proc. IEEE Int. Conf. Comput. Vis. (ICCV),
+Oct. 2017, pp. 261–270.
+[24] Z. Liu, R. A. Yeh, X. Tang, Y . Liu, and A. Agarwala, “Video frame
+synthesis using deep voxel ﬂow,” in Proc. IEEE Int. Conf. Comput. Vis.
+(ICCV), Oct. 2017, pp. 4463–4471.
+[25] S. Meyer, A. Djelouah, B. McWilliams, A. Sorkine-Hornung, M. Gross,
+and C. Schroers, “PhaseNet for video frame interpolation,” in
+Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit., Jun. 2018,
+pp. 498–507.
+[26] X. Cheng and Z. Chen, “Video frame interpolation via deformable
+separable convolution,” in Proc. AAAI Conf. Artif. Intell., 2020, vol. 34,
+no. 7, pp. 10607–10614.
+[27] H. Lee, T. Kim, T.-Y . Chung, D. Pak, Y . Ban, and S. Lee, “AdaCoF:
+Adaptive collaboration of ﬂows for video frame interpolation,” in Proc.
+IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR) , Jun. 2020,
+pp. 5316–5325.
+[28] M. Choi, H. Kim, B. Han, N. Xu, and K. M. Lee, “Channel attention is
+all you need for video frame interpolation,” in Proc. AAAI Conf. Artif.
+Intell., Feb. 2020, vol. 34, no. 7, pp. 10663–10671.
+[29] Z. Shi, X. Liu, K. Shi, L. Dai, and J. Chen, “Video frame interpola-
+tion via generalized deformable convolution,” IEEE Trans. Multimedia,
+vol. 24, pp. 426–439, 2022.
+[30] T. Kalluri, D. Pathak, M. Chandraker, and D. Tran, “FLA VR: Flow-
+agnostic video representations for fast frame interpolation,” in Proc.
+IEEE/CVF Winter Conf. Appl. Comput. Vis. (WACV), Jan. 2023,
+pp. 2070–2081.
+[31] H. Jiang, D. Sun, V . Jampani, M. Yang, E. Learned-Miller, and J. Kautz,
+“Super SloMo: High quality estimation of multiple intermediate frames
+for video interpolation,” in Proc. IEEE/CVF Conf. Comput. Vis. Pattern
+Recognit., Jun. 2018, pp. 9000–9008.
+[32] W. Bao, W.-S. Lai, C. Ma, X. Zhang, Z. Gao, and M.-H. Yang, “Depth-
+aware video frame interpolation,” in Proc. IEEE/CVF Conf. Comput.
+Vis. Pattern Recognit. (CVPR), Jun. 2019, pp. 3698–3707.
+[33] Y . Liu, L. Xie, L. Siyao, W. Sun, Y . Qiao, and C. Dong, “Enhanced
+quadratic video interpolation,” in Proc. Eur. Conf. Comput. Vis. Work-
+shop, 2020, pp. 41–56.
+[34] J. Park, K. Ko, C. Lee, and C. Kim, “BMBC: Bilateral motion estimation
+with bilateral cost volume for video interpolation,” in Proc. Eur. Comput.
+Conf. Comput. Vis. (ECCV), Aug. 2020, pp. 109–125.
+[35] J. Park, C. Lee, and C.-S. Kim, “Asymmetric bilateral motion estimation
+for video frame interpolation,” in Proc. IEEE/CVF Int. Conf. Comput.
+Vis. (ICCV), Oct. 2021, pp. 14539–14548.
+[36] L. Kong et al., “IFRNet: Intermediate feature reﬁne network for eﬃcient
+frame interpolation,” in Proc. IEEE/CVF Conf. Comput. Vis. Pattern
+Recognit. (CVPR), Jun. 2022, pp. 1969–1978.
+[37] X. Jin, L. Wu, J. Chen, Y . Chen, J. Koo, and C.-H. Hahm, “A uniﬁed
+pyramid recurrent network for video frame interpolation,” in Proc.
+IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR) , Jun. 2023,
+pp. 1578–1587.
+[38] Z. Shi, X. Xu, X. Liu, J. Chen, and M.-H. Yang, “Video frame inter-
+polation transformer,” in Proc. IEEE/CVF Conf. Comput. Vis. Pattern
+Recognit. (CVPR), Jun. 2022, pp. 17461–17470.
+[39] X. Jin et al., “Enhanced bi-directional motion estimation for video
+frame interpolation,” in Proc. IEEE/CVF Winter Conf. Appl. Comput.
+Vis. (WACV), Jan. 2023, pp. 5038–5046.
+[40] Z. Huang, T. Zhang, W. Heng, B. Shi, and S. Zhou, “Real-time
+intermediate ﬂow estimation for video frame interpolation,” in Proc.
+Eur. Conf. Comput. Vis. (ECCV), Oct. 2020, pp. 624–642.
+[41] A. Dosovitskiy et al., “FlowNet: Learning optical ﬂow with convolu-
+tional networks,” in Proc. IEEE Int. Conf. Comput. Vis. (ICCV), Dec.
+2015, pp. 2758–2766.
+[42] T. J. Vandal and R. R. Nemani, “Temporal interpolation of geostationary
+satellite imagery with optical ﬂow,” IEEE Trans. Neural Netw. Learn.
+Syst., vol. 34, no. 7, pp. 3245–3254, Jul. 2023.
+[43] T. Krennert and V . Zwatz-Meise, “Initiation of convective cells in
+relation to water vapour boundaries in satellite images,” Atmos. Res.,
+vols. 67–68, pp. 353–366, Jul. 2003.
+[44] P. Santurette and C. Georgiev, “Water vapour imagery analysis
+in 7.3µ/6.2µ for diagnosing thermo-dynamic context of intense
+convection,” in Proc. Joint EUMETSAT Meteorol. Satell. Conf. 15th
+AMS Satell. Meteorol. Oceanogr. Conf., 2007, pp. 24–28.
+[45] R. A. Houze, “100 years of research on mesoscale convective
+systems,” Meteorological Monographs, vol. 59, pp. 1–54,
+Jan. 2018.
+[46] D. Chen, J. Guo, D. Yao, Z. Feng, and Y . Lin, “Elucidating the life cycle
+of warm-season mesoscale convective systems in eastern China from
+the Himawari-8 geostationary satellite,” Remote Sens., vol. 12, no. 14,
+p. 2307, Jul. 2020.
+[47] J. Hu, L. Shen, and G. Sun, “Squeeze-and-excitation networks,” in
+Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit., Jun. 2018,
+pp. 7132–7141.
+[48] X. Xu, S. Li, W. Sun, Q. Yin, and M.-H. Yang, “Quadratic video
+interpolation,” in Proc. Adv. Neural Inf. Process. Syst., vol. 32, Dec.
+2019, pp. 1645–1654.
+[49] Z. Chen, Z. He, and Z.-M. Lu, “DEA-Net: Single image dehazing based
+on detail-enhanced convolution and content-guided attention,” IEEE
+Trans. Image Process., vol. 33, pp. 1002–1015, 2024.
+[50] R. A. Maddox, “Mesoscale convective complexes,” Bull. Amer. Meteo-
+rol. Soc., vol. 61, no. 11, pp. 1374–1387, Nov. 1980.
+[51] Z. Xu, J. Du, J. Wang, C. Jiang, and Y . Ren, “Satellite image prediction
+relying on GAN and LSTM neural networks,” in Proc. IEEE Int. Conf.
+Commun. (ICC), May 2019, pp. 1–6.
+[52] K. Dai et al., “Exploiting spatial–temporal dynamics for satellite image
+sequence prediction,” IEEE Geosci. Remote Sens. Lett., vol. 20, pp. 1–5,
+2023.
+[53] K. Dai, X. Li, Y . Ye, S. Feng, D. Qin, and R. Ye, “MSTCGAN:
+Multiscale time conditional generative adversarial network for long-term
+satellite image sequence prediction,” IEEE Trans. Geosci. Remote Sens.,
+vol. 60, 2022, Art. no. 4108516.
+[54] A. L. Maas, A. Y . Hannun, and A. Y . Ng, “Rectiﬁer nonlinearities
+improve neural network acoustic models,” in Proc. Int. Conf. Mach.
+Learn., 2013, vol. 30, no. 1, p. 3.
+[55] J. Korhonen and J. You, “Peak signal-to-noise ratio revisited: Is simple
+beautiful?,” in Proc. 4th Int. Workshop Quality Multimedia Exper., Jul.
+2012, pp. 37–38.
+[56] Z. Wang, A. C. Bovik, H. R. Sheikh, and E. P. Simoncelli, “Image
+quality assessment: From error visibility to structural similarity,” IEEE
+Trans. Image Process., vol. 13, no. 4, pp. 600–612, Apr. 2004.
+[57] H. Wu et al., “Earthfarsser: Versatile spatio-temporal dynamical systems
+modeling in one model,” in Proc. AAAI Conf. Artif. Intell., Mar. 2024,
+vol. 38, no. 14, pp. 15906–15914.
+[58] S. Ravuri et al., “Skilful precipitation nowcasting using deep gen-
+erative models of radar,” Nature, vol. 597, no. 7878, pp. 672–677,
+Sep. 2021.
+[59] L. Espeholt et al., “Deep learning for twelve hour precipitation
+forecasts,” Nature Commun., vol. 13, no. 1, pp. 1–10, Sep. 2022.
+[60] Y . Pei et al., “MPFNet: Multiproduct fusion network for radar echo
+extrapolation,” IEEE Trans. Geosci. Remote Sens., vol. 62, Nov. 2024,
+Art. no. 4112820.
+[61] G. Farneb ¨ack, “Two-frame motion estimation based on polyno-
+mial expansion,” in Proc. Scandin. Conf. Image Anal., Jan. 2003,
+pp. 363–370.
+[62] H. Wang, Q. Zeng, H. Wang, J. He, T. Yu, and G. Liu, “Temporal super-
+resolution reconstruction of weather radar echoes using a deep learning
+approach,” Expert Syst. Appl., vol. 300, Mar. 2026, Art. no. 130189.
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 

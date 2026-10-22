@@ -1,0 +1,65 @@
+{
+  "source_raw_file": "3SIMG_20OCT2026_0130_L1B_STD_V01R00.h5",
+  "processed_npz_file": "3SIMG_20OCT2026_0130_L1B_STD_V01R00_regional.npz",
+  "nominal_gmt": "0130",
+  "start_datetime_utc": "2026-10-20T01:30:26",
+  "end_datetime_utc": "2026-10-20T01:57:19",
+  "channels": [
+    "IMG_TIR1",
+    "IMG_TIR2",
+    "IMG_WV",
+    "IMG_MIR"
+  ],
+  "crop_rows": [
+    492,
+    1271
+  ],
+  "crop_cols": [
+    943,
+    1809
+  ],
+  "crop_shape": [
+    780,
+    867
+  ],
+  "raw_size_bytes": 443028756,
+  "processed_size_bytes": 5115046,
+  "compression_ratio": 86.61285861358823,
+  "processing_time_sec": 2.277551,
+  "regional_scan_start_time": "20-OCT-2026 01:34:56.890",
+  "regional_scan_end_time": "20-OCT-2026 01:42:04.790",
+  "channel_statistics_kelvin": {
+    "IMG_TIR1": {
+      "min_K": 195.92312622070312,
+      "max_K": 300.3839111328125,
+      "mean_K": 279.9579772949219,
+      "std_K": 18.898609161376953,
+      "valid_count": 676260,
+      "nan_count": 0
+    },
+    "IMG_TIR2": {
+      "min_K": 199.2244415283203,
+      "max_K": 300.0495910644531,
+      "mean_K": 278.70709228515625,
+      "std_K": 18.332279205322266,
+      "valid_count": 676260,
+      "nan_count": 0
+    },
+    "IMG_WV": {
+      "min_K": 191.57687377929688,
+      "max_K": 259.0350341796875,
+      "mean_K": 243.30133056640625,
+      "std_K": 8.42213249206543,
+      "valid_count": 676260,
+      "nan_count": 0
+    },
+    "IMG_MIR": {
+      "min_K": 217.6261749267578,
+      "max_K": 315.47137451171875,
+      "mean_K": 286.5166931152344,
+      "std_K": 14.012385368347168,
+      "valid_count": 676260,
+      "nan_count": 0
+    }
+  }
+}

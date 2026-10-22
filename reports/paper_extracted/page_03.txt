@@ -1,0 +1,95 @@
+=== PAGE 3 ===
+
+LIN et al.: SELF-SUPERVISED TEMPORAL SUPER-RESOLUTION FRAMEWORK WITH METEOR-Net 5403719
+Fig. 1. Comparison of characteristics between geostationary satellite cloud
+data and video data. (a) Synchronized variation characteristics of the RGB
+channels in video data. (b) Multichannel asynchronous variation character-
+istics of geostationary satellite cloud data. (c) Approximate linear motion
+variation characteristics of video data. (d) Complex nonlinear variation char-
+acteristics of geostationary satellite cloud data.
+cloud data encompass complex nonlinear processes, including
+the generation and dissipation of cloud and water vapor [45],
+[46], requiring information from multiple frames beyond adja-
+cent frames, and background occlusion eﬀects from nonlinear
+foreground change cannot be represented by simple occlusion
+coeﬃcients. These backgrounds, typically composed of the
+Earth’s surface, ocean surfaces, and other elements, which are
+in a relatively static state, should be handled diﬀerently.
+Third, training and evaluation strategy. The goals of geosta-
+tionary satellite temporal super-resolution diﬀer fundamentally
+from VFI goals, requiring adapted training objectives and
+evaluation metrics. While video interpolation aims to gen-
+erate multiple intermediate frames for visual smoothness,
+satellite temporal super-resolution focuses on reconstructing
+unobserved convective evolution processes, requiring inter-
+mediate frames to serve as reliable anchors for critical
+physical transitions. The sparse spatial distribution of con-
+vective regions poses challenges during model training, as
+these crucial features risk being smoothed out. Therefore,
+extra attention must be given to convective regions during
+the training of geostationary satellite temporal super-resolution
+models. Furthermore, image reconstruction metrics used in
+VFI frameworks inadequately quantify model performance in
+reconstructing convective processes, highlighting the need for
+specialized evaluation metrics focused on convective processes
+reconstruction capabilities.
+To address these challenges, we propose a novel spatiotem-
+poral self-supervised learning framework for geostationary
+satellite temporal super-resolution. This framework enhances
+the VFI techniques previously adopted in geostationary
+satellite cloud data temporal super-resolution tasks through
+comprehensive improvements in data construction, model
+architecture, and training-evaluation strategy. Speciﬁcally, we
+propose multichannel encoding and temporal-ﬂow evolution
+network for optimized-observation reconstruction (METEOR-
+Net), a network that maintains the advantages of ﬂow-based
+methods while eliminating dependence on optical ﬂow to
+mitigate the incompatibility issues of ﬂow-based approaches
+with geostationary satellite cloud data. The main contributions
+are as follows.
+1) The spatiotemporal consistency between regional obser-
+vation and full-disk observation of geostationary satel-
+lites is used to construct reliable temporal low-resolution
+and high-resolution data pairs. This method enables
+the formation of ground truth labels for spatiotemporal
+self-supervised learning constrained by spatiotemporal
+consistency relationships, eliminating the requirement
+for additional annotations.
+2) METEOR-Net is proposed as a novel architecture
+that goes beyond previous ﬂow-based methods through
+temporal sequence-ﬂow modeling. The network intro-
+duces three synergistic modules speciﬁcally designed
+to address the challenges of multichannel asynchrony
+and complementarity, nonlinear dynamics, and the
+accompanying occlusion modeling.
+3) A convective region-weighted loss function is pro-
+posed for training the model to make additional focus
+on the convective regions. Furthermore, meteorological
+evaluation metrics targeting convective process recon-
+struction are introduced to evaluate the model’s ability to
+reconstruct convective processes.
+4) Experimental results on the FY-4A satellite cloud data
+temporal super-resolution reconstruction task demon-
+strate that METEOR-Net outperforms existing temporal
+super-resolution methods for geostationary satellite
+data in both visual ﬁdelity and convective process
+reconstruction accuracy, establishing it as the current
+state-of-the-art (SOTA) method.
+II. D ATA
+A. Introduction to FY-4A Satellite Cloud Data
+The geostationary satellite cloud data used in this study
+is acquired from FY-4A, China’s next-generation geostation-
+ary satellite launched in December 2016 [7]. The Advanced
+Geostationary Radiation Imager (AGRI) onboard FY-4A cap-
+tures data across 14 spectral channels, spanning visible,
+near-infrared, mediumwave infrared, water vapor, and long-
+wave infrared. This comprehensive spectral coverage enables
+monitoring of Earth’s atmosphere, cloud systems, oceans, and
+land surface characteristics.
+The study region encompasses central and eastern China
+(20.0◦ N–40.0◦ N, 104.0◦ E–125.0◦ E), where convective
+weather events occur frequently. This region is selected
+to ensure the temporal super-resolution results encompass
+numerous rapid convective processes for model validation.
+To maintain focus on convective events, channels 7–14 are
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 

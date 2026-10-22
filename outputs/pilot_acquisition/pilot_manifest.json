@@ -1,0 +1,355 @@
+{
+  "event_id": "Event 2 (Day 140 / May 20, 2026)",
+  "download_summary": {
+    "total_files": 20,
+    "total_bytes": 74241903,
+    "total_megabytes": 70.8,
+    "elapsed_seconds": 0.08,
+    "reused_count": 20,
+    "downloaded_count": 0,
+    "base_url": "https://noaa-goes19.s3.amazonaws.com/",
+    "destination_dir": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140"
+  },
+  "file_inventory": [
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\21\\OR_ABI-L2-CMIPC-M6C09_G19_s20261402101179_e20261402103558_c20261402104044.nc",
+      "size_bytes": 3003734,
+      "sha256": "38d68878ff7047b8039e78f48c7c0c124af6e07ea6bb68b77a9247293b828ea7",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C09_G19_s20261402101179_e20261402103558_c20261402104044.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C09_G19_s20261402101179_e20261402103558_c20261402104044.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\21\\OR_ABI-L2-CMIPC-M6C13_G19_s20261402101179_e20261402103563_c20261402104047.nc",
+      "size_bytes": 3974212,
+      "sha256": "65dccc5d27018600aa80dd3e9a38a27731d975791a29ebe8e891fac8893daa83",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C13_G19_s20261402101179_e20261402103563_c20261402104047.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C13_G19_s20261402101179_e20261402103563_c20261402104047.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\21\\OR_ABI-L2-CMIPC-M6C14_G19_s20261402101179_e20261402103552_c20261402104053.nc",
+      "size_bytes": 3973254,
+      "sha256": "cfff3269f59d72be63c69858ccdf71a658ef45200ed6787ad8dcd7c94a0a4e57",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C14_G19_s20261402101179_e20261402103552_c20261402104053.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C14_G19_s20261402101179_e20261402103552_c20261402104053.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\21\\OR_ABI-L2-CMIPC-M6C15_G19_s20261402101179_e20261402103558_c20261402104036.nc",
+      "size_bytes": 3930551,
+      "sha256": "e0eb7b7ae1d844bef5559d8e69533cce9bd2bfa1443d9861f09d5e3af576ba33",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C15_G19_s20261402101179_e20261402103558_c20261402104036.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C15_G19_s20261402101179_e20261402103558_c20261402104036.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\21\\OR_ABI-L2-CMIPC-M6C09_G19_s20261402131179_e20261402133558_c20261402134034.nc",
+      "size_bytes": 3016313,
+      "sha256": "50ae61f548662138b072f0c4f7396fd37c10e73fc305525b5e1aeb54090af4ac",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C09_G19_s20261402131179_e20261402133558_c20261402134034.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C09_G19_s20261402131179_e20261402133558_c20261402134034.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\21\\OR_ABI-L2-CMIPC-M6C13_G19_s20261402131179_e20261402133563_c20261402134050.nc",
+      "size_bytes": 3966924,
+      "sha256": "af52ddd61f052a05d7383ce7fb2fa3e70b454f0cce70e749d9b42e831d1ec6d5",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C13_G19_s20261402131179_e20261402133563_c20261402134050.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C13_G19_s20261402131179_e20261402133563_c20261402134050.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\21\\OR_ABI-L2-CMIPC-M6C14_G19_s20261402131179_e20261402133552_c20261402134026.nc",
+      "size_bytes": 3965970,
+      "sha256": "7d302c6ffc7ea13b7e53db343e537f94496c4318af68a456c84bbe22060f0f31",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C14_G19_s20261402131179_e20261402133552_c20261402134026.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C14_G19_s20261402131179_e20261402133552_c20261402134026.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\21\\OR_ABI-L2-CMIPC-M6C15_G19_s20261402131179_e20261402133558_c20261402134038.nc",
+      "size_bytes": 3924080,
+      "sha256": "106d1c2591d5dc2984d8e8ca4c89fd2ff02a7169767819b0f6ff8ba09b00cfbc",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C15_G19_s20261402131179_e20261402133558_c20261402134038.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/21/OR_ABI-L2-CMIPC-M6C15_G19_s20261402131179_e20261402133558_c20261402134038.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\22\\OR_ABI-L2-CMIPC-M6C09_G19_s20261402201179_e20261402203557_c20261402204034.nc",
+      "size_bytes": 3024304,
+      "sha256": "1fc36e60f5f38bd8cf3ae1d686c4ab385684fa6f5fbd0b52b625b5249bad8771",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C09_G19_s20261402201179_e20261402203557_c20261402204034.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C09_G19_s20261402201179_e20261402203557_c20261402204034.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\22\\OR_ABI-L2-CMIPC-M6C13_G19_s20261402201179_e20261402203564_c20261402204027.nc",
+      "size_bytes": 3953147,
+      "sha256": "da7640c1a838cb23bf37e267359a3efe16069110c0596b0e329a1e1c78e015b5",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C13_G19_s20261402201179_e20261402203564_c20261402204027.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C13_G19_s20261402201179_e20261402203564_c20261402204027.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\22\\OR_ABI-L2-CMIPC-M6C14_G19_s20261402201179_e20261402203552_c20261402204008.nc",
+      "size_bytes": 3954222,
+      "sha256": "56dbe6cfad8a8d32daf77c633412e7f801ab5378b7485d22e4050338501e9ff7",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C14_G19_s20261402201179_e20261402203552_c20261402204008.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C14_G19_s20261402201179_e20261402203552_c20261402204008.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\22\\OR_ABI-L2-CMIPC-M6C15_G19_s20261402201179_e20261402203558_c20261402204046.nc",
+      "size_bytes": 3915056,
+      "sha256": "5e3b94a08275a6b03dfd90570af32077577fa9f085d8c6c381596915b2258c8b",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C15_G19_s20261402201179_e20261402203558_c20261402204046.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C15_G19_s20261402201179_e20261402203558_c20261402204046.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\22\\OR_ABI-L2-CMIPC-M6C09_G19_s20261402216179_e20261402218558_c20261402219049.nc",
+      "size_bytes": 3026402,
+      "sha256": "ef8e5f45fe6ddc4d9ca12a891694f8e206cf43cf4b2161a12bc89e04b3c30f33",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C09_G19_s20261402216179_e20261402218558_c20261402219049.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C09_G19_s20261402216179_e20261402218558_c20261402219049.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\22\\OR_ABI-L2-CMIPC-M6C13_G19_s20261402216179_e20261402218563_c20261402219046.nc",
+      "size_bytes": 3948266,
+      "sha256": "9ea6e1796db64516461e0c2cc74046416ec0cf2df11db85227290e25f1af699b",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C13_G19_s20261402216179_e20261402218563_c20261402219046.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C13_G19_s20261402216179_e20261402218563_c20261402219046.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\22\\OR_ABI-L2-CMIPC-M6C14_G19_s20261402216179_e20261402218552_c20261402219038.nc",
+      "size_bytes": 3946884,
+      "sha256": "97341bae808677f9e4407a9a4a2f8cdd15bec6e54d9bba85d44e8ff898abcdbd",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C14_G19_s20261402216179_e20261402218552_c20261402219038.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C14_G19_s20261402216179_e20261402218552_c20261402219038.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\22\\OR_ABI-L2-CMIPC-M6C15_G19_s20261402216179_e20261402218557_c20261402219031.nc",
+      "size_bytes": 3908519,
+      "sha256": "94b7720eee22cbc41da357daf6f657148a6a8bd48a211f0ceab88e7aacddab9f",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C15_G19_s20261402216179_e20261402218557_c20261402219031.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C15_G19_s20261402216179_e20261402218557_c20261402219031.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\22\\OR_ABI-L2-CMIPC-M6C09_G19_s20261402231179_e20261402233558_c20261402234024.nc",
+      "size_bytes": 3026352,
+      "sha256": "507dc5cdcdf5341d076a9138c1944a83f9ee5ba3bb383e23ac0b571c5e161251",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C09_G19_s20261402231179_e20261402233558_c20261402234024.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C09_G19_s20261402231179_e20261402233558_c20261402234024.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\22\\OR_ABI-L2-CMIPC-M6C13_G19_s20261402231179_e20261402233563_c20261402234042.nc",
+      "size_bytes": 3940909,
+      "sha256": "f3ab13495f1de73fd19f3fd79c09eebe0c89b5752cbdf13c277987f3ba6f815f",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C13_G19_s20261402231179_e20261402233563_c20261402234042.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C13_G19_s20261402231179_e20261402233563_c20261402234042.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\22\\OR_ABI-L2-CMIPC-M6C14_G19_s20261402231179_e20261402233552_c20261402234028.nc",
+      "size_bytes": 3939782,
+      "sha256": "0fba2aea65cecaf36e057b06559981187d50148d39772eae9387bfc2287a278d",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C14_G19_s20261402231179_e20261402233552_c20261402234028.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C14_G19_s20261402231179_e20261402233552_c20261402234028.nc"
+    },
+    {
+      "status": "reused",
+      "path": "C:\\Users\\Krishna\\OneDrive\\Documents\\CS CORE SUBJECTS NOTES\\PROJECTS\\MAJOR PROJECT\\data\\goes19\\2026\\140\\22\\OR_ABI-L2-CMIPC-M6C15_G19_s20261402231179_e20261402233557_c20261402234048.nc",
+      "size_bytes": 3903022,
+      "sha256": "194bc167933263a2a6f0d06480d9d076880fd1dd1aefe83ff7702524feac2756",
+      "duration_sec": 0.0,
+      "object_key": "ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C15_G19_s20261402231179_e20261402233557_c20261402234048.nc",
+      "url": "https://noaa-goes19.s3.amazonaws.com/ABI-L2-CMIPC/2026/140/22/OR_ABI-L2-CMIPC-M6C15_G19_s20261402231179_e20261402233557_c20261402234048.nc"
+    }
+  ],
+  "timestamp_catalog": [
+    {
+      "datetime": "2026-05-20T21:01:17",
+      "channels": {
+        "9": "OR_ABI-L2-CMIPC-M6C09_G19_s20261402101179_e20261402103558_c20261402104044.nc",
+        "13": "OR_ABI-L2-CMIPC-M6C13_G19_s20261402101179_e20261402103563_c20261402104047.nc",
+        "14": "OR_ABI-L2-CMIPC-M6C14_G19_s20261402101179_e20261402103552_c20261402104053.nc",
+        "15": "OR_ABI-L2-CMIPC-M6C15_G19_s20261402101179_e20261402103558_c20261402104036.nc"
+      }
+    },
+    {
+      "datetime": "2026-05-20T21:31:17",
+      "channels": {
+        "9": "OR_ABI-L2-CMIPC-M6C09_G19_s20261402131179_e20261402133558_c20261402134034.nc",
+        "13": "OR_ABI-L2-CMIPC-M6C13_G19_s20261402131179_e20261402133563_c20261402134050.nc",
+        "14": "OR_ABI-L2-CMIPC-M6C14_G19_s20261402131179_e20261402133552_c20261402134026.nc",
+        "15": "OR_ABI-L2-CMIPC-M6C15_G19_s20261402131179_e20261402133558_c20261402134038.nc"
+      }
+    },
+    {
+      "datetime": "2026-05-20T22:01:17",
+      "channels": {
+        "9": "OR_ABI-L2-CMIPC-M6C09_G19_s20261402201179_e20261402203557_c20261402204034.nc",
+        "13": "OR_ABI-L2-CMIPC-M6C13_G19_s20261402201179_e20261402203564_c20261402204027.nc",
+        "14": "OR_ABI-L2-CMIPC-M6C14_G19_s20261402201179_e20261402203552_c20261402204008.nc",
+        "15": "OR_ABI-L2-CMIPC-M6C15_G19_s20261402201179_e20261402203558_c20261402204046.nc"
+      }
+    },
+    {
+      "datetime": "2026-05-20T22:16:17",
+      "channels": {
+        "9": "OR_ABI-L2-CMIPC-M6C09_G19_s20261402216179_e20261402218558_c20261402219049.nc",
+        "13": "OR_ABI-L2-CMIPC-M6C13_G19_s20261402216179_e20261402218563_c20261402219046.nc",
+        "14": "OR_ABI-L2-CMIPC-M6C14_G19_s20261402216179_e20261402218552_c20261402219038.nc",
+        "15": "OR_ABI-L2-CMIPC-M6C15_G19_s20261402216179_e20261402218557_c20261402219031.nc"
+      }
+    },
+    {
+      "datetime": "2026-05-20T22:31:17",
+      "channels": {
+        "9": "OR_ABI-L2-CMIPC-M6C09_G19_s20261402231179_e20261402233558_c20261402234024.nc",
+        "13": "OR_ABI-L2-CMIPC-M6C13_G19_s20261402231179_e20261402233563_c20261402234042.nc",
+        "14": "OR_ABI-L2-CMIPC-M6C14_G19_s20261402231179_e20261402233552_c20261402234028.nc",
+        "15": "OR_ABI-L2-CMIPC-M6C15_G19_s20261402231179_e20261402233557_c20261402234048.nc"
+      }
+    }
+  ],
+  "temperature_distributions": {
+    "2026-05-20_210117": {
+      "timestamp": "2026-05-20 21:01:17 UTC",
+      "valid_pixel_count": 3702837,
+      "valid_pixel_fraction": 0.9874232,
+      "b13_min_k": 202.57119750976562,
+      "b13_max_k": 324.8018493652344,
+      "b13_mean_k": 280.2071228027344,
+      "b13_p01_k": 220.39266967773438,
+      "b13_p05_k": 235.57162475585938,
+      "b13_p50_k": 288.0527648925781,
+      "frac_below_241k": 0.0712896624939202,
+      "frac_below_221k": 0.01084087687359719,
+      "count_below_221k": 40142
+    },
+    "2026-05-20_213117": {
+      "timestamp": "2026-05-20 21:31:17 UTC",
+      "valid_pixel_count": 3702837,
+      "valid_pixel_fraction": 0.9874232,
+      "b13_min_k": 198.3923797607422,
+      "b13_max_k": 323.5113525390625,
+      "b13_mean_k": 279.7163391113281,
+      "b13_p01_k": 219.839599609375,
+      "b13_p05_k": 234.89566040039062,
+      "b13_p50_k": 287.6840515136719,
+      "frac_below_241k": 0.07456687939544733,
+      "frac_below_221k": 0.01168725493452723,
+      "count_below_221k": 43276
+    },
+    "2026-05-20_220117": {
+      "timestamp": "2026-05-20 22:01:17 UTC",
+      "valid_pixel_count": 3702837,
+      "valid_pixel_fraction": 0.9874232,
+      "b13_min_k": 200.11306762695312,
+      "b13_max_k": 321.3604736328125,
+      "b13_mean_k": 279.27069091796875,
+      "b13_p01_k": 219.04067993164062,
+      "b13_p05_k": 234.34255981445312,
+      "b13_p50_k": 287.2538757324219,
+      "frac_below_241k": 0.07645327082990691,
+      "frac_below_221k": 0.012761026207742873,
+      "count_below_221k": 47252
+    },
+    "2026-05-20_221617": {
+      "timestamp": "2026-05-20 22:16:17 UTC",
+      "valid_pixel_count": 3702837,
+      "valid_pixel_fraction": 0.9874232,
+      "b13_min_k": 196.73313903808594,
+      "b13_max_k": 319.8855895996094,
+      "b13_mean_k": 279.0744323730469,
+      "b13_p01_k": 218.979248046875,
+      "b13_p05_k": 233.97384643554688,
+      "b13_p50_k": 287.06951904296875,
+      "frac_below_241k": 0.0772353738498346,
+      "frac_below_221k": 0.013304663424287917,
+      "count_below_221k": 49265
+    },
+    "2026-05-20_223117": {
+      "timestamp": "2026-05-20 22:31:17 UTC",
+      "valid_pixel_count": 3702837,
+      "valid_pixel_fraction": 0.9874232,
+      "b13_min_k": 198.3923797607422,
+      "b13_max_k": 319.0867004394531,
+      "b13_mean_k": 278.88189697265625,
+      "b13_p01_k": 218.73342895507812,
+      "b13_p05_k": 233.78948974609375,
+      "b13_p50_k": 286.8851623535156,
+      "frac_below_241k": 0.07810713785132858,
+      "frac_below_221k": 0.013600652688735691,
+      "count_below_221k": 50361
+    }
+  },
+  "sequence_window": {
+    "anchor_datetime": "2026-05-20T22:01:17",
+    "input_datetimes": [
+      "2026-05-20T21:01:17",
+      "2026-05-20T21:31:17",
+      "2026-05-20T22:01:17",
+      "2026-05-20T22:31:17"
+    ],
+    "target_datetimes": [
+      "2026-05-20T22:16:17"
+    ],
+    "input_tensors_shape": [
+      4,
+      4,
+      453,
+      740
+    ],
+    "target_tensors_shape": [
+      1,
+      4,
+      453,
+      740
+    ],
+    "combined_valid_fraction": 1.0,
+    "total_128x128_patches": 60,
+    "convective_128x128_patches": 39,
+    "top_convective_patch": {
+      "patch_index": 12,
+      "row_slice": [
+        64,
+        192
+      ],
+      "col_slice": [
+        128,
+        256
+      ],
+      "b13_min_k": 210.80593872070312,
+      "frac_below_241k": 0.53729248046875,
+      "count_below_221k": 1011
+    }
+  }
+}

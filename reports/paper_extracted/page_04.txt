@@ -1,0 +1,83 @@
+=== PAGE 4 ===
+
+5403719 IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 64, 2026
+TABLE I
+FY-4A G EOSTATIONARY SATELLITE CHANNELS
+Fig.
+2. FY-4A observation modes for each cycle. Blue represents full-disk
+observation every 15 min, and green represents regional observation three
+times every 15 min.
+selected for experimental analysis due to their strong cor-
+relation with convective weather and continuous availability
+throughout the day. The corresponding channel parameters are
+presented in Table I.
+B. Temporal Low-Resolution and High-Resolution Data
+Pairs
+The FY-4A satellite performs full-disk observations every
+15 min to provide full-disk data. This temporal resolution
+proves insuﬃcient for monitoring rapid convective processes
+and other fast-evolving weather processes. To address this
+limitation, FY-4A implements a regional coverage (REGC)
+observation mode, which conducts three consecutive obser-
+vations within a 15-min interval to provide regional data
+equivalent to 5-min temporal resolution. This observation
+mode enables high-frequency monitoring of target regions,
+providing crucial data support for tracking and warning con-
+vective events. However, FY-4A does not operate continuously
+in REGC mode. As illustrated in Fig. 2, the satellite alternates
+between full-disk and regional observation modes within a 3-h
+operational cycle.
+To meet the requirement for continuous high temporal
+resolution coverage, an optimal approach involves ﬁtting low-
+to-high resolution mapping relationships from full-disk data,
+thereby enhancing the temporal resolution of full-disk data.
+This constitutes the primary objective of the geostationary
+satellite temporal super-resolution tasks. The establishment
+of such mapping relationships requires explicit construction
+Fig.
+3. Sampling mode after spatiotemporal consistency validation for FY-
+4A geostationary satellite observations. The black dashed line represents the
+original full-disk observation, and the red dashed line represents the regional
+observation that replaces the full-disk observation after spatiotemporal con-
+sistency validation.
+of low-to-high resolution data pair representations. Given the
+absence of high temporal resolution records in full-disk obser-
+vations, the direct construction of temporal low-resolution
+and high-resolution data pairs from full-disk data becomes
+infeasible. To overcome this constraint, a mapping relationship
+construction method is proposed. This method leverages the
+spatiotemporal consistency between full-disk data and regional
+data, using temporal low-resolution and high-resolution data
+pairs from regional data to represent full-disk temporal res-
+olution mapping relationships. This enables the construction
+of low-to-high resolution mapping relationship samples in the
+form of data pairs.
+Speciﬁcally, the foundation for using regional data in place
+of full-disk data to construct data pairs lies in the spatiotempo-
+ral consistency between the selected full-disk data and regional
+data. Spatially, both regional and full-disk observation modes
+use the same AGRI instrument, ensuring continuity and con-
+sistency of observational data within identical spatial domains.
+This instrumental consistency validates the spatial correlation
+between full-disk data and regional data within speciﬁed
+latitude–longitude bounds. Temporally, AGRI performs north-
+to-south scanning of the globe within each full-disk revisit
+period. For the study region located in the mid-to-low latitudes
+of the Northern Hemisphere, the scanning time of this area
+in full-disk coverage observations mode approximates the
+middle of the scanning period. Correspondingly, the inter-
+mediate temporal point of regional data during this period
+demonstrates strong temporal alignment with full-disk data.
+Following this spatiotemporal consistency validation, regional
+data at intermediate time points within the study area are
+considered spatiotemporally consistent with full-disk data for
+each scanning period.
+As shown in Fig. 3, after spatiotemporal consistency ver-
+iﬁcation, a temporal low-resolution and high-resolution data
+pair consists of four frames L0, Ht1, Ht2, and L1. The regional
+data marked by the adjacent red dashed lines serve as the
+temporal low-resolution input frames L0 and L1, where the
+subscripts 0–1 denote a full-disk revisit interval of 15 min. Two
+sets of regional data between these adjacent red dashed lines
+constitute the temporal high-resolution ground truth labels Ht1
+Authorized licensed use limited to: Chaitanya Bharathi Institute of Tech - HYDERABAD. Downloaded on August 17,2026 at 09:40:25 UTC from IEEE Xplore.  Restrictions apply. 
