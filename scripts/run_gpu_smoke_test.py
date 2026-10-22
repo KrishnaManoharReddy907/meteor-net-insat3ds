@@ -36,9 +36,15 @@ def run_gpu_smoke_test(
     print("=" * 80)
 
     # 1. Device Resolution & Hardware Inspection
-    if device_str == "cuda" and not torch.cuda.is_available():
-        print("WARNING: CUDA requested but not available. Falling back to CPU.")
-        device = torch.device("cpu")
+    if device_str == "cuda":
+        if not torch.cuda.is_available():
+            raise RuntimeError(
+                "CRITICAL: CUDA was explicitly requested (--device cuda), but torch.cuda.is_available() is False!\n"
+                "In Google Colab, verify that the runtime is set to GPU: Runtime -> Change runtime type -> T4 GPU."
+            )
+        device = torch.device("cuda")
+    elif device_str is None:
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     else:
         device = torch.device(device_str)
 

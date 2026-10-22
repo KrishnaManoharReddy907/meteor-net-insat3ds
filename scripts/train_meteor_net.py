@@ -573,11 +573,26 @@ def run_training(
 
     # 9. Active Training Loop (Only when approved and NOT dry_run)
     print("\n[Step 6] Commencing Controlled METEOR-Net Mini-Epoch Training...")
-    history: Dict[str, Any] = {
-        "epochs": [],
-        "best_val_loss": best_val_loss,
-        "stopped_early": False
-    }
+    history_path = os.path.join(output_dir, "training_history.json")
+    if resume_path and os.path.exists(history_path):
+        try:
+            with open(history_path, "r") as f:
+                history = json.load(f)
+            print(f"  [Resume Engine] Restored prior training history ({len(history.get('epochs', []))} epochs recorded)")
+            history["best_val_loss"] = best_val_loss
+        except Exception as e:
+            print(f"  [Resume Engine WARNING] Could not load prior history: {e}")
+            history = {
+                "epochs": [],
+                "best_val_loss": best_val_loss,
+                "stopped_early": False
+            }
+    else:
+        history = {
+            "epochs": [],
+            "best_val_loss": best_val_loss,
+            "stopped_early": False
+        }
 
     for epoch in range(start_epoch, epochs + 1):
         # Pre-epoch memory check
@@ -740,14 +755,30 @@ def run_training(
         else:
             patience_counter += 1
             print(f"  [!] Validation did not improve ({patience_counter}/{early_stopping_patience} patience)")
-            if patience_counter >= early_stopping_patience:
-                print(f"  [!] Early stopping triggered after {epoch} epochs!")
-                history["stopped_early"] = True
-                break
 
+        # Atomically serialize and live-sync training history at each epoch boundary
+        history_path = os.path.join(output_dir, "training_history.json")
+        history_tmp = history_path + ".tmp"
+        with open(history_tmp, "w") as f:
+            json.dump(history, f, indent=2)
+        os.replace(history_tmp, history_path)
+        sync_file_to_drive(history_path, drive_sync_dir)
+
+        if patience_counter >= early_stopping_patience:
+            print(f"  [!] Early stopping triggered after {epoch} epochs!")
+            history["stopped_early"] = True
+            with open(history_tmp, "w") as f:
+                json.dump(history, f, indent=2)
+            os.replace(history_tmp, history_path)
+            sync_file_to_drive(history_path, drive_sync_dir)
+            break
+
+    # Final history dump confirmation
     history_path = os.path.join(output_dir, "training_history.json")
-    with open(history_path, "w") as f:
+    history_tmp = history_path + ".tmp"
+    with open(history_tmp, "w") as f:
         json.dump(history, f, indent=2)
+    os.replace(history_tmp, history_path)
     sync_file_to_drive(history_path, drive_sync_dir)
 
     return history
