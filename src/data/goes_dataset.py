@@ -122,14 +122,14 @@ class GOESSequencePatchDataset(Dataset):
         in_masks = []
         for f_info in seq_info["source_files"]["input"]:
             # f_info['channels'] maps str(chan) -> relpath
-            ch_dict = {int(c): os.path.join(".", p) for c, p in f_info["channels"].items()}
+            ch_dict = {int(c): os.path.join(".", p.replace("\\", os.sep)) for c, p in f_info["channels"].items()}
             res = read_multichannel_timestamp(ch_dict, self.channel_order)
             in_arrays.append(self.cropper.crop_array(res["data_kelvin"]))
             in_masks.append(self.cropper.crop_array(res["valid_mask"]))
 
         # 2. Load 1 target frame (actual observed +15 min scan)
         tgt_f_info = seq_info["source_files"]["target"][0]
-        tgt_ch_dict = {int(c): os.path.join(".", p) for c, p in tgt_f_info["channels"].items()}
+        tgt_ch_dict = {int(c): os.path.join(".", p.replace("\\", os.sep)) for c, p in tgt_f_info["channels"].items()}
         tgt_res = read_multichannel_timestamp(tgt_ch_dict, self.channel_order)
         tgt_data = self.cropper.crop_array(tgt_res["data_kelvin"])
         tgt_mask = self.cropper.crop_array(tgt_res["valid_mask"])

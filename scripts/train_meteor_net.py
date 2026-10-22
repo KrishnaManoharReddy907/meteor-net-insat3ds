@@ -39,7 +39,8 @@ from src.models.normalization import ChannelStandardizer
 
 
 def check_system_memory() -> Dict[str, float]:
-    """Queries Windows API GlobalMemoryStatusEx for host RAM health."""
+    """Queries host RAM health across Windows and Linux (Colab)."""
+    # 1. Try Windows API
     try:
         import ctypes
         class MEMORYSTATUSEX(ctypes.Structure):
@@ -63,7 +64,51 @@ def check_system_memory() -> Dict[str, float]:
             "load_pct": float(ms.dwMemoryLoad)
         }
     except Exception:
+        pass
+
+    # 2. Try psutil (cross-platform, available in Colab)
+    try:
+        import psutil
+        vm = psutil.virtual_memory()
+        return {
+            "total_gb": vm.total / (1024**3),
+            "avail_gb": vm.available / (1024**3),
+            "load_pct": float(vm.percent)
+        }
+    except Exception:
+        pass
+
+    # 3. Try Linux /proc/meminfo
+    try:
+        meminfo = {}
+        with open("/proc/meminfo", "r") as f:
+            for line in f:
+                parts = line.split(":")
+                if len(parts) == 2:
+                    meminfo[parts[0].strip()] = int(parts[1].split()[0])
+        total_kb = meminfo.get("MemTotal", 16 * 1024 * 1024)
+        avail_kb = meminfo.get("MemAvailable", meminfo.get("MemFree", 3 * 1024 * 1024))
+        load_pct = (1.0 - (avail_kb / total_kb)) * 100.0
+        return {
+            "total_gb": total_kb / (1024**2),
+            "avail_gb": avail_kb / (1024**2),
+            "load_pct": float(load_pct)
+        }
+    except Exception:
         return {"total_gb": 16.0, "avail_gb": 3.0, "load_pct": 80.0}
+
+
+def check_gpu_memory(device: torch.device) -> Optional[Dict[str, Any]]:
+    """Queries GPU VRAM health if target device is CUDA."""
+    if device.type == "cuda" and torch.cuda.is_available():
+        free_bytes, total_bytes = torch.cuda.mem_get_info(device)
+        return {
+            "device_name": torch.cuda.get_device_name(device),
+            "total_vram_gb": total_bytes / (1024**3),
+            "free_vram_gb": free_bytes / (1024**3),
+            "allocated_vram_gb": torch.cuda.memory_allocated(device) / (1024**3)
+        }
+    return None
 
 
 def save_checkpoint_atomic(payload: Dict[str, Any], filepath: str):
@@ -219,11 +264,14 @@ def evaluate_patches(
     dataset: GOESSequencePatchDataset,
     standardizer: ChannelStandardizer,
     loss_fn: MaskAwareConvectiveMAELoss,
-    patch_indices: List[int]
+    patch_indices: List[int],
+    device: Optional[torch.device] = None
 ) -> Dict[str, Any]:
     """
     Evaluates loss on a specified list of patch indices under torch.no_grad().
     """
+    if device is None:
+        device = next(model.parameters()).device
     model.eval()
     losses = []
     patch_records = []
@@ -231,9 +279,9 @@ def evaluate_patches(
     with torch.no_grad():
         for idx in patch_indices:
             item = dataset[idx]
-            x_norm = item["input_norm"].unsqueeze(0)        # [1, 4, 4, 128, 128]
-            tgt_phys = item["target_kelvin"].unsqueeze(0)   # [1, 4, 128, 128]
-            mask = item["combined_mask"].unsqueeze(0)       # [1, 128, 128]
+            x_norm = item["input_norm"].unsqueeze(0).to(device)        # [1, 4, 4, 128, 128]
+            tgt_phys = item["target_kelvin"].unsqueeze(0).to(device)   # [1, 4, 128, 128]
+            mask = item["combined_mask"].unsqueeze(0).to(device)       # [1, 128, 128]
 
             y_norm = model(x_norm)
             y_phys = standardizer.denormalize_output(y_norm)
@@ -272,7 +320,8 @@ def run_training(
     val_patch_count: int = 25,
     early_stopping_patience: int = 2,
     resume_path: Optional[str] = None,
-    dry_run: bool = False
+    dry_run: bool = False,
+    device_str: Optional[str] = None
 ) -> Dict[str, Any]:
     print("=" * 80)
     print("PHASE 7B: METEOR-NET CONTROLLED TRAINING RUNNER")
@@ -285,22 +334,34 @@ def run_training(
     if mem_status['avail_gb'] < 0.50:
         raise MemoryError(f"Critically low system memory ({mem_status['avail_gb']:.2f} GB). Aborting to prevent OOM crash.")
 
-    # 2. Reproducibility setup
+    # 2. Compute Device Resolution
+    if device_str is not None:
+        device = torch.device(device_str)
+    else:
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(f"\n[Compute Device] Target: {device}")
+    gpu_mem = check_gpu_memory(device)
+    if gpu_mem:
+        print(f"  GPU Hardware: {gpu_mem['device_name']} | Total VRAM: {gpu_mem['total_vram_gb']:.2f} GB | Free: {gpu_mem['free_vram_gb']:.2f} GB")
+
+    # 3. Reproducibility setup
     random.seed(seed)
     torch.manual_seed(seed)
+    if device.type == "cuda":
+        torch.cuda.manual_seed_all(seed)
     os.makedirs(output_dir, exist_ok=True)
 
-    # 3. Frozen Normalization Loading & Verification
+    # 4. Frozen Normalization Loading & Verification
     print("\n[Step 1] Loading frozen normalization statistics...")
-    standardizer = ChannelStandardizer.from_stats_file(stats_path)
+    standardizer = ChannelStandardizer.from_stats_file(stats_path).to(device)
     initial_mean = standardizer.mean.clone()
     initial_std = standardizer.std.clone()
-    print(f"  Frozen Means (K): {[round(float(m), 4) for m in initial_mean]}")
-    print(f"  Frozen Stds  (K): {[round(float(s), 4) for s in initial_std]}")
+    print(f"  Frozen Means (K): {[round(float(m), 4) for m in initial_mean.cpu()]}")
+    print(f"  Frozen Stds  (K): {[round(float(s), 4) for s in initial_std.cpu()]}")
 
-    # 4. Model, Loss, Optimizer, and Scheduler Initialization
+    # 5. Model, Loss, Optimizer, and Scheduler Initialization
     print("\n[Step 2] Initializing METEOR-Net architecture and optimization graph...")
-    model = METEORNet(in_channels=4, feat_channels=64, tfee_hidden_channels=256, out_channels=4)
+    model = METEORNet(in_channels=4, feat_channels=64, tfee_hidden_channels=256, out_channels=4).to(device)
     loss_fn = MaskAwareConvectiveMAELoss(
         ref_channel_idx=1,
         t1_threshold=241.0,
@@ -308,7 +369,7 @@ def run_training(
         alpha=1.0,
         beta=2.0,
         gamma=5.0
-    )
+    ).to(device)
     optimizer = AdamW(model.parameters(), lr=lr, weight_decay=weight_decay, betas=(0.9, 0.999))
 
     total_optimizer_updates = (epochs * microbatches_per_epoch) // grad_accum_steps # 250
@@ -376,20 +437,23 @@ def run_training(
         dataset=val_ds,
         standardizer=standardizer,
         loss_fn=loss_fn,
-        patch_indices=fixed_val_patches
+        patch_indices=fixed_val_patches,
+        device=device
     )
     initial_train_eval = evaluate_patches(
         model=model,
         dataset=train_ds,
         standardizer=standardizer,
         loss_fn=loss_fn,
-        patch_indices=fixed_diag_train_patches
+        patch_indices=fixed_diag_train_patches,
+        device=device
     )
     t_base = time.perf_counter() - t0_base
 
     baseline_metrics = {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "model_architecture": "METEORNet",
+        "device": str(device),
         "seed": seed,
         "initial_val_loss_kelvin": round(initial_val_eval["mean_loss_kelvin"], 4),
         "initial_train_diag_loss_kelvin": round(initial_train_eval["mean_loss_kelvin"], 4),
@@ -419,6 +483,7 @@ def run_training(
         "best_val_loss": initial_val_eval["mean_loss_kelvin"],
         "seed": seed,
         "rng_state": torch.get_rng_state(),
+        "cuda_rng_state": torch.cuda.get_rng_state(device) if device.type == "cuda" else None,
         "random_state": random.getstate(),
         "patch_sampling_metadata": {
             "fixed_val_patches": fixed_val_patches,
@@ -430,8 +495,8 @@ def run_training(
     ckpt_size_mb = os.path.getsize(test_ckpt_path) / (1024 * 1024)
 
     # Reload into fresh model
-    reloaded_model = METEORNet(in_channels=4, feat_channels=64, tfee_hidden_channels=256, out_channels=4)
-    loaded_ckpt = torch.load(test_ckpt_path, map_location="cpu")
+    reloaded_model = METEORNet(in_channels=4, feat_channels=64, tfee_hidden_channels=256, out_channels=4).to(device)
+    loaded_ckpt = torch.load(test_ckpt_path, map_location=device)
     reloaded_model.load_state_dict(loaded_ckpt["model_state_dict"])
     for n, p in model.named_parameters():
         p_reloaded = dict(reloaded_model.named_parameters())[n]
@@ -469,7 +534,7 @@ def run_training(
 
     if resume_path and os.path.exists(resume_path):
         print(f"\n[Resume Engine] Restoring state from checkpoint: {resume_path}")
-        resume_data = torch.load(resume_path, map_location="cpu")
+        resume_data = torch.load(resume_path, map_location=device)
         model.load_state_dict(resume_data["model_state_dict"])
         optimizer.load_state_dict(resume_data["optimizer_state_dict"])
         scheduler.load_state_dict(resume_data["scheduler_state_dict"])
@@ -479,6 +544,8 @@ def run_training(
         best_val_loss = resume_data.get("best_val_loss", best_val_loss)
         if "rng_state" in resume_data:
             torch.set_rng_state(resume_data["rng_state"])
+        if "cuda_rng_state" in resume_data and resume_data["cuda_rng_state"] is not None and device.type == "cuda":
+            torch.cuda.set_rng_state(resume_data["cuda_rng_state"], device)
         if "random_state" in resume_data:
             random.setstate(resume_data["random_state"])
         print(f"  Restored successfully at Epoch {start_epoch}, Update {global_update_count}, Microbatch {global_microbatch_count}")
@@ -496,6 +563,9 @@ def run_training(
         mem_info = check_system_memory()
         print(f"\n--- Epoch {epoch} / {epochs} ---")
         print(f"  [RAM Monitor] Avail: {mem_info['avail_gb']:.2f} GB | Load: {mem_info['load_pct']}%")
+        gpu_info = check_gpu_memory(device)
+        if gpu_info:
+            print(f"  [VRAM Monitor] Free: {gpu_info['free_vram_gb']:.2f} GB | Allocated: {gpu_info['allocated_vram_gb']:.2f} GB")
         if mem_info['avail_gb'] < 0.50:
             print(f"  [CRITICAL] Host RAM critically low ({mem_info['avail_gb']:.2f} GB). Pausing safely.")
             emergency_ckpt = os.path.join(output_dir, "emergency_low_ram_checkpoint.pt")
@@ -509,6 +579,7 @@ def run_training(
                 "best_val_loss": best_val_loss,
                 "seed": seed,
                 "rng_state": torch.get_rng_state(),
+                "cuda_rng_state": torch.cuda.get_rng_state(device) if device.type == "cuda" else None,
                 "random_state": random.getstate(),
                 "normalization_provenance": standardizer.provenance
             }, emergency_ckpt)
@@ -524,9 +595,9 @@ def run_training(
 
         for mb_idx, p_idx in enumerate(patch_indices):
             item = train_ds[p_idx]
-            x_norm = item["input_norm"].unsqueeze(0)
-            tgt_phys = item["target_kelvin"].unsqueeze(0)
-            mask = item["combined_mask"].unsqueeze(0)
+            x_norm = item["input_norm"].unsqueeze(0).to(device)
+            tgt_phys = item["target_kelvin"].unsqueeze(0).to(device)
+            mask = item["combined_mask"].unsqueeze(0).to(device)
 
             # Forward pass
             y_norm = model(x_norm)
@@ -579,7 +650,8 @@ def run_training(
             dataset=val_ds,
             standardizer=standardizer,
             loss_fn=loss_fn,
-            patch_indices=fixed_val_patches
+            patch_indices=fixed_val_patches,
+            device=device
         )
         t_epoch_val = time.perf_counter() - t_val_start
         epoch_val_loss = float(val_eval["mean_loss_kelvin"])
@@ -614,6 +686,7 @@ def run_training(
             "best_val_loss": best_val_loss,
             "seed": seed,
             "rng_state": torch.get_rng_state(),
+            "cuda_rng_state": torch.cuda.get_rng_state(device) if device.type == "cuda" else None,
             "random_state": random.getstate(),
             "normalization_provenance": standardizer.provenance
         }, latest_ckpt_path)
@@ -635,6 +708,7 @@ def run_training(
                 "best_val_loss": best_val_loss,
                 "seed": seed,
                 "rng_state": torch.get_rng_state(),
+                "cuda_rng_state": torch.cuda.get_rng_state(device) if device.type == "cuda" else None,
                 "random_state": random.getstate(),
                 "normalization_provenance": standardizer.provenance
             }, best_ckpt_path)
@@ -670,6 +744,7 @@ if __name__ == "__main__":
     parser.add_argument("--early_stopping_patience", type=int, default=2)
     parser.add_argument("--resume", type=str, default=None, help="Path to checkpoint to resume training from")
     parser.add_argument("--dry_run", action="store_true", help="Perform preflight checks and baseline without optimizer updates")
+    parser.add_argument("--device", type=str, default=None, help="Compute device ('cuda', 'cpu', or None for auto-detection)")
     args = parser.parse_args()
 
     run_training(
@@ -686,5 +761,7 @@ if __name__ == "__main__":
         val_patch_count=args.val_patches,
         early_stopping_patience=args.early_stopping_patience,
         resume_path=args.resume,
-        dry_run=args.dry_run
+        dry_run=args.dry_run,
+        device_str=args.device
     )
+

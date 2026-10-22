@@ -1,0 +1,10 @@
+# ==============================================================================
+# METEOR-Net Dependency Manifest for Google Colab (T4 GPU) and Local Execution
+# Pinned for Python 3.10 / 3.11 compatibility and PyTorch 2.x CUDA 12.x wheels
+# ==============================================================================
+
+torch>=2.0.0
+numpy>=1.24.0,<2.0.0
+h5py>=3.8.0
+matplotlib>=3.7.0
+psutil>=5.9.0

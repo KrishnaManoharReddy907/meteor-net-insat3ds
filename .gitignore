@@ -25,6 +25,10 @@ outputs/phase7b/*.pt
 *.npz
 *.npy
 /outputs/processed_sample/
+/outputs/colab_t4_smoke_test/
+/outputs/colab_t4_phase8/
+*.tar.gz
+*.zip
 
 # 4. Python Byte-code, Caches & Profiling Data
 __pycache__/
