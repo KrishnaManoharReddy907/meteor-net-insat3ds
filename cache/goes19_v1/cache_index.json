@@ -1,0 +1,43 @@
+{
+  "events": {
+    "event_2026-01-01": {
+      "split": "train",
+      "n_timestamps": 72,
+      "shape": [
+        72,
+        4,
+        453,
+        740
+      ],
+      "array_sha256": "afc964b6f922e726295e88f63dfe010cf9f588592d584316d7df0a60f179bb33",
+      "start": "2026-01-01T02:01:19",
+      "end": "2026-01-01T07:56:19"
+    },
+    "event_2026-05-20": {
+      "split": "train",
+      "n_timestamps": 72,
+      "shape": [
+        72,
+        4,
+        453,
+        740
+      ],
+      "array_sha256": "fb3eb3f5fad550e1dafdae2723f6cc8551e45320a4ead478a4b085dad16d4682",
+      "start": "2026-05-20T18:01:17",
+      "end": "2026-05-20T23:56:17"
+    },
+    "event_2026-07-19": {
+      "split": "val",
+      "n_timestamps": 72,
+      "shape": [
+        72,
+        4,
+        453,
+        740
+      ],
+      "array_sha256": "5fdf740308602256958247be6bf7dbeffdbec19685e541690b3902e049d30cd8",
+      "start": "2026-07-19T20:01:15",
+      "end": "2026-07-20T01:56:15"
+    }
+  }
+}
