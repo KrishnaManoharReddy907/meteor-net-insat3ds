@@ -26,7 +26,10 @@ EXCLUDE_ROOT_DIRS = {
     ".tempmediaStorage",
     "scratch",
     "colab_t4_smoke_test",
-    "colab_t4_phase8"
+    "colab_t4_phase8",
+    "colab_t4_full_training",
+    "colab_t4_phase8_test_evaluation",
+    "colab_t4_full_training_test_evaluation"
 }
 
 EXCLUDE_EXTENSIONS = (
@@ -35,6 +38,7 @@ EXCLUDE_EXTENSIONS = (
     ".tar.gz",
     ".gz",
     ".zip",
+    ".sha256",
     ".log",
     ".tmp"
 )
@@ -133,11 +137,17 @@ def create_source_bundle(
     bundle_size = os.path.getsize(output_zip)
     bundle_sha256 = compute_file_sha256(output_zip)
 
+    # Write authoritative checksum sidecar file outside the ZIP
+    sha256_path = f"{output_zip}.sha256"
+    with open(sha256_path, "w", encoding="utf-8") as f:
+        f.write(f"{bundle_sha256}  {os.path.basename(output_zip)}\n")
+
     print(f"Packaging complete in {duration:.2f} s.")
     print(f"Files archived:     {len(files)}")
     print(f"Uncompressed size:  {total_uncompressed / (1024*1024):.2f} MB ({total_uncompressed:,} bytes)")
     print(f"Compressed size:    {bundle_size / (1024*1024):.2f} MB ({bundle_size:,} bytes)")
     print(f"Bundle SHA-256:     {bundle_sha256}")
+    print(f"Sidecar Checksum:   {sha256_path}")
     print("=" * 80)
     return len(files), bundle_size, bundle_sha256
 

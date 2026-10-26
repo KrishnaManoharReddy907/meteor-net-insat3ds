@@ -200,21 +200,28 @@ class ChannelStandardizer(nn.Module):
             Normalized tensor where invalid pixels are sanitized and set to 0.0.
         """
         dim = x_phys.dim()
+        x_device = x_phys.device
+        x_dtype = x_phys.dtype
+
+        # Dynamically align statistics buffers to the input tensor's device and dtype
+        mean_buf = self.mean.to(device=x_device, dtype=x_dtype)
+        std_buf = self.std.to(device=x_device, dtype=x_dtype)
+
         if dim == 5:
             # [B, T, C, H, W]
-            mean_view = self.mean.view(1, 1, -1, 1, 1)
-            std_view = self.std.view(1, 1, -1, 1, 1)
+            mean_view = mean_buf.view(1, 1, -1, 1, 1)
+            std_view = std_buf.view(1, 1, -1, 1, 1)
             ch_dim = 2
         elif dim == 4:
             # [T, C, H, W]
-            mean_view = self.mean.view(1, -1, 1, 1)
-            std_view = self.std.view(1, -1, 1, 1)
+            mean_view = mean_buf.view(1, -1, 1, 1)
+            std_view = std_buf.view(1, -1, 1, 1)
             ch_dim = 1
         else:
             raise ValueError(f"Expected 4D or 5D input tensor, got shape {list(x_phys.shape)}")
 
         if mask is not None:
-            mask_bool = mask.bool()
+            mask_bool = mask.to(device=x_device).bool()
             # Align mask dimensions
             if dim == 5 and mask_bool.dim() == 4:
                 # [B, T, H, W] -> [B, T, 1, H, W]
@@ -256,14 +263,21 @@ class ChannelStandardizer(nn.Module):
             y_phys = y_norm * (std + eps) + mean.
         """
         dim = y_norm.dim()
+        y_device = y_norm.device
+        y_dtype = y_norm.dtype
+
+        # Dynamically align statistics buffers to the input tensor's device and dtype
+        mean_buf = self.mean.to(device=y_device, dtype=y_dtype)
+        std_buf = self.std.to(device=y_device, dtype=y_dtype)
+
         if dim == 4:
             # [B, C, H, W]
-            mean_view = self.mean.view(1, -1, 1, 1)
-            std_view = self.std.view(1, -1, 1, 1)
+            mean_view = mean_buf.view(1, -1, 1, 1)
+            std_view = std_buf.view(1, -1, 1, 1)
         elif dim == 3:
             # [C, H, W]
-            mean_view = self.mean.view(-1, 1, 1)
-            std_view = self.std.view(-1, 1, 1)
+            mean_view = mean_buf.view(-1, 1, 1)
+            std_view = std_buf.view(-1, 1, 1)
         else:
             raise ValueError(f"Expected 3D or 4D tensor for de-normalization, got shape {list(y_norm.shape)}")
 

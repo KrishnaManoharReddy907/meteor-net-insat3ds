@@ -282,6 +282,115 @@ class TestChannelStandardizer(unittest.TestCase):
         # In normalized space, val data should have mean ~ (290 - 220) / 10 = +7.0
         self.assertAlmostEqual(val_norm[:, :, 0].mean().item(), 7.0, delta=1.0)
 
+    def test_device_and_dtype_dynamic_alignment_cpu(self):
+        """
+        Regression test: Verify that normalize_input and denormalize_output
+        dynamically align buffers to the input tensor's device and dtype,
+        preserving the input device and dtype without mutating registered buffers.
+        """
+        std = ChannelStandardizer(self.means, self.stds)
+        init_mean = std.mean.clone()
+        init_std = std.std.clone()
+
+        # 1. Float32 CPU tensor
+        x_f32 = torch.full((1, 4, 4, 16, 16), 220.0, dtype=torch.float32, device="cpu")
+        m_f32 = torch.ones((1, 4, 16, 16), dtype=torch.bool, device="cpu")
+        out_f32 = std.normalize_input(x_f32, mask=m_f32)
+        self.assertEqual(out_f32.device, x_f32.device)
+        self.assertEqual(out_f32.dtype, torch.float32)
+
+        # 2. Float64 CPU tensor
+        x_f64 = torch.full((1, 4, 4, 16, 16), 220.0, dtype=torch.float64, device="cpu")
+        out_f64 = std.normalize_input(x_f64)
+        self.assertEqual(out_f64.device, x_f64.device)
+        self.assertEqual(out_f64.dtype, torch.float64)
+
+        y_f64 = torch.zeros((1, 4, 16, 16), dtype=torch.float64, device="cpu")
+        denorm_f64 = std.denormalize_output(y_f64)
+        self.assertEqual(denorm_f64.device, y_f64.device)
+        self.assertEqual(denorm_f64.dtype, torch.float64)
+
+        # Registered buffers must remain strictly unmutated
+        self.assertTrue(torch.equal(std.mean, init_mean))
+        self.assertTrue(torch.equal(std.std, init_std))
+
+    def test_device_canonicalization_and_comparison_contract(self):
+        """
+        Regression test: Verify device representation and comparison semantics.
+        torch.device('cuda') without ordinal (index=None) vs torch.device('cuda:0') (index=0).
+        Tensors transferred via .to(torch.device('cuda')) always have index=0 ('cuda:0').
+        Canonicalizing unindexed CUDA device to explicit ordinal ensures exact equality.
+        """
+        # 1. CPU device comparison
+        dev_cpu = torch.device("cpu")
+        t_cpu = torch.zeros(2, 2, device=dev_cpu)
+        self.assertEqual(t_cpu.device, dev_cpu)
+        self.assertEqual(t_cpu.device.type, "cpu")
+
+        # 2. CUDA device comparison semantics check (unindexed vs indexed)
+        dev_unindexed = torch.device("cuda")
+        self.assertIsNone(dev_unindexed.index)
+        self.assertEqual(dev_unindexed.type, "cuda")
+
+        dev_indexed = torch.device("cuda:0")
+        self.assertEqual(dev_indexed.index, 0)
+        self.assertEqual(dev_indexed.type, "cuda")
+
+        # Crucial PyTorch behavior: torch.device("cuda") != torch.device("cuda:0")
+        self.assertNotEqual(dev_unindexed, dev_indexed)
+
+        # Canonicalization logic check
+        dev_canonical = torch.device("cuda", 0)
+        self.assertEqual(dev_canonical, dev_indexed)
+
+    @unittest.skipUnless(torch.cuda.is_available(), "CUDA device required for hardware cross-device test")
+    def test_cuda_cpu_cross_device_dataset_contract(self):
+        """
+        Regression test for Google Colab T4 smoke test Stage 3 failure:
+        Standardizer is placed on CUDA:0, while dataset loading yields CPU tensors.
+        normalize_input must dynamically evaluate on CPU without device mismatch,
+        and denormalize_output must dynamically evaluate on CUDA:0 for model outputs.
+        Exercises both unindexed torch.device('cuda') and canonicalized torch.device('cuda:0').
+        """
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        if device.type == "cuda" and device.index is None:
+            device = torch.device(f"cuda:{torch.cuda.current_device()}")
+
+        std_cuda = ChannelStandardizer(self.means, self.stds).to(device)
+        self.assertEqual(std_cuda.mean.device.type, "cuda")
+        self.assertEqual(std_cuda.std.device.type, "cuda")
+
+        # 1. Dataset patch loading on CPU (simulates GOESSequencePatchDataset.__getitem__)
+        in_t = torch.full((4, 4, 128, 128), 220.0, dtype=torch.float32, device="cpu")
+        in_m = torch.ones((4, 4, 128, 128), dtype=torch.bool, device="cpu")
+
+        # Dataset item assertions (verifying CPU contract)
+        self.assertEqual(in_t.device.type, "cpu")
+        self.assertEqual(in_m.device.type, "cpu")
+
+        # normalize_input must NOT raise: "Expected all tensors to be on the same device, but found cuda:0 and cpu!"
+        norm_cpu = std_cuda.normalize_input(in_t, mask=in_m)
+        self.assertEqual(norm_cpu.device.type, "cpu")
+        self.assertEqual(norm_cpu.shape, in_t.shape)
+        self.assertTrue(torch.isfinite(norm_cpu).all())
+
+        # 2. Forward pass boundary: caller transfers model inputs to CUDA
+        x_cuda = norm_cpu.unsqueeze(0).to(device)
+        self.assertEqual(x_cuda.device, device)
+        self.assertEqual(x_cuda.device.type, "cuda")
+
+        # 3. Model prediction on CUDA: denormalize_output produces physical Kelvin on CUDA
+        y_cuda = torch.zeros((1, 4, 128, 128), dtype=torch.float32, device=device)
+        y_phys = std_cuda.denormalize_output(y_cuda)
+        self.assertEqual(y_phys.device, device)
+        self.assertEqual(y_phys.device.type, "cuda")
+        self.assertTrue(torch.isfinite(y_phys).all())
+
+        # 4. Standardizer on CPU with CUDA prediction input
+        std_cpu = ChannelStandardizer(self.means, self.stds)
+        y_phys_from_cpu = std_cpu.denormalize_output(y_cuda)
+        self.assertEqual(y_phys_from_cpu.device, device)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -48,6 +48,11 @@ def run_gpu_smoke_test(
     else:
         device = torch.device(device_str)
 
+    # Canonicalize CUDA device to explicit ordinal (e.g. 'cuda' -> 'cuda:0')
+    # so tensor.device (which carries the device index) strictly matches device.
+    if device.type == "cuda" and device.index is None:
+        device = torch.device(f"cuda:{torch.cuda.current_device()}")
+
     hw_info = {
         "device": str(device),
         "pytorch_version": torch.__version__,
@@ -104,13 +109,20 @@ def run_gpu_smoke_test(
     t_data = time.perf_counter() - t0_data
     print(f"  Patch loaded in {t_data*1000:.1f} ms | Seq ID: {sample_item['metadata']['sequence_id']}")
 
+    # 1. Verify dataset contract: raw item tensors and standardized inputs remain strictly on CPU
+    assert sample_item["input_norm"].device.type == "cpu", f"Dataset input_norm not on CPU: {sample_item['input_norm'].device}"
+    assert sample_item["target_kelvin"].device.type == "cpu", f"Dataset target_kelvin not on CPU: {sample_item['target_kelvin'].device}"
+    assert sample_item["combined_mask"].device.type == "cpu", f"Dataset combined_mask not on CPU: {sample_item['combined_mask'].device}"
+
+    # 2. Transfer batch to target device at the model boundary
     x_norm = sample_item["input_norm"].unsqueeze(0).to(device)        # [1, 4, 4, 128, 128]
     tgt_phys = sample_item["target_kelvin"].unsqueeze(0).to(device)   # [1, 4, 128, 128]
     mask = sample_item["combined_mask"].unsqueeze(0).to(device)       # [1, 128, 128]
 
-    assert x_norm.device == device, f"Tensor not on expected device: {x_norm.device}"
-    assert tgt_phys.device == device
-    assert mask.device == device
+    # 3. Assert correct target device placement
+    assert x_norm.device == device or (device.index is None and x_norm.device.type == device.type), f"Tensor not on expected device: {x_norm.device} (expected {device})"
+    assert tgt_phys.device == device or (device.index is None and tgt_phys.device.type == device.type), f"Target not on expected device: {tgt_phys.device} (expected {device})"
+    assert mask.device == device or (device.index is None and mask.device.type == device.type), f"Mask not on expected device: {mask.device} (expected {device})"
 
     # 5. Forward Pass & Physical De-normalization
     print("\n[Stage 4/7] Executing Forward Pass on Device...")
@@ -120,6 +132,8 @@ def run_gpu_smoke_test(
     y_phys = standardizer.denormalize_output(y_norm)
     t_fwd = time.perf_counter() - t0_fwd
 
+    assert x_norm.device == y_norm.device, f"Model output on {y_norm.device}, expected {x_norm.device}"
+    assert y_phys.device == y_norm.device, f"Denormalized prediction on {y_phys.device}, expected {y_norm.device}"
     assert torch.isfinite(y_norm).all(), "Non-finite values in prediction!"
     assert torch.isfinite(y_phys).all(), "Non-finite values in denormalized prediction!"
     print(f"  Forward Pass Time: {t_fwd*1000:.1f} ms | Output Shape: {list(y_phys.shape)}")
@@ -127,6 +141,7 @@ def run_gpu_smoke_test(
     # 6. Loss Computation & Backward Pass
     print("\n[Stage 5/7] Executing Loss & Autograd Backward Pass...")
     loss = loss_fn(y_phys, tgt_phys, mask)
+    assert loss.device == y_phys.device, f"Loss tensor on {loss.device}, expected {y_phys.device}"
     assert torch.isfinite(loss), "Non-finite loss evaluated!"
     loss_val = float(loss.item())
 
