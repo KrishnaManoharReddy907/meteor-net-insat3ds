@@ -31,28 +31,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(HERE, "..")))
 sys.path.insert(0, HERE)
 
 FILL_K = 250.0
-
-
-def farneback_midpoint(a: np.ndarray, b: np.ndarray, ref: int = 1) -> np.ndarray:
-    """a, b: [C,H,W] Kelvin at t and t+G. Returns midpoint estimate [C,H,W] (flow from channel `ref`)."""
-    import cv2
-    a = np.nan_to_num(a, nan=FILL_K).astype(np.float32)
-    b = np.nan_to_num(b, nan=FILL_K).astype(np.float32)
-    lo, hi = min(a[ref].min(), b[ref].min()), max(a[ref].max(), b[ref].max())
-    sc = 255.0 / max(hi - lo, 1e-3)
-    ua = ((a[ref] - lo) * sc).astype(np.uint8)
-    ub = ((b[ref] - lo) * sc).astype(np.uint8)
-    f = cv2.calcOpticalFlowFarneback(ua, ub, None, 0.5, 3, 15, 3, 5, 1.2, 0)   # ua(x) ~ ub(x + f)
-    h, w = ua.shape
-    gx, gy = np.meshgrid(np.arange(w, dtype=np.float32), np.arange(h, dtype=np.float32))
-    mx_a, my_a = gx - 0.5 * f[..., 0], gy - 0.5 * f[..., 1]     # where midpoint pixel came from in a
-    mx_b, my_b = gx + 0.5 * f[..., 0], gy + 0.5 * f[..., 1]     # where it goes to in b
-    out = np.empty_like(a)
-    for c in range(a.shape[0]):
-        wa = cv2.remap(a[c], mx_a, my_a, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
-        wb = cv2.remap(b[c], mx_b, my_b, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
-        out[c] = 0.5 * (wa + wb)
-    return out
+BLOCK_STEPS = 6          # bootstrap block = 30 min of consecutive start times within an event
 
 
 class Acc:
@@ -104,6 +83,7 @@ def main():
     from src.models.meteor_net import METEORNet
     from src.models.normalization import ChannelStandardizer
     from train_v2 import build_val_ids, load_split_ids, predict
+    from src.models.flow_base import farneback_batch
 
     idx = os.path.join(args.cache_dir, "cache_index.json")
     if os.path.exists(idx) and json.load(open(idx)).get("cache_role") == "test":
@@ -118,8 +98,10 @@ def main():
     models = {}
     for spec in args.ckpt:
         name, rest = spec.split("=", 1)
-        residual = rest.endswith(":residual")
-        path = rest[:-9] if residual else rest
+        residual, path = False, rest
+        for tag in ("residual", "farneback"):
+            if rest.endswith(":" + tag):
+                residual, path = (True if tag == "residual" else "farneback"), rest[:-(len(tag) + 1)]
         net = METEORNet(in_channels=4, feat_channels=64, tfee_hidden_channels=256, out_channels=4).to(device)
         net.load_state_dict(torch.load(path, map_location=device, weights_only=False)["model"])
         net.eval()
@@ -127,6 +109,7 @@ def main():
 
     methods = ["linear", "persist_t", "persist_tg"] + ([] if args.no_farneback else ["farneback"]) + list(models)
     acc = Acc()
+    rec = {}      # (method, gap) -> list of per-patch rows: block, ae13_sum, n, ae13_strong_sum, n_strong
 
     with torch.no_grad():
         n_total_batches = (len(ids) + args.bs - 1) // args.bs
@@ -140,9 +123,8 @@ def main():
                 "persist_t": x[:, 2], "persist_tg": x[:, 3],
             }
             if "farneback" in methods:
-                xa, xb = x[:, 2].cpu().numpy(), x[:, 3].cpu().numpy()
                 preds["farneback"] = torch.from_numpy(
-                    np.stack([farneback_midpoint(xa[i], xb[i]) for i in range(len(xa))])).to(device)
+                    farneback_batch(x[:, 2].cpu().numpy(), x[:, 3].cpu().numpy())).to(device)
             for name, (net, residual) in models.items():
                 preds[name] = predict(net, st, b, residual, amp, device)
             tg13 = torch.nan_to_num(tgt[:, 1], nan=300.0)
@@ -168,6 +150,16 @@ def main():
                         kw[f"hit{thr}"] = (ev & pr).sum()
                         kw[f"miss{thr}"] = (ev & ~pr).sum()
                         kw[f"fa{thr}"] = (~ev & pr & mm).sum()
+                    a13 = e[:, 1].abs()
+                    stg = mm & (t13 < 221)
+                    blk = (batch["event_idx"][sel.cpu().numpy()].astype(np.int64) * 100000
+                           + batch["t_index"][sel.cpu().numpy()].astype(np.int64) // BLOCK_STEPS)
+                    rows = np.stack([blk.astype(np.float64),
+                                     (a13 * mm).sum((1, 2)).double().cpu().numpy(),
+                                     mm.sum((1, 2)).double().cpu().numpy(),
+                                     (a13 * stg).sum((1, 2)).double().cpu().numpy(),
+                                     stg.sum((1, 2)).double().cpu().numpy()], axis=1)
+                    rec.setdefault((meth, int(g)), []).append(rows)
                     acc.add((meth, int(g)), **{k: v.item() if hasattr(v, "item") else v for k, v in kw.items()})
 
     res = acc.summary()
@@ -182,6 +174,32 @@ def main():
             print(f"{meth:<14}{r['mae_mean4']:7.3f}{r['mae_b13']:7.3f}{r['mae_b13_strong']:8.3f}"
                   f"{r['mae_b13_weak']:7.3f}{r['mae_b13_ambient']:7.3f}{r['rmse_b13']:7.3f}"
                   f"{r['bias_b13']:7.3f}{r['CSI241']:8.3f}{r['CSI221']:8.3f}")
+    # paired block bootstrap: difference in B13 MAE (model minus reference); negative = model better
+    rng = np.random.default_rng(0)
+    boot = {}
+    for g in (10, 20, 30):
+        for m in models:
+            for ref in ("linear", "farneback"):
+                if ref not in methods:
+                    continue
+                A, R = np.concatenate(rec[(m, g)]), np.concatenate(rec[(ref, g)])
+                blocks = np.unique(A[:, 0])
+                agg = lambda M: np.stack([M[M[:, 0] == bk][:, 1:].sum(0) for bk in blocks])   # [nb,4]
+                SA, SR = agg(A), agg(R)
+                ii = rng.integers(0, len(blocks), size=(2000, len(blocks)))
+                for name, (c, n) in (("b13_all", (0, 1)), ("b13_strong", (2, 3))):
+                    d = (SA[ii][:, :, c].sum(1) / SA[ii][:, :, n].sum(1).clip(1)
+                         - SR[ii][:, :, c].sum(1) / SR[ii][:, :, n].sum(1).clip(1))
+                    lo, hi = np.percentile(d, [2.5, 97.5])
+                    pt = SA[:, c].sum() / max(SA[:, n].sum(), 1) - SR[:, c].sum() / max(SR[:, n].sum(), 1)
+                    boot[f"{m} vs {ref}|gap{g}|{name}"] = {"diff_K": float(pt), "ci95": [float(lo), float(hi)],
+                                                         "n_blocks": int(len(blocks))}
+    out_obj = json.load(open(args.out)); out_obj["bootstrap"] = boot
+    json.dump(out_obj, open(args.out, "w"), indent=2)
+    print("\nPaired block-bootstrap, B13 MAE difference in K (model - reference; negative = model better)")
+    for k, v in boot.items():
+        print(f"  {k:<52} {v['diff_K']:+.3f}  [{v['ci95'][0]:+.3f}, {v['ci95'][1]:+.3f}]  blocks={v['n_blocks']}")
+    print("  (blocks are 30-min chunks within events; with 2 val events this does not capture between-event spread)")
     print(f"\nSaved {args.out}")
 
 

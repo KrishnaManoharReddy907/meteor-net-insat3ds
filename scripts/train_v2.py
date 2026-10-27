@@ -50,15 +50,25 @@ def build_val_ids(store: FastSequenceStore, per_cell: int, seed: int):
     return np.sort(np.concatenate(ids))
 
 
-def predict(model, standardizer, b, residual: bool, amp: bool, device):
+def predict(model, standardizer, b, residual, amp: bool, device):
+    """residual: False/None = direct; True or 'linear' = correction over linear midpoint;
+    'farneback' = correction over the optical-flow midpoint (hybrid, not flow-free)."""
     import torch
+    base = "linear" if residual is True else (residual or None)
     with torch.autocast(device_type=device.type, dtype=torch.float16, enabled=amp):
         y_norm = model(b["input_norm"])
     y_norm = y_norm.float()
-    if residual:
-        lin = 0.5 * (b["input_kelvin"][:, 2] + b["input_kelvin"][:, 3])     # midpoint of frames t and t+G
-        lin = torch.nan_to_num(lin, nan=250.0)
-        return lin + y_norm * standardizer.std.reshape(1, -1, 1, 1)
+    if base:
+        xa, xb = b["input_kelvin"][:, 2], b["input_kelvin"][:, 3]            # frames t and t+G
+        if base == "linear":
+            bs = 0.5 * (xa + xb)
+        elif base == "farneback":
+            from src.models.flow_base import farneback_batch
+            bs = torch.from_numpy(farneback_batch(xa.cpu().numpy(), xb.cpu().numpy())).to(xa.device)
+        else:
+            raise ValueError(base)
+        bs = torch.nan_to_num(bs, nan=250.0)
+        return bs + y_norm * standardizer.std.reshape(1, -1, 1, 1)
     return standardizer.denormalize_output(y_norm)
 
 
@@ -121,7 +131,9 @@ def main():
     ap.add_argument("--ckpt_every", type=int, default=250)
     ap.add_argument("--val_every", type=int, default=500)
     ap.add_argument("--val_per_cell", type=int, default=96)
-    ap.add_argument("--residual", action="store_true", help="ablation: predict correction over linear midpoint")
+    ap.add_argument("--residual", action="store_true", help="same as --base linear")
+    ap.add_argument("--base", choices=["none", "linear", "farneback"], default="none",
+                    help="predict a correction over this base (farneback = hybrid, uses optical flow)")
     ap.add_argument("--no_amp", action="store_true")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--device", default="cuda")
@@ -140,6 +152,7 @@ def main():
     val_ids_ev = load_split_ids(args.events_json, "val")
     if not train_ids or not val_ids_ev:
         sys.exit("events_json needs train and val events.")
+    base_mode = "linear" if (args.residual and args.base == "none") else (None if args.base == "none" else args.base)
     if args.smoke:
         args.updates, args.val_every, args.ckpt_every, args.val_per_cell, args.warmup = 20, 10, 10, 8, 5
 
@@ -154,7 +167,7 @@ def main():
     val_store = FastSequenceStore(args.cache_dir, val_ids_ev, gaps_min=gaps)
     val_ids = build_val_ids(val_store, args.val_per_cell, seed=1234)
     print(f"train samples {len(train_store):,} ({len(train_ids)} events); "
-          f"val fixed subset {len(val_ids)} patches ({len(val_ids_ev)} events); amp={amp}; residual={args.residual}")
+          f"val fixed subset {len(val_ids)} patches ({len(val_ids_ev)} events); amp={amp}; base={base_mode}")
 
     torch.manual_seed(args.seed)
     model = METEORNet(in_channels=4, feat_channels=64, tfee_hidden_channels=256, out_channels=4).to(device)
@@ -195,7 +208,7 @@ def main():
         ok = True
         for _ in range(args.accum):
             b = to_device(next(it), device, standardizer)
-            y = predict(model, standardizer, b, args.residual, amp, device)
+            y = predict(model, standardizer, b, base_mode, amp, device)
             loss = loss_fn(y, b["target_kelvin"], b["combined_mask"])
             if not torch.isfinite(loss):
                 ok = False
@@ -220,7 +233,7 @@ def main():
             print(rec); log.write(json.dumps(rec) + "\n"); log.flush()
             run_loss, run_n = 0.0, 0
         if step % args.val_every == 0 or step == args.updates:
-            v = evaluate(model, standardizer, val_store, val_ids, device, args.residual, amp)
+            v = evaluate(model, standardizer, val_store, val_ids, device, base_mode, amp)
             v["step"] = step
             history.append(v)
             log.write(json.dumps({"val": v}) + "\n"); log.flush()
