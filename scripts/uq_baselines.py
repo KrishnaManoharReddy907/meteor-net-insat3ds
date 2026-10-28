@@ -36,6 +36,7 @@ def collect(store, ids, forward, st, device, pix, seed, bs=16):
     rng = np.random.default_rng(seed)
     n_batches = (len(ids) + bs - 1) // bs
     print(f"Collecting pixels across {len(ids)} patches ({n_batches} batches)...")
+    cols = {}
     with torch.no_grad():
         for b_idx, batch in enumerate(store.iter_eval_batches(ids, bs)):
             if b_idx % 25 == 0 or b_idx == n_batches - 1:
