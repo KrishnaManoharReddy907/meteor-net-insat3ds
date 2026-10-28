@@ -34,9 +34,12 @@ ALPHAS = (0.1, 0.05)
 def collect(store, ids, forward, st, device, pix, seed, bs=16):
     import torch
     rng = np.random.default_rng(seed)
-    cols = {}
+    n_batches = (len(ids) + bs - 1) // bs
+    print(f"Collecting pixels across {len(ids)} patches ({n_batches} batches)...")
     with torch.no_grad():
-        for batch in store.iter_eval_batches(ids, bs):
+        for b_idx, batch in enumerate(store.iter_eval_batches(ids, bs)):
+            if b_idx % 25 == 0 or b_idx == n_batches - 1:
+                print(f"  [Progress] Batch {b_idx + 1}/{n_batches} ({min((b_idx + 1) * bs, len(ids))}/{len(ids)} patches)...")
             b = to_device(batch, device, st)
             yhat, scales = forward(b)                                   # scales: dict name -> [B,H,W]
             m = b["combined_mask"].cpu().numpy()

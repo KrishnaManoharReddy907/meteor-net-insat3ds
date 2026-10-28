@@ -66,8 +66,12 @@ def main():
     methods = ["linear", "farneback"] + list(models)
     rows = {}    # (method, gap) -> list of dicts
 
+    n_batches = (len(ids) + args.bs - 1) // args.bs
+    print(f"Evaluating {len(ids)} patches across {n_batches} batches...")
     with torch.no_grad():
-        for batch in store.iter_eval_batches(ids, args.bs):
+        for b_idx, batch in enumerate(store.iter_eval_batches(ids, args.bs)):
+            if b_idx % 20 == 0 or b_idx == n_batches - 1:
+                print(f"  [Eval] Batch {b_idx + 1}/{n_batches} ({min((b_idx + 1) * args.bs, len(ids))}/{len(ids)} patches)...")
             b = to_device(batch, device, st)
             x, tgt = b["input_kelvin"], torch.nan_to_num(b["target_kelvin"], nan=250.0)
             preds = {"linear": torch.nan_to_num(0.5 * (x[:, 2] + x[:, 3]), nan=250.0),
