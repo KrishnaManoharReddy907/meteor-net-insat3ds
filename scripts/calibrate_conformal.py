@@ -104,17 +104,18 @@ def main():
     ap.add_argument("--pix_per_patch", type=int, default=1024)
     ap.add_argument("--min_group_n", type=int, default=500)
     ap.add_argument("--device", default="cuda")
+    ap.add_argument("--final_test", action="store_true", help="ONE-TIME final run on the test events")
+    ap.add_argument("--test_cache_dir", default=None, help="test cache (cache_role == 'test'), with --final_test")
     args = ap.parse_args()
 
     import torch
     from src.models.meteor_net import METEORNet
     from src.models.normalization import ChannelStandardizer
     from src.models.conf_head import ConfHead, build_features
+    from src.eval.final_guard import resolve_eval_cache
     from train_v2 import build_val_ids, load_split_ids, predict
 
-    idx = os.path.join(args.cache_dir, "cache_index.json")
-    if os.path.exists(idx) and json.load(open(idx)).get("cache_role") == "test":
-        sys.exit("REFUSED: cache_dir is a TEST cache. The final test run uses a separate script.")
+    eval_cache, eval_split = resolve_eval_cache(args, "calibrate_conformal")
     device = torch.device(args.device if (args.device != "cuda" or torch.cuda.is_available()) else "cpu")
     amp = device.type == "cuda"
     base_mode = None if args.base == "none" else args.base
@@ -128,9 +129,9 @@ def main():
         yhat = predict(net, st, b, base_mode, amp, device).float()
         return yhat, head(build_features(st, b, yhat))
 
-    cal_events, val_events = load_split_ids(args.events_json, "cal"), load_split_ids(args.events_json, "val")
+    cal_events, val_events = load_split_ids(args.events_json, "cal"), load_split_ids(args.events_json, eval_split)
     cal_store = FastSequenceStore(args.cache_dir, cal_events)
-    val_store = FastSequenceStore(args.cache_dir, val_events)
+    val_store = FastSequenceStore(eval_cache, val_events)
     d_cal = collect(cal_store, build_val_ids(cal_store, args.cal_per_cell, 777), forward, st, device, args.pix_per_patch, 1)
     d_val = collect(val_store, build_val_ids(val_store, args.val_per_cell, 1234), forward, st, device, args.pix_per_patch, 2)
     print(f"calibration pixels {len(d_cal['err']):,} ({len(cal_events)} events); validation pixels {len(d_val['err']):,}")

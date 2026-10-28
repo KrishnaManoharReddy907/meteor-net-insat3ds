@@ -34,13 +34,9 @@ ALPHAS = (0.1, 0.05)
 def collect(store, ids, forward, st, device, pix, seed, bs=16):
     import torch
     rng = np.random.default_rng(seed)
-    n_batches = (len(ids) + bs - 1) // bs
-    print(f"Collecting pixels across {len(ids)} patches ({n_batches} batches)...")
     cols = {}
     with torch.no_grad():
-        for b_idx, batch in enumerate(store.iter_eval_batches(ids, bs)):
-            if b_idx % 25 == 0 or b_idx == n_batches - 1:
-                print(f"  [Progress] Batch {b_idx + 1}/{n_batches} ({min((b_idx + 1) * bs, len(ids))}/{len(ids)} patches)...")
+        for batch in store.iter_eval_batches(ids, bs):
             b = to_device(batch, device, st)
             yhat, scales = forward(b)                                   # scales: dict name -> [B,H,W]
             m = b["combined_mask"].cpu().numpy()
@@ -75,17 +71,18 @@ def main():
     ap.add_argument("--val_per_cell", type=int, default=300)
     ap.add_argument("--pix_per_patch", type=int, default=1024)
     ap.add_argument("--device", default="cuda")
+    ap.add_argument("--final_test", action="store_true", help="ONE-TIME final run on the test events")
+    ap.add_argument("--test_cache_dir", default=None, help="test cache (cache_role == 'test'), with --final_test")
     args = ap.parse_args()
 
     import torch
     from src.models.meteor_net import METEORNet
     from src.models.normalization import ChannelStandardizer
     from src.models.conf_head import ConfHead, build_features
+    from src.eval.final_guard import resolve_eval_cache
     from train_v2 import build_val_ids, load_split_ids, predict
 
-    idx = os.path.join(args.cache_dir, "cache_index.json")
-    if os.path.exists(idx) and json.load(open(idx)).get("cache_role") == "test":
-        sys.exit("REFUSED: cache_dir is a TEST cache.")
+    eval_cache, eval_split = resolve_eval_cache(args, "uq_baselines")
     device = torch.device(args.device if (args.device != "cuda" or torch.cuda.is_available()) else "cpu")
     amp = device.type == "cuda"
     st = ChannelStandardizer.from_stats_file(args.stats).to(device)
@@ -111,8 +108,8 @@ def main():
             scales["ens"] = torch.stack(stack).std(dim=0) + 0.05
         return yhat, scales
 
-    cal_events, val_events = load_split_ids(args.events_json, "cal"), load_split_ids(args.events_json, "val")
-    cs, vs = FastSequenceStore(args.cache_dir, cal_events), FastSequenceStore(args.cache_dir, val_events)
+    cal_events, val_events = load_split_ids(args.events_json, "cal"), load_split_ids(args.events_json, eval_split)
+    cs, vs = FastSequenceStore(args.cache_dir, cal_events), FastSequenceStore(eval_cache, val_events)
     d_cal = collect(cs, build_val_ids(cs, args.cal_per_cell, 777), forward, st, device, args.pix_per_patch, 1)
     d_val = collect(vs, build_val_ids(vs, args.val_per_cell, 1234), forward, st, device, args.pix_per_patch, 2)
 

@@ -34,6 +34,8 @@ def main():
     ap.add_argument("--per_cell", type=int, default=400)
     ap.add_argument("--bs", type=int, default=16)
     ap.add_argument("--device", default="cuda")
+    ap.add_argument("--final_test", action="store_true", help="ONE-TIME final run on the test events")
+    ap.add_argument("--test_cache_dir", default=None, help="test cache (cache_role == 'test'), with --final_test")
     args = ap.parse_args()
 
     import torch
@@ -42,15 +44,14 @@ def main():
     from src.models.normalization import ChannelStandardizer
     from src.models.flow_base import farneback_batch
     from src.eval.image_metrics import psnr, ssim
+    from src.eval.final_guard import resolve_eval_cache
     from train_v2 import build_val_ids, load_split_ids, predict
 
-    idx = os.path.join(args.cache_dir, "cache_index.json")
-    if os.path.exists(idx) and json.load(open(idx)).get("cache_role") == "test":
-        sys.exit("REFUSED: cache_dir is a TEST cache.")
+    eval_cache, eval_split = resolve_eval_cache(args, "eval_image_metrics")
     device = torch.device(args.device if (args.device != "cuda" or torch.cuda.is_available()) else "cpu")
     amp = device.type == "cuda"
     st = ChannelStandardizer.from_stats_file(args.stats).to(device)
-    store = FastSequenceStore(args.cache_dir, load_split_ids(args.events_json, "val"))
+    store = FastSequenceStore(eval_cache, load_split_ids(args.events_json, eval_split))
     ids = build_val_ids(store, args.per_cell, seed=1234)
 
     models = {}
@@ -66,12 +67,8 @@ def main():
     methods = ["linear", "farneback"] + list(models)
     rows = {}    # (method, gap) -> list of dicts
 
-    n_batches = (len(ids) + args.bs - 1) // args.bs
-    print(f"Evaluating {len(ids)} patches across {n_batches} batches...")
     with torch.no_grad():
-        for b_idx, batch in enumerate(store.iter_eval_batches(ids, args.bs)):
-            if b_idx % 20 == 0 or b_idx == n_batches - 1:
-                print(f"  [Eval] Batch {b_idx + 1}/{n_batches} ({min((b_idx + 1) * args.bs, len(ids))}/{len(ids)} patches)...")
+        for batch in store.iter_eval_batches(ids, args.bs):
             b = to_device(batch, device, st)
             x, tgt = b["input_kelvin"], torch.nan_to_num(b["target_kelvin"], nan=250.0)
             preds = {"linear": torch.nan_to_num(0.5 * (x[:, 2] + x[:, 3]), nan=250.0),

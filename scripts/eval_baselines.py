@@ -75,23 +75,25 @@ def main():
     ap.add_argument("--per_cell", type=int, default=400, help="patches per (gap, convective/ambient) cell")
     ap.add_argument("--bs", type=int, default=16)
     ap.add_argument("--device", default="cuda")
+    ap.add_argument("--final_test", action="store_true", help="ONE-TIME final run on the test events")
+    ap.add_argument("--test_cache_dir", default=None, help="test cache (cache_role == 'test'), with --final_test")
     ap.add_argument("--no_farneback", action="store_true")
+    ap.add_argument("--rife_dir", default=None, help="Practical-RIFE checkout with train_log/ (optional extra baseline)")
     args = ap.parse_args()
 
     import torch
     from src.data.fast_dataset import FastSequenceStore, to_device
     from src.models.meteor_net import METEORNet
     from src.models.normalization import ChannelStandardizer
+    from src.eval.final_guard import resolve_eval_cache
     from train_v2 import build_val_ids, load_split_ids, predict
     from src.models.flow_base import farneback_batch
 
-    idx = os.path.join(args.cache_dir, "cache_index.json")
-    if os.path.exists(idx) and json.load(open(idx)).get("cache_role") == "test":
-        sys.exit("REFUSED: cache_dir is a TEST cache.")
+    eval_cache, eval_split = resolve_eval_cache(args, "eval_baselines")
     device = torch.device(args.device if (args.device != "cuda" or torch.cuda.is_available()) else "cpu")
     amp = device.type == "cuda"
     st = ChannelStandardizer.from_stats_file(args.stats).to(device)
-    store = FastSequenceStore(args.cache_dir, load_split_ids(args.events_json, "val"), gaps_min=(10, 20, 30))
+    store = FastSequenceStore(eval_cache, load_split_ids(args.events_json, eval_split), gaps_min=(10, 20, 30))
     ids = build_val_ids(store, args.per_cell, seed=1234)
     print(f"{len(ids)} validation patches")
 
@@ -107,15 +109,16 @@ def main():
         net.eval()
         models[name] = (net, residual)
 
-    methods = ["linear", "persist_t", "persist_tg"] + ([] if args.no_farneback else ["farneback"]) + list(models)
+    rife = None
+    if args.rife_dir:
+        from src.models.rife_base import RifeMidpoint
+        rife = RifeMidpoint(args.rife_dir, device)
+    methods = ["linear", "persist_t", "persist_tg"] + ([] if args.no_farneback else ["farneback"]) + (["rife"] if rife else []) + list(models)
     acc = Acc()
     rec = {}      # (method, gap) -> list of per-patch rows: block, ae13_sum, n, ae13_strong_sum, n_strong
 
     with torch.no_grad():
-        n_total_batches = (len(ids) + args.bs - 1) // args.bs
-        for b_idx, batch in enumerate(store.iter_eval_batches(ids, args.bs)):
-            if b_idx % 15 == 0 or b_idx == n_total_batches - 1:
-                print(f"  [Eval] Batch {b_idx + 1}/{n_total_batches} ({min((b_idx + 1) * args.bs, len(ids))}/{len(ids)} patches)...")
+        for batch in store.iter_eval_batches(ids, args.bs):
             b = to_device(batch, device, st)
             x, tgt, m = b["input_kelvin"], b["target_kelvin"], b["combined_mask"]
             preds = {
@@ -125,6 +128,8 @@ def main():
             if "farneback" in methods:
                 preds["farneback"] = torch.from_numpy(
                     farneback_batch(x[:, 2].cpu().numpy(), x[:, 3].cpu().numpy())).to(device)
+            if rife is not None:
+                preds["rife"] = rife(x[:, 2], x[:, 3])
             for name, (net, residual) in models.items():
                 preds[name] = predict(net, st, b, residual, amp, device)
             tg13 = torch.nan_to_num(tgt[:, 1], nan=300.0)
