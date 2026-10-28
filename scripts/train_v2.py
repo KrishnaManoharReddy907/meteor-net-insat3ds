@@ -106,6 +106,18 @@ def evaluate(model, standardizer, store, ids, device, residual, amp, bs=16):
     return out
 
 
+def interband_diff_loss(y, t, mask):
+    """Spectral-consistency term: L1 on inter-band brightness-temperature differences (B9-B13, B14-B13,
+    B15-B13), which carry cloud-top / moisture information that per-band MAE can miss. Kelvin units."""
+    import torch
+    t = torch.nan_to_num(t, nan=0.0)
+    idx = [0, 2, 3]
+    dy = y[:, idx] - y[:, 1:2]
+    dt = t[:, idx] - t[:, 1:2]
+    m = mask.unsqueeze(1).expand_as(dy)
+    return ((dy - dt).abs() * m).sum() / m.sum().clamp(min=1)
+
+
 def lr_at(step, total, base, warm, min_frac=0.05):
     if step < warm:
         return base * (step + 1) / warm
@@ -134,6 +146,8 @@ def main():
     ap.add_argument("--residual", action="store_true", help="same as --base linear")
     ap.add_argument("--base", choices=["none", "linear", "farneback"], default="none",
                     help="predict a correction over this base (farneback = hybrid, uses optical flow)")
+    ap.add_argument("--spec_weight", type=float, default=0.0,
+                    help="weight of the inter-band difference (spectral consistency) loss; 0 = off (default)")
     ap.add_argument("--no_amp", action="store_true")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--device", default="cuda")
@@ -210,6 +224,8 @@ def main():
             b = to_device(next(it), device, standardizer)
             y = predict(model, standardizer, b, base_mode, amp, device)
             loss = loss_fn(y, b["target_kelvin"], b["combined_mask"])
+            if args.spec_weight > 0:
+                loss = loss + args.spec_weight * interband_diff_loss(y, b["target_kelvin"], b["combined_mask"])
             if not torch.isfinite(loss):
                 ok = False
                 break
@@ -226,7 +242,7 @@ def main():
         scaler.step(opt); scaler.update()
         step += 1
 
-        if step % 50 == 0 or (args.smoke and step % 5 == 0):
+        if step % 50 == 0:
             rec = {"step": step, "loss": run_loss / max(1, run_n), "lr": opt.param_groups[0]["lr"],
                    "scale": float(scaler.get_scale()) if amp else None, "skipped": skipped,
                    "min": round((time.time() - t0) / 60, 1)}
