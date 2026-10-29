@@ -84,6 +84,10 @@ def main():
     ap.add_argument("--head", default=None)
     ap.add_argument("--cal_json", default=None, help="conformal_val.json (calibration table) for coverage under recursion")
     ap.add_argument("--out", default="outputs/recursion_val.json")
+    ap.add_argument("--split_name", choices=["val", "cal"], default=None,
+                    help="dev-cache runs only: evaluate on 'cal' events (to build a recursion-aware calibration table)")
+    ap.add_argument("--dump_pixels", default=None, help="save sampled level-2 pixels (err, scale, pred) to this .npz")
+    ap.add_argument("--l2_cal_npz", default=None, help=".npz from a --split_name cal run: fit level-2 conformal table on it")
     ap.add_argument("--per_cell", type=int, default=200)
     ap.add_argument("--bs", type=int, default=16)
     ap.add_argument("--device", default="cuda")
@@ -97,6 +101,8 @@ def main():
     from train_v2 import load_split_ids, predict
 
     cache_dir, split = resolve_eval_cache(args, "eval_recursion")
+    if args.split_name and not args.final_test:
+        split = args.split_name
     device = torch.device(args.device if (args.device != "cuda" or torch.cuda.is_available()) else "cpu")
     amp = device.type == "cuda"
     st = ChannelStandardizer.from_stats_file(args.stats).to(device)
@@ -187,10 +193,20 @@ def main():
             d = np.concatenate(lst, axis=1)
             err, sc, pr = d
             r = {"spearman": C.spearman(sc, err), "mean_scale": float(sc.mean()), "mean_abs_err": float(err.mean())}
+            keys = C.group_keys(np.full(len(err), 10), C.intensity_class(pr))
             if cal is not None:
-                keys = C.group_keys(np.full(len(err), 10), C.intensity_class(pr))
                 q = C.q_for(cal, keys)
                 r["coverage_90_frozen_gap10_table"] = C.coverage(err, sc, q)
+            if nm == "l2" and args.dump_pixels:
+                np.savez_compressed(args.dump_pixels, err=err, scale=sc, pred=pr)
+            if args.l2_cal_npz:
+                z = np.load(args.l2_cal_npz)
+                keys_cal = C.group_keys(np.full(len(z["err"]), 10), C.intensity_class(z["pred"]))
+                for a_ in (0.1, 0.05):
+                    t2 = C.fit_mondrian(z["err"] / z["scale"], keys_cal, a_, 500)
+                    q2 = C.q_for(t2, keys)
+                    r[f"coverage_{int(100*(1-a_))}_recursion_calibrated"] = C.coverage(err, sc, q2)
+                    r[f"mean_width_{int(100*(1-a_))}_recursion_calibrated_K"] = float(np.mean(2 * q2 * sc))
             res["uncertainty"][nm] = r
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
     json.dump(res, open(args.out, "w"), indent=2)

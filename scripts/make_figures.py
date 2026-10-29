@@ -82,7 +82,7 @@ def main():
         L = json.load(open(a.loeo))
         fig, ax = plt.subplots(figsize=(9, 4), constrained_layout=True)
         for i, (al, c) in enumerate((("0.1", "#2a78d6"), ("0.05", "#eb6834"))):
-            ev = L[al]["per_event"]
+            ev = dict(sorted(L[al]["per_event"].items()))
             ax.scatter(range(len(ev)), [v["coverage"] for v in ev.values()], color=c, s=40, label=f"{100*(1-float(al)):.0f}% nominal", zorder=3)
             ax.axhline(1 - float(al), color=c, lw=1, ls="--")
         ax.set_xticks(range(len(ev))); ax.set_xticklabels([e.replace("event_", "") for e in ev], rotation=45, ha="right")
@@ -91,13 +91,18 @@ def main():
 
     if a.recursion:
         T = json.load(open(a.recursion))["table"]
-        names = list(T)
-        fig, ax = plt.subplots(figsize=(10, 4.2), constrained_layout=True)
-        w = 0.4
-        ax.bar(np.arange(len(names)) - w / 2, [T[n]["MAE_B13"] for n in names], w, color="#2a78d6", label="all pixels")
-        ax.bar(np.arange(len(names)) + w / 2, [T[n]["MAE_B13_strong"] for n in names], w, color="#eb6834", label="strong (<221 K)")
-        ax.set_xticks(range(len(names))); ax.set_xticklabels([n.replace(" (", "\n(") for n in names], fontsize=7, rotation=0)
-        ax.set_ylabel("B13 MAE (K)"); ax.set_title("Recursive halving 20 to 10 to 5 min (ground truth at every level)", fontsize=11); ax.legend(frameon=False); style(ax)
+        names = list(T)[::-1]
+        fig, ax = plt.subplots(figsize=(9, 5), constrained_layout=True)
+        h = 0.38
+        y = np.arange(len(names))
+        ax.barh(y + h / 2, [T[n]["MAE_B13"] for n in names], h, color="#2a78d6", label="all pixels")
+        ax.barh(y - h / 2, [T[n]["MAE_B13_strong"] for n in names], h, color="#eb6834", label="strong (<221 K)")
+        ax.set_yticks(y); ax.set_yticklabels(names, fontsize=9)
+        ax.set_xlabel("B13 MAE (K)"); ax.set_title("Recursive halving 20 to 10 to 5 min (ground truth at every level)", fontsize=11)
+        ax.legend(frameon=False, loc="lower right"); ax.grid(axis="x", color=GRID, lw=0.8); ax.set_axisbelow(True)
+        ax.set_facecolor(SURFACE)
+        for sp in ("top", "right"):
+            ax.spines[sp].set_visible(False)
         fig.savefig(os.path.join(a.out_dir, "fig_recursion.png"), dpi=200)
 
     if a.utility:

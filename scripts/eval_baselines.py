@@ -199,7 +199,37 @@ def main():
                     pt = SA[:, c].sum() / max(SA[:, n].sum(), 1) - SR[:, c].sum() / max(SR[:, n].sum(), 1)
                     boot[f"{m} vs {ref}|gap{g}|{name}"] = {"diff_K": float(pt), "ci95": [float(lo), float(hi)],
                                                          "n_blocks": int(len(blocks))}
+    # per-event B13 MAE (all pixels / strong): answers "does it hold event by event?"
+    per_event = {}
+    for (meth, g), parts in rec.items():
+        M = np.concatenate(parts)
+        evs = (M[:, 0] // 100000).astype(int)
+        for e in np.unique(evs):
+            r = M[evs == e]
+            per_event.setdefault(store.event_ids[e], {}).setdefault(f"gap{g}", {})[meth] = {
+                "mae_all": float(r[:, 1].sum() / max(r[:, 2].sum(), 1)),
+                "mae_strong": float(r[:, 3].sum() / r[:, 4].sum()) if r[:, 4].sum() else None}
+    wins = {}
+    for g in (10, 20, 30):
+        for m in models:
+            for ref in ("linear", "farneback"):
+                if ref not in methods:
+                    continue
+                n_ev = [e for e in per_event if f"gap{g}" in per_event[e]]
+                w = sum(per_event[e][f"gap{g}"][m]["mae_all"] < per_event[e][f"gap{g}"][ref]["mae_all"] for e in n_ev)
+                wins[f"{m} beats {ref}|gap{g}"] = f"{w}/{len(n_ev)} events"
+    print("\nPer-event wins on B13 MAE (all pixels):")
+    for g in (30,):
+        for k, v in wins.items():
+            if k.endswith(f"gap{g}"):
+                print(f"  {k:<44} {v}")
+    print("\nPer-event B13 MAE at gap 30 (all pixels):")
+    ref_methods = [mm_ for mm_ in ("linear", "farneback") if mm_ in methods] + list(models)[:6]
+    print(f"{'event':<18}" + "".join(f"{x[:12]:>14}" for x in ref_methods))
+    for e in sorted(per_event):
+        print(f"{e:<18}" + "".join(f"{per_event[e]['gap30'][x]['mae_all']:14.3f}" for x in ref_methods))
     out_obj = json.load(open(args.out)); out_obj["bootstrap"] = boot
+    out_obj["per_event"] = per_event; out_obj["event_wins"] = wins
     json.dump(out_obj, open(args.out, "w"), indent=2)
     print("\nPaired block-bootstrap, B13 MAE difference in K (model - reference; negative = model better)")
     for k, v in boot.items():

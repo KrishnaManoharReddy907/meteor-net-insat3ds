@@ -103,6 +103,7 @@ def main():
     ap.add_argument("--val_per_cell", type=int, default=300)
     ap.add_argument("--pix_per_patch", type=int, default=1024)
     ap.add_argument("--min_group_n", type=int, default=500)
+    ap.add_argument("--cal_splits", default="cal", help="comma list of events_json splits to calibrate on (final test: cal,val)")
     ap.add_argument("--device", default="cuda")
     ap.add_argument("--final_test", action="store_true", help="ONE-TIME final run on the test events")
     ap.add_argument("--test_cache_dir", default=None, help="test cache (cache_role == 'test'), with --final_test")
@@ -129,7 +130,10 @@ def main():
         yhat = predict(net, st, b, base_mode, amp, device).float()
         return yhat, head(build_features(st, b, yhat))
 
-    cal_events, val_events = load_split_ids(args.events_json, "cal"), load_split_ids(args.events_json, eval_split)
+    cal_events = [e for sp in args.cal_splits.split(",") for e in load_split_ids(args.events_json, sp)]
+    val_events = load_split_ids(args.events_json, eval_split)
+    if set(cal_events) & set(val_events):
+        sys.exit("calibration and evaluation events overlap; choose different --cal_splits.")
     cal_store = FastSequenceStore(args.cache_dir, cal_events)
     val_store = FastSequenceStore(eval_cache, val_events)
     d_cal = collect(cal_store, build_val_ids(cal_store, args.cal_per_cell, 777), forward, st, device, args.pix_per_patch, 1)
