@@ -78,7 +78,7 @@ def main():
     rng = np.random.default_rng(11)
     obs_steps = list(range(T0, T_LAST + 1, 6))                  # 30-min observations
     mid_in = list(range(T0, T_LAST - 5, 6))                     # t of each midpoint (t+3 steps)
-    times15 = np.arange(0, (T_LAST - T0) + 1, 15.0)             # 0,15,...,270 min
+    times15 = np.arange(0, (T_LAST - T0) * 5.0 + 1, 15.0)       # 0,15,...,270 min
     ps = store.ps
     delays = {thr: {m: [] for m in ["obs30"] + methods} for thr in (241.0, 221.0)}
     rate_err = {m: [] for m in methods}
