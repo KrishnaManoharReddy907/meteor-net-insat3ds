@@ -70,6 +70,7 @@ def main():
     ap.add_argument("--cal_per_cell", type=int, default=300)
     ap.add_argument("--val_per_cell", type=int, default=300)
     ap.add_argument("--pix_per_patch", type=int, default=1024)
+    ap.add_argument("--cal_splits", default="cal", help="splits to calibrate on (final test: cal,val)")
     ap.add_argument("--device", default="cuda")
     ap.add_argument("--final_test", action="store_true", help="ONE-TIME final run on the test events")
     ap.add_argument("--test_cache_dir", default=None, help="test cache (cache_role == 'test'), with --final_test")
@@ -108,7 +109,10 @@ def main():
             scales["ens"] = torch.stack(stack).std(dim=0) + 0.05
         return yhat, scales
 
-    cal_events, val_events = load_split_ids(args.events_json, "cal"), load_split_ids(args.events_json, eval_split)
+    cal_events = [e for sp in args.cal_splits.split(",") for e in load_split_ids(args.events_json, sp)]
+    val_events = load_split_ids(args.events_json, eval_split)
+    if set(cal_events) & set(val_events):
+        sys.exit("calibration and evaluation events overlap")
     cs, vs = FastSequenceStore(args.cache_dir, cal_events), FastSequenceStore(eval_cache, val_events)
     d_cal = collect(cs, build_val_ids(cs, args.cal_per_cell, 777), forward, st, device, args.pix_per_patch, 1)
     d_val = collect(vs, build_val_ids(vs, args.val_per_cell, 1234), forward, st, device, args.pix_per_patch, 2)

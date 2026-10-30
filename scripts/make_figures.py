@@ -60,7 +60,8 @@ def main():
         fig, axs = plt.subplots(1, 2, figsize=(11, 4), constrained_layout=True)
         for ax, key, title in ((axs[0], "mae_b13", "Band 13 MAE, all pixels"), (axs[1], "mae_b13_strong", "Band 13 MAE, strong convection (<221 K)")):
             grouped(ax, [f"{g} min" for g in gaps], methods, {m: [R[f"{m}|gap{g}"][key] for g in gaps] for m in methods}, "MAE (K)", title)
-        axs[0].legend(frameon=False, fontsize=8)
+        h, l = axs[0].get_legend_handles_labels()
+        fig.legend(h, l, loc="outside lower center", ncol=min(len(l), 6), frameon=False, fontsize=9)
         fig.savefig(os.path.join(a.out_dir, "fig_mae_by_gap.png"), dpi=200)
 
     if a.conformal:
