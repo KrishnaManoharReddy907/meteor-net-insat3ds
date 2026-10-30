@@ -18,10 +18,10 @@ import numpy as np
 SURFACE, INK, MUTED, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e3e2de"
 COLORS = {"linear": "#8a8985", "persist_t": "#c9c8c3", "persist_tg": "#b3b2ad", "farneback": "#eb6834",
           "rife": "#eda100", "main_s0": "#e87ba4", "hybrid_s0": "#1baf7a", "residual_s0": "#6250d6",
-          "residual_s1": "#9085e9", "residual_12k": "#2a78d6"}
+          "residual_s1": "#9085e9", "residual_12k": "#2a78d6", "residual_12k15": "#2a78d6"}
 FALLBACK = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#6250d6", "#e34948", "#008300"]
 LABELS = {"residual_12k": "METEOR-Net (residual, 12k)", "farneback": "Farneback flow", "linear": "linear",
-          "main_s0": "direct", "hybrid_s0": "hybrid (flow base)"}
+          "main_s0": "direct", "hybrid_s0": "hybrid (flow base)", "residual_12k15": "METEOR-Net (15 min)"}
 
 
 def col(name, i=0):
@@ -50,6 +50,7 @@ def main():
     for k in ("baselines", "conformal", "loeo", "recursion", "utility"):
         ap.add_argument(f"--{k}", default=None)
     ap.add_argument("--out_dir", default="outputs/figs")
+    ap.add_argument("--split_label", default="validation", help="word used in figure titles, e.g. test")
     a = ap.parse_args()
     os.makedirs(a.out_dir, exist_ok=True)
 
@@ -72,7 +73,7 @@ def main():
         vals = [v["mondrian_cov"] for v in r["by_gap"].values()] + [v["mondrian_cov"] for v in r["by_true_class"].values()]
         axs[0].bar(range(len(vals)), vals, color="#2a78d6", width=0.6); axs[0].axhline(0.9, color=INK, lw=1, ls="--")
         axs[0].set_ylim(0.8, 1.0); axs[0].set_xticks(range(len(vals))); axs[0].set_xticklabels(names, rotation=20)
-        axs[0].set_ylabel("coverage"); axs[0].set_title("90% intervals: validation coverage (dashed = nominal)", fontsize=11); style(axs[0])
+        axs[0].set_ylabel("coverage"); axs[0].set_title(f"90% intervals: {a.split_label} coverage (dashed = nominal)", fontsize=11); style(axs[0])
         d = V["uncertainty_quality"]["mean_abs_err_by_scale_decile_K"]
         axs[1].plot(range(1, len(d) + 1), d, marker="o", color="#2a78d6", lw=2); axs[1].set_yscale("log")
         axs[1].set_xlabel("predicted-scale decile (low to high)"); axs[1].set_ylabel("mean |error| (K)")
@@ -111,9 +112,10 @@ def main():
         fig, axs = plt.subplots(1, 2, figsize=(11, 4), constrained_layout=True)
         for ax, thr in zip(axs, ("241", "221")):
             D = U[thr]; names = list(D)
+            display_names = [LABELS.get(n, n) for n in names]
             ax.bar(range(len(names)), [D[n].get("mean_delay_min", np.nan) for n in names],
                    color=[col(n.replace("15", ""), i) if n != "obs30" else "#8a8985" for i, n in enumerate(names)], width=0.6)
-            ax.set_xticks(range(len(names))); ax.set_xticklabels(names, rotation=25, ha="right")
+            ax.set_xticks(range(len(names))); ax.set_xticklabels(display_names, rotation=25, ha="right")
             ax.set_ylabel("mean detection delay (min)"); ax.set_title(f"Cold-core onset below {thr} K", fontsize=11); style(ax)
         fig.savefig(os.path.join(a.out_dir, "fig_detection_delay.png"), dpi=200)
     print("figures in", a.out_dir)
